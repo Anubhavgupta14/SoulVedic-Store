@@ -47,7 +47,7 @@
   margin: 0px auto 1.5rem;
 }
 .tiles_inner_text a {
-  text-decoration: underline;
+  /* text-decoration: underline; */
   color: #fff;
 }
 .Vertical_wrapper .tiles_inner_text h1 {
@@ -66,7 +66,7 @@
   line-height: 1.5;
   text-transform: uppercase;
   letter-spacing: 0.02em;
-  text-decoration: underline;
+  text-decoration: none;
 }
 /* How_to_Nail_it_Cntr */
 #How_to_Nail_it_Cntr {
@@ -175,7 +175,6 @@
 }
 #How_to_Nail_it_Cntr .nail_para_text .p-normal.text-top {
   color: #222;
-  font-family: telegraf-light;
   font-size: calc(1.2875rem + 0.2vw);
   letter-spacing: -0.01em;
   line-height: 1.1em;
@@ -197,7 +196,6 @@
 }
 #How_to_Nail_it_Cntr .p-normal.text {
   color: #222;
-  font-family: telegraf-light;
   font-size: calc(1.325rem + 0.4vw);
   letter-spacing: -0.02em;
   line-height: 1.3em;
@@ -233,7 +231,6 @@
 }
 #How_to_Nail_it_Cntr .p-normal {
   color: #fff;
-  font-family: telegraf-light;
   font-size: calc(1.475rem + 1.2vw);
   letter-spacing: -0.01em;
   line-height: 1.2em;
@@ -256,7 +253,6 @@
 }
 #How_to_Nail_it_Cntr .pictos-label .p-normal {
   color: #222;
-  font-family: telegraf-light;
   font-size: calc(1.275rem + 0.13333vw);
   font-size: 1.3529411765vw;
   letter-spacing: 0;
@@ -485,16 +481,227 @@
   position: relative;
   width: 100%;
   height: 100vh;
-  background-color: red;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding-bottom: var(--_16q18zo17);
+  padding-bottom: 40px;
+}
+.shop-card_grid {
+  display: grid;
+  background: none;
+  display: inline-grid;
+  white-space: nowrap;
+  cursor: pointer;
+  color: currentcolor;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+}
+.shop-card_grid:hover .shop_card_img_cover_hidden {
+  opacity: 1;
+}
+.shop_card_cntr {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+.shop_card_top {
+  overflow-y: hidden;
+  position: relative;
+  grid-area: 1 / 1;
+  background-color: #f5f5f5;
+  display: grid;
+  padding-top: 150px;
+}
+.shop_card_img_wrapper {
+  height: 100%;
+  width: 100%;
+  /* position: absolute; */
+  top: 0px;
+  left: 0px;
+}
+
+.shop_card_img_inner {
+  display: none;
+}
+.shop_card_img_cntr {
+  display: none;
+}
+.shop_card_img-wrapper {
+  display: grid;
+  transition: opacity 0.2s;
+  min-width: 100%;
+  scroll-snap-align: center;
+}
+.responsive_shop_wrapper {
+  position: relative;
+}
+.shop_card_img_cover {
+  display: grid;
+  grid-area: 1 / 1;
+  background-color: #f5f5f5;
+  transition: opacity 0.2s;
+}
+.shop_card_img_bgcover {
+  position: relative;
+  display: grid;
+  border: none;
+  background-color: rgb(242, 246, 247);
+}
+.shop_card_img-main_cntr {
+  display: grid;
+  border: none;
+}
+.shop_card_img-main_cntr img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+.shop_card_img_cover_hidden {
+  opacity: 0;
+  display: grid;
+  grid-area: 1 / 1;
+  transition: opacity 0.2s;
+}
+
+/* shop_card_text_cntr */
+.shop_card_text_cntr {
+  display: grid;
+  padding: 26px;
+  column-gap: 12px;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "sizes"
+    "title"
+    "description"
+    "price";
+  align-items: start;
+  overflow: hidden;
+}
+.shop_card_text_brandName {
+  font-family: Helvetica, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 12px;
+  line-height: 1.35;
+  grid-area: title;
+  width: 100%;
+  margin-bottom: 4px;
+}
+.shop_card_tag {
+  font-family: Henry Italic, Helvetica, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 13px;
+  line-height: 1.2;
+  color: #767676;
+  grid-area: sizes;
+  width: 100%;
+  display: flex;
+  margin-bottom: 4px;
+  height: 18px;
+}
+.shop_card_item_Name {
+  font-family: Helvetica, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 12px;
+  line-height: 1.35;
+  margin-bottom: 4px;
+  grid-area: description;
+  max-width: calc(50vw - 48px);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-style: normal;
+}
+.shop_card_price_wrap {
+  font-family: Helvetica, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 12px;
+  line-height: 1.35;
+  display: flex;
+  grid-area: price;
+  gap: 8px;
+}
+.shop_card_price_cntr {
+  display: flex;
+}
+/* shop_card_text_cntr */
+
+/* respcard */
+.respo-shop_card-img_wrap {
+  display: flex;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  position: relative;
+  white-space: nowrap;
+  scrollbar-color: transparent;
+}
+.respo-shop_card-img_wrap::-webkit-scrollbar {
+  height: 1px;
+}
+
+.respo-shop_card-img_wrap::-webkit-scrollbar-track {
+  background-color: rgb(255, 255, 255);
+}
+
+.respo-shop_card-img_wrap::-webkit-scrollbar-thumb {
+  background-color: rgb(0, 0, 0);
+  border-radius: 10px;
+}
+/* respcard */
+@media only screen and (min-width: 375px) {
+  .shop_card_tag {
+    font-size: calc(12.59px + 0.11vw);
+  }
 }
 @media only screen and (min-width: 1120px) {
   .ShopCards_container {
-    padding-bottom: var(--_16q18zo1c);
+    padding-bottom: 96px;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    row-gap: var(--_16q18zo18);
+    row-gap: 48px;
+  }
+  .shop_card_tag {
+    justify-content: flex-end;
+  }
+}
+@media (min-width: 1300px) {
+  .shop_card_img_inner {
+    display: initial;
+  }
+  .shop_card_img-wrapper {
+    min-width: unset;
+  }
+  .responsive_shop_wrapper {
+    display: none;
+  }
+  .shop_card_text_cntr {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "title sizes"
+      "description sizes"
+      "price price";
+  }
+  .shop_card_img_cntr {
+    display: initial;
+  }
+  .shop_card_tag {
+    font-size: 14px;
+  }
+  .shop_card_item_Name {
+    max-width: unset;
   }
 }
 /* ShopCards_section */
