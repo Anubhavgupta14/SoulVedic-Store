@@ -241,7 +241,12 @@
 #How_to_Nail_it_Cntr .anime-container {
   margin-top: 1px;
 }
-
+#How_to_Nail_it_Cntr .anime-container svg {
+  width: 100%;
+  height: 100%;
+  transform: translate3d(0px, 0px, 0px);
+  contentvisibility: visible;
+}
 #How_to_Nail_it_Cntr .pictos-label .picto-one {
   left: 35.2941176471vw;
   position: absolute;
