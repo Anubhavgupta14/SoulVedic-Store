@@ -1,10 +1,8 @@
-// import Smoothscroll from "@/components/home/Smoothscroll";
 import "@/styles/globals.css";
-
+import "@/styles/home.css";
 export default function App({ Component, pageProps }) {
   return (
     <>
-      {/* <Smoothscroll /> */}
       <Component {...pageProps} />
     </>
   );

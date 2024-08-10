@@ -1,3 +1,107 @@
+:root {
+  --_16q18zo0: #ececec;
+  --_16q18zo1: #dadada;
+  --_16q18zo2: #919090;
+  --_16q18zo3: #6c6b6b;
+  --_16q18zo4: #474646;
+  --_16q18zo5: rgba(71, 70, 70, 0.1);
+  --_16q18zo6: rgba(71, 70, 70, 0.2);
+  --_16q18zo7: rgba(71, 70, 70, 0.6);
+  --_16q18zo8: #e6e6e6;
+  --_16q18zo9: #767676;
+  --_16q18zoa: #787878;
+  --_16q18zob: rgba(255, 255, 255, 0.1);
+  --_16q18zoc: rgba(255, 255, 255, 0.2);
+  --_16q18zod: rgba(255, 255, 255, 0.6);
+  --_16q18zoe: rgba(255, 255, 255, 0.8);
+  --_16q18zof: #ffffff;
+  --_16q18zog: #000000;
+  --_16q18zoh: lightgray;
+  --_16q18zoi: lightblue;
+  --_16q18zoj: rgba(0, 113, 227, 0.5);
+  --_16q18zok: #d32600;
+  --_16q18zol: mistyRose;
+  --_16q18zom: green;
+  --_16q18zon: #cacaca;
+  --_16q18zoo: var(--colors-promoBarBackground);
+  --_16q18zop: var(--colors-pdpBackground);
+  --_16q18zoq: rgb(242, 246, 247);
+  --_16q18zor: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+  --_16q18zos: #f5f5f5;
+  --_16q18zot: rgba(0, 0, 0, 0.2);
+  --_16q18zou: 0px;
+  --_16q18zov: 2px;
+  --_16q18zow: 4px;
+  --_16q18zox: 6px;
+  --_16q18zoy: 8px;
+  --_16q18zoz: 10px;
+  --_16q18zo10: 12px;
+  --_16q18zo11: 16px;
+  --_16q18zo12: 20px;
+  --_16q18zo13: 24px;
+  --_16q18zo14: 28px;
+  --_16q18zo15: 32px;
+  --_16q18zo16: 36px;
+  --_16q18zo17: 40px;
+  --_16q18zo18: 48px;
+  --_16q18zo19: 56px;
+  --_16q18zo1a: 64px;
+  --_16q18zo1b: 72px;
+  --_16q18zo1c: 96px;
+  --_16q18zo1d: 120px;
+  --_16q18zo1e: 144px;
+  --_16q18zo1f: 168px;
+  --_16q18zo1g: 192px;
+  --_16q18zo1h: 240px;
+  --_16q18zo1i: 288px;
+  --_16q18zo1j: 378px;
+  --_16q18zo1k: 416px;
+  --_16q18zo1l: 40px;
+  --_16q18zo1m: 34px;
+  --_16q18zo1n: 110px;
+  --_16q18zo1o: 26px;
+  --_16q18zo1p: 40px;
+  --_16q18zo1q: 180px;
+  --_16q18zo1r: 38px;
+  --_16q18zo1s: 45px;
+  --_16q18zo1t: 120px;
+  --_16q18zo1u: 22px;
+  --_16q18zo1v: 27px;
+  --_16q18zo1w: 48px;
+  --_16q18zo1x: 30px;
+  --_16q18zo1y: 16px;
+  --_16q18zo1z: 20px;
+  --_16q18zo20: 26px;
+  --_16q18zo21: 40px;
+  --_16q18zo22: 535px;
+  --_16q18zo23: 17px;
+  --_16q18zo24: 12px;
+  --_16q18zo25: 65px;
+  --_16q18zo26: 370px;
+  --_16q18zo27: 8px;
+  --_16q18zo28: 16px;
+  --_16q18zo29: 24px;
+  --_16q18zo2a: 9999px;
+  --_16q18zo2b: 99;
+  --_16q18zo2c: 102;
+  --_16q18zo2d: 90;
+  --_16q18zo2e: 100;
+  --_16q18zo2f: 110;
+  --_16q18zo2g: 200;
+  --_16q18zo2h: 201;
+  --_16q18zo2i: 250;
+  --_16q18zo2j: 81;
+  --_16q18zo2k: 82;
+  --_16q18zo2l: 80;
+  --_16q18zo2m: 200;
+  --_16q18zo2n: 201;
+  --_16q18zo2o: 190;
+  --_16q18zo2p: 0.4s;
+  --_16q18zo2q: 50ms;
+  --_16q18zo2r: 5s;
+  --_16q18zo2s: 0.3s;
+  --_16q18zo2t: 0.4s;
+}
 * {
   margin: 0;
   padding: 0;
@@ -10,353 +114,3 @@ body {
   width: 100%;
   height: 100%;
 }
-.Vertical_wrapper {
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-  background-color: red;
-}
-.Vertical_wrapper_video_sec {
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  top: 0;
-  overflow: hidden;
-}
-.Vertical_wrapper_video_sec-1 {
-  clip-path: inset(0 0 0 0);
-  height: 100%;
-}
-.Vertical_wrapper_video_sec-2 {
-  clip-path: inset(100% 0 0 0);
-}
-.Vertical_wrapper_video_sec-3 {
-  clip-path: inset(100% 0 0 0);
-}
-.Vertical_wrapper_video_sec_common img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-.Vertical_wrapper .tile__inner {
-  position: absolute;
-  bottom: 3.125rem;
-  left: 0px;
-  right: 0px;
-  width: max-content;
-  margin: 0px auto;
-  z-index: 10;
-  text-align: center;
-}
-.tiles_inner_text {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  flex-direction: column;
-  color: #fff;
-  margin: 0px auto 1.5rem;
-}
-.tiles_inner_text a {
-  text-decoration: underline;
-  color: #fff;
-}
-.Vertical_wrapper .tiles_inner_text h1 {
-  font-size: 4vw;
-  line-height: 0.8;
-  letter-spacing: -0.04em;
-  font-weight: 200;
-}
-.tiles_inner_button {
-  position: relative;
-  color: #fff;
-}
-.tiles_inner_button span {
-  font-size: 0.8rem;
-  font-weight: 400;
-  line-height: 1.5;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  text-decoration: underline;
-}
-/* How_to_Nail_it_Cntr */
-#How_to_Nail_it_Cntr {
-  width: 100%;
-  position: relative;
-  background-color: #eeff04;
-  padding-bottom: 20.5882352941vw;
-  padding-top: 16.4705882353vw;
-  position: relative;
-}
-#How_to_Nail_it_Cntr .row {
-  display: flex;
-  flex-flow: row wrap;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 106.25rem;
-  padding-left: 5.8823529412vw;
-  padding-right: 5.8823529412vw;
-}
-#How_to_Nail_it_Cntr .row.how_we_picture {
-  align-items: center;
-  justify-content: center;
-}
-#How_to_Nail_it_Cntr .how_we_picture_inner {
-  flex: 0 0 37.5%;
-  max-width: 37.5%;
-}
-.how-we-image {
-  position: relative;
-  text-align: center;
-}
-.mask-memoji-wrapper {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-.mask-memoji-wrapper .curved-text {
-  left: 50%;
-  position: absolute;
-  top: -115px;
-  transform: translateX(-50%);
-}
-.mask-memoji-wrapper .mask {
-  border-radius: 190px;
-  bottom: 0;
-  clip-path: url(#mask-curve);
-  -webkit-clip-path: url(#mask-curve);
-  left: 0;
-  overflow: hidden;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-.block-bg-cover {
-  height: 100%;
-  left: 0;
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 0;
-}
-.block-bg-cover .element-cover {
-  display: block;
-  height: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
-  -o-object-position: 50% 50%;
-  object-position: 50% 50%;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  background-color: red;
-}
-.block-bg-cover img {
-  display: block;
-  height: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
-  -o-object-position: 50% 50%;
-  object-position: 50% 50%;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-}
-.mask-memoji-wrapper .mask img {
-  -o-object-position: 85% 50%;
-  object-position: 85% 50%;
-}
-.mask-memoji-wrapper .memoji {
-  position: absolute;
-  top: -180px;
-  transform: scale(0.58) scaleX(-1);
-}
-.mask-memoji-wrapper .memoji img {
-  /* width: 16vw; */
-  transform: rotateZ(14.6035deg);
-}
-#How_to_Nail_it_Cntr .pictos-wrapper {
-  margin-bottom: 19.4117647059vw;
-  position: relative;
-}
-#How_to_Nail_it_Cntr .line-wrapper,
-#How_to_Nail_it_Cntr .pictos-label {
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
-#How_to_Nail_it_Cntr .st0 {
-  fill: none;
-  stroke: #000000;
-  stroke-width: 2;
-  stroke-miterlimit: 10;
-}
-#How_to_Nail_it_Cntr .st1 {
-  fill: none;
-  stroke: #000000;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-miterlimit: 10;
-}
-#How_to_Nail_it_Cntr .p-normal {
-  color: #fff;
-  font-family: telegraf-light;
-  font-size: calc(1.475rem + 1.2vw);
-  letter-spacing: -0.01em;
-  line-height: 1.2em;
-}
-#How_to_Nail_it_Cntr .anime-container {
-  margin-top: 1px;
-}
-
-#How_to_Nail_it_Cntr .pictos-label .picto-one {
-  left: 35.2941176471vw;
-  position: absolute;
-  text-align: center;
-  top: 29.4117647059vw;
-  width: 14.7058823529vw;
-}
-#How_to_Nail_it_Cntr .pictos-label .p-normal {
-  color: #222;
-  font-family: telegraf-light;
-  font-size: calc(1.275rem + 0.13333vw);
-  font-size: 1.3529411765vw;
-  letter-spacing: 0;
-  line-height: 1.3em;
-}
-#How_to_Nail_it_Cntr .pictos-label .picto-two {
-  left: 5.8823529412vw;
-  position: absolute;
-  text-align: center;
-  top: 64.7058823529vw;
-  width: 14.7058823529vw;
-}
-#How_to_Nail_it_Cntr .pictos-label .picto-three {
-  bottom: 29.4117647059vw;
-  left: 55.8823529412vw;
-  position: absolute;
-  text-align: center;
-  width: 14.7058823529vw;
-}
-#How_to_Nail_it_Cntr .pictos-label .picto-four {
-  bottom: -2.9411764706vw;
-  left: 17.6470588235vw;
-  position: absolute;
-  text-align: center;
-  width: 14.7058823529vw;
-}
-#How_to_Nail_it_Cntr .line-wrapper svg path {
-  stroke-dasharray: 8945.95;
-  stroke-dashoffset: -8945.95;
-}
-#How_to_Nail_it_Cntr .st0 {
-  fill: none;
-  stroke: #000000;
-  stroke-width: 2;
-  stroke-miterlimit: 10;
-}
-.title_inner-nail {
-  flex: 0 0 100%;
-  max-width: 100%;
-}
-.title_inner-nail.columns {
-  flex: 1 1 0;
-  min-width: 0;
-  min-width: auto;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
-.title_inner-nail h2 {
-  color: #222;
-  position: relative;
-  font-size: 12.3529411765vw;
-  text-align: center;
-  line-height: 0.9em;
-  /* letter-spacing: -0.4em; */
-  /* transform: translate(0px, 0px); */
-  /* opacity: 1; */
-  font-weight: 400;
-}
-.title_inner-nail h2 span {
-  transform: translateY(60%) skewX(20deg);
-  display: inline-block;
-  opacity: 0;
-}
-.title_inner-nail h2 .serif-italic {
-  font-style: italic;
-}
-.title_inner-nail .arrow {
-  transform: translateY(-50%) scaleY(0.5);
-  transform-origin: top;
-  text-align: center;
-  margin-top: 80px;
-  margin-bottom: 30px;
-  opacity: 0;
-}
-@media only screen and (min-width: 1200px) {
-  #How_to_Nail_it_Cntr .p-normal {
-    font-size: 2.375rem;
-  }
-  .title_inner-nail h2 {
-    font-size: 8.875rem;
-  }
-  #How_to_Nail_it_Cntr .pictos-label .p-normal {
-    font-size: 1.375rem;
-  }
-}
-
-@media only screen and (min-width: 1700px) {
-  #How_to_Nail_it_Cntr {
-    padding-top: 280px;
-  }
-  #How_to_Nail_it_Cntr {
-    padding-bottom: 350px;
-  }
-  #How_to_Nail_it_Cntr .row {
-    padding-right: 100px;
-    padding-left: 100px;
-  }
-  #How_to_Nail_it_Cntr .pictos-wrapper {
-    margin-bottom: 330px;
-  }
-  #How_to_Nail_it_Cntr .pictos-label .picto-one {
-    width: 250px;
-  }
-  #How_to_Nail_it_Cntr .pictos-label .picto-one {
-    left: 600px;
-  }
-  #How_to_Nail_it_Cntr .pictos-label .picto-one {
-    top: 500px;
-  }
-  #How_to_Nail_it_Cntr .pictos-label .picto-two {
-    width: 250px;
-  }
-  #How_to_Nail_it_Cntr .pictos-label .picto-two {
-    left: 100px;
-  }
-  #How_to_Nail_it_Cntr .pictos-label .picto-two {
-    top: 1100px;
-  }
-  #How_to_Nail_it_Cntr .pictos-label .picto-three {
-    left: 950px;
-  }
-  #How_to_Nail_it_Cntr .pictos-label .picto-three {
-    bottom: 500px;
-  }
-  #How_to_Nail_it_Cntr .pictos-label .picto-four {
-    left: 300px;
-  }
-  #How_to_Nail_it_Cntr .pictos-label .picto-four {
-    bottom: -50px;
-  }
-}
-
-/* How_to_Nail_it_Cntr */
-
-/* transfrom:rotateZ(0deg) */

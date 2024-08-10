@@ -5,6 +5,8 @@ import styles from "@/styles/Home.module.css";
 import Hero from "@/components/home/Hero";
 import SmoothScroll from "@/components/SmoothScroll";
 import Smoothscroll from "@/components/SmoothScroll";
+import Nails_Cntr from "@/components/home/Nails_Cntr";
+import ShopCards_section from "@/components/home/shopCards_home/ShopCards_section";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +24,8 @@ export default function Home() {
         <div id="smooth-content"> */}
       <main>
         <Hero />
-        {/* Add other content here */}
+        <Nails_Cntr />
+        <ShopCards_section />
       </main>
       {/* </div>
       </div> */}
