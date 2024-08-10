@@ -1,10 +1,6 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
 import Hero from "@/components/home/Hero";
-import SmoothScroll from "@/components/SmoothScroll";
-import Smoothscroll from "@/components/SmoothScroll";
 import Nails_Cntr from "@/components/home/Nails_Cntr";
 import ShopCards_section from "@/components/home/shopCards_home/ShopCards_section";
 
@@ -19,16 +15,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <Smoothscroll />
-      <div id="smooth-wrapper">
-        <div id="smooth-content"> */}
       <main>
         <Hero />
         <Nails_Cntr />
         <ShopCards_section />
       </main>
-      {/* </div>
-      </div> */}
     </>
   );
 }

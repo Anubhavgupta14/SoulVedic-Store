@@ -1,6 +1,5 @@
 import gsap from "gsap";
 import Link from "next/link";
-import React, { useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
