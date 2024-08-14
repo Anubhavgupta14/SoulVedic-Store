@@ -2,7 +2,7 @@ import Head from "next/head";
 import { Inter } from "next/font/google";
 import Hero from "@/components/home/Hero";
 import Nails_Cntr from "@/components/home/Nails_Cntr";
-import ShopCards_section from "@/components/home/shopCards_home/ShopCards_section";
+import ProductCards from "@/components/home/ProductCards";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +18,7 @@ export default function Home() {
       <main>
         <Hero />
         <Nails_Cntr />
-        <ShopCards_section />
+        <ProductCards />
       </main>
     </>
   );

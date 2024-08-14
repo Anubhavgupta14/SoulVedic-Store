@@ -1,10 +1,16 @@
+@font-face {
+  font-family: Henry-Italic;
+  src: url(https://cdn.shopify.com/oxygen-v2/24187/8316/16871/768954/build/_assets/Henry-Italic-XZWGQLUJ.woff2);
+}
 :root {
+  --primary-font-Hel: Helvetica, sans-serif;
+  --secondary-font-Hen: Henry-Italic;
 }
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: gilroy;
+  /* font-family: Helvetica, sans-serif; */
 }
 
 html,
@@ -12,3 +18,215 @@ body {
   width: 100%;
   height: 100%;
 }
+
+/* Footer */
+.Footer_wrapper {
+  padding: 26px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffff;
+  position: relative;
+}
+.Footer_cntr {
+  display: flex;
+  flex-direction: column;
+}
+.Footer_SocialLinks_cntr {
+  max-width: 100%;
+}
+.fotter_nav {
+  width: 100%;
+  display: flex;
+}
+.footer_nav_ul {
+  margin-bottom: 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 24px;
+  width: 100%;
+}
+ul {
+  list-style: inherit;
+}
+ul,
+li {
+  list-style: none;
+}
+.footer_nav_ul_list {
+  max-width: 200px;
+  flex-grow: 1;
+}
+.footer_nav_ul_list p {
+  margin: 4px;
+}
+._list-links {
+  font-family: var(--primary-font-Hel);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  color: #767676;
+  margin: 6px;
+}
+
+.footer_links {
+  font-family: var(--primary-font-Hel);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 50%;
+  text-wrap: wrap;
+  cursor: pointer;
+  color: #000 !important;
+  background: none;
+}
+.footer_links::before {
+  content: "";
+  display: block;
+  height: 4px;
+  width: 4px;
+  border-radius: 9999px;
+  background: currentColor;
+  position: absolute;
+  left: 0;
+  transform: scale(0);
+  opacity: 0;
+  transition: all 0.2s linear;
+}
+._list-links-redirect:hover .footer_links::before {
+  opacity: 1;
+  transform: scale(1);
+  left: -10px;
+}
+.footer_nav_signup_btn_cntr {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 20px;
+  width: 100%;
+}
+.footer_nav_signup_btn_align {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.Footer_SocialLinks_bottom {
+  font-family: var(--primary-font-Hel);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 12px;
+  line-height: 1.35;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  color: var(--_16q18zo9);
+  column-gap: 12px;
+  margin-top: 12px;
+}
+.Footer_SocialLinks_bottom li {
+  font-family: var(--primary-font-Hel);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  margin: 6px 0;
+}
+.links {
+  text-decoration: none;
+  color: #767676;
+  transition: all 0.5s linear;
+}
+.links:hover {
+  color: #000;
+}
+@media only screen and (min-width: 375px) {
+  .footer_nav_ul_list p,
+  .links {
+    font-size: calc(14.81px - 0.22vw);
+  }
+}
+@media only screen and (min-width: 740px) {
+  .Footer_wrapper {
+    padding: 40px;
+  }
+  .Footer_cntr {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+  }
+  .footer_nav_ul {
+    display: flex;
+    gap: 24px;
+  }
+  ._list-links {
+    margin: 4px;
+  }
+  .footer_nav_signup_btn_cntr {
+    min-width: 235px;
+    margin-bottom: 32px;
+  }
+  .footer_nav_signup_btn_align {
+    justify-content: flex-end;
+  }
+  ._btn_height {
+    height: 34px;
+  }
+  .Footer_SocialLinks_bottom {
+    column-gap: 28px;
+    margin-top: 28px;
+    justify-content: end;
+  }
+  .Footer_SocialLinks_bottom li {
+    margin: 4px;
+  }
+}
+/* Footer */
+
+/* Button */
+
+._btn_wrapper {
+  font-family: Centra No2, Helvetica, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  height: 40px;
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 9999px;
+  padding: 0 16px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.8s linear;
+  cursor: pointer;
+}
+._btn-width {
+  width: 100%;
+  /* max-width: 235px; */
+}
+.footer_nav_signup_btn_align ._btn_wrapper {
+  justify-content: center;
+  width: 100%;
+  max-width: 235px;
+}
+._btn_wrapper:hover {
+  background-color: #000;
+  color: #fff;
+}
+/* Button */
