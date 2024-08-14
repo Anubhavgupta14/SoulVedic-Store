@@ -72,8 +72,9 @@
 #How_to_Nail_it_Cntr {
   width: 100%;
   position: relative;
-  background-color: #eeff04;
-  padding-bottom: 20.5882352941vw;
+  /* background-color: #cbbbbb; */
+  background: linear-gradient(#cbbbbb, #ebdcdc, #cbbbbb);
+  /* padding-bottom: 20.5882352941vw; */
   padding-top: 16.4705882353vw;
   position: relative;
 }
@@ -484,6 +485,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   padding-bottom: 40px;
+  font-family: var(--primary-font-Hel);
 }
 .shop-card_grid {
   display: grid;
