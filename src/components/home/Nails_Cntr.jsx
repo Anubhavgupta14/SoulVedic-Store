@@ -203,8 +203,8 @@ const Nails_Cntr = () => {
       <div className="row title">
         <div className="title_inner-nail columns">
           <h2>
-            <span className="serif-reg">How</span>
-            <span className="serif-italic">we</span>
+            <span className="serif-reg">How&nbsp;</span>
+            <span className="serif-italic">we&nbsp;</span>
             <span className="serif-reg">nail it</span>
           </h2>
           <div className="arrow">

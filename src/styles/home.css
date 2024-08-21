@@ -430,9 +430,9 @@
   #How_to_Nail_it_Cntr {
     padding-top: 280px;
   }
-  #How_to_Nail_it_Cntr {
+  /* #How_to_Nail_it_Cntr {
     padding-bottom: 350px;
-  }
+  } */
   #How_to_Nail_it_Cntr .row {
     padding-right: 100px;
     padding-left: 100px;
@@ -1309,7 +1309,8 @@ button {
   .ProductDets-size_numbers,
   .ProductDets_info_text,
   .ProductDets_info-btn,
-  .Similar_prd_head {
+  .Similar_prd_head,
+  ._list-links-redirect {
     font-size: calc(14.81px - 0.22vw);
   }
   .Similar_prd_pieces,
@@ -1446,7 +1447,8 @@ button {
   .ProductDets_info_text,
   .ProductDets_info-btn,
   .footer_nav_ul_list p,
-  .links {
+  .links,
+  ._list-links-redirect {
     font-size: 12px;
   }
   .Similar_prd_head {

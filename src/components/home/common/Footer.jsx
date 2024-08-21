@@ -1,6 +1,8 @@
 import Link from "next/link";
 import React from "react";
 import Button from "./Button";
+import { footerLinks, footerNavlinks } from "@/helpers";
+import LinksDot from "@/components/LinksDot";
 
 const Footer = () => {
   return (
@@ -8,66 +10,39 @@ const Footer = () => {
       <div className="Footer_cntr">
         <nav className="fotter_nav" aria-label="Primary navigation links">
           <ul className="footer_nav_ul">
-            <li className="footer_nav_ul_list _list-links">
-              <p className="">About</p>
-              <ul>
-                <li className="_list-links _list-links-redirect">
-                  <Link href={""} className="footer_links links">
-                    Our Story
-                  </Link>
+            {Object.keys(footerLinks).map((section, sectionIndex) => {
+              return (
+                <li
+                  key={sectionIndex}
+                  className="footer_nav_ul_list _list-links"
+                >
+                  <p className="">{section}</p>
+                  <ul>
+                    {/* {footerLinks[section].map((link, linkIndex) => (
+                      <li
+                        key={linkIndex}
+                        className="_list-links _list-links-redirect links"
+                      >
+                        <Link href={""} className="footer_links links">
+                          <LinksDot>{link}</LinksDot>
+                        </Link>
+                      </li>
+                    ))} */}
+
+                    {footerLinks[section].map((link, linkIndex) => (
+                      <li
+                        key={linkIndex}
+                        className="_list-links _list-links-redirect"
+                      >
+                        <Link href={""} passHref className="footer_links links">
+                          <LinksDot>{link.name}</LinksDot>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </li>
-                <li className="_list-links _list-links-redirect">
-                  <Link href={""} className="footer_links links">
-                    Paris Boutique
-                  </Link>
-                </li>
-                <li className="_list-links _list-links-redirect">
-                  <Link href={""} className="footer_links links">
-                    Stockists
-                  </Link>
-                </li>
-                <li className="_list-links _list-links-redirect">
-                  <Link href={""} className="footer_links links">
-                    Sustainability
-                  </Link>
-                </li>
-              </ul>
-            </li>
-            <li className="footer_nav_ul_list _list-links">
-              <p className="">Customer Care</p>
-              <ul>
-                <li className="_list-links _list-links-redirect">
-                  <Link href={""} className="footer_links links">
-                    Contact
-                  </Link>
-                </li>
-                <li className="_list-links _list-links-redirect">
-                  <Link href={""} className="footer_links links">
-                    Returns & Exchanges
-                  </Link>
-                </li>
-                <li className="_list-links _list-links-redirect">
-                  <Link href={""} className="footer_links links">
-                    General Sizing
-                  </Link>
-                </li>
-                <li className="_list-links _list-links-redirect">
-                  <Link href={""} className="footer_links links">
-                    FAQs
-                  </Link>
-                </li>
-              </ul>
-            </li>
-            <li className="footer_nav_ul_list _list-links">
-              <p className="">Social</p>
-              <ul>
-                <li className="_list-links _list-links-redirect">
-                  <Link href={""} className="footer_links links">
-                    Instagram
-                  </Link>
-                </li>
-              </ul>
-            </li>
+              );
+            })}
           </ul>
         </nav>
         <div className="_btn-width">
@@ -81,7 +56,16 @@ const Footer = () => {
       <div className="Footer_SocialLinks_cntr">
         <nav aria-label="Additional navigation links">
           <ul className="Footer_SocialLinks_bottom">
-            <li className="">
+            {footerNavlinks.map((items, id) => {
+              return (
+                <li key={id} className="">
+                  <Link href={""} className="links">
+                    <linksDot>{items}</linksDot>
+                  </Link>
+                </li>
+              );
+            })}
+            {/* <li className="">
               <Link href={""} className="links">
                 Privacy Policy
               </Link>
@@ -100,7 +84,7 @@ const Footer = () => {
               <Link href={""} className="links">
                 Credits
               </Link>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </div>

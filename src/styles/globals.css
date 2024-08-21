@@ -18,6 +18,9 @@ body {
   width: 100%;
   height: 100%;
 }
+a {
+  text-decoration: none;
+}
 
 /* Footer */
 .Footer_wrapper {
@@ -60,6 +63,7 @@ li {
 }
 .footer_nav_ul_list p {
   margin: 4px;
+  color: #767676;
 }
 ._list-links {
   font-family: var(--primary-font-Hel);
@@ -69,11 +73,10 @@ li {
   font-size: 14px;
   letter-spacing: 0.02em;
   line-height: 1.35;
-  color: #767676;
   margin: 6px;
 }
 
-.footer_links {
+._list-links-redirect {
   font-family: var(--primary-font-Hel);
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
@@ -81,17 +84,21 @@ li {
   font-size: 14px;
   letter-spacing: 0.02em;
   line-height: 1.35;
-  display: inline-flex;
-  justify-content: center;
+  display: flex;
+  /* justify-content: center; */
   align-items: center;
   position: relative;
   border-radius: 50%;
   text-wrap: wrap;
   cursor: pointer;
-  color: #000 !important;
+  /* color: #000 !important; */
   background: none;
 }
-.footer_links::before {
+.footer_links {
+  color: #000 !important;
+  text-decoration: none;
+}
+.links::before {
   content: "";
   display: block;
   height: 4px;
@@ -103,11 +110,16 @@ li {
   transform: scale(0);
   opacity: 0;
   transition: all 0.2s linear;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
-._list-links-redirect:hover .footer_links::before {
+._list-links-redirect:hover .links::before {
   opacity: 1;
   transform: scale(1);
-  left: -10px;
+  left: -15px;
+}
+.responsive_header_inner {
+  color: #000 !important;
 }
 .footer_nav_signup_btn_cntr {
   display: flex;
@@ -144,17 +156,21 @@ li {
   line-height: 1.35;
   margin: 6px 0;
 }
+.Footer_SocialLinks_bottom li a {
+  color: #767676;
+}
 .links {
   text-decoration: none;
-  color: #767676;
   transition: all 0.5s linear;
+  color: #000;
+  font-weight: 700;
 }
 .links:hover {
   color: #000;
 }
 @media only screen and (min-width: 375px) {
   .footer_nav_ul_list p,
-  .links {
+  .footer_links {
     font-size: calc(14.81px - 0.22vw);
   }
 }
@@ -192,6 +208,9 @@ li {
   .Footer_SocialLinks_bottom li {
     margin: 4px;
   }
+  .footer_nav_signup_btn_align ._btn_wrapper {
+    max-width: 235px;
+  }
 }
 /* Footer */
 
@@ -223,7 +242,7 @@ li {
 .footer_nav_signup_btn_align ._btn_wrapper {
   justify-content: center;
   width: 100%;
-  max-width: 235px;
+  /* max-width: 235px; */
 }
 ._btn_wrapper:hover {
   background-color: #000;
