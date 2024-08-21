@@ -152,32 +152,49 @@ const Navbar = () => {
   }, []);
   useGSAP(() => {
     window.addEventListener("scroll", () => {
-      gsap.to(".header_cntr", {
-        scrollTrigger: {
-          trigger: ".header_cntr",
-          start: "top top",
-          // end: "top 0%",
-          // markers: true,
-        },
-        scrub: true,
-        onStart: () => {
-          document
-            .querySelector(".header_cntr")
-            .classList.add("header_cntr_onScroll");
-          document
-            .querySelector(".header_inner")
-            .classList.add("header_inner_onScroll");
-          document
-            .querySelector(".header_logo_svg")
-            .classList.add("header_logo_svg_onScroll");
-          // document
-          //   .querySelector(".header_logo_svg")
-          //   .classList.remove("header_logo_svg_onScroll");
-        },
-        // opacity: 0,
-      });
-      // const scrollPosition = window.scrollY;
-      // const navHeight = document.querySelector("nav").offsetHeight;
+      if (window.innerWidth >= 1000) {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: ".header_cntr",
+            start: "top top",
+            end: "bottom 20%",
+            scrub: true,
+            // markers: true,
+          },
+        });
+        tl.to(
+          ".header_cntr",
+          {
+            height: "38px",
+            // backgroundColor: "#ffffff",
+            color: "#000",
+            // transition: `height 0.4s, backgroundColor 0.8s 0.4s, color 0.8s 0.4s`,
+          },
+          "a"
+        );
+        tl.to(
+          ".header_inner",
+          {
+            height: "22px",
+            // transition: `height 0.4s`,
+          },
+          "a"
+        );
+        tl.to(
+          ".header_logo_svg",
+          {
+            height: "22px",
+            // transition: `height 0.4s`,
+          },
+          "a"
+        );
+        tl.to(".header_nav_links_wrap", {
+          opacity: 0,
+        });
+        tl.to(".header_cntr", {
+          backgroundColor: "#ffff",
+        });
+      }
     });
   });
   return (
@@ -221,7 +238,7 @@ const Navbar = () => {
                     <li className="_list-links-redirect">
                       <Link
                         id="shopData1"
-                        href={""}
+                        href={"/collections"}
                         className="common_style_inherit SideNavbar_inner_links_hidden links shopData"
                       >
                         New
@@ -347,7 +364,8 @@ const Navbar = () => {
               <li data-target=".collection" className="dataHoverLink">
                 <div className="SideNavbar_inner_left_links _list-links-redirect">
                   <Link
-                    href={""}
+                    href="/collections"
+                    passHref
                     className="common_style_inherit SideNavbar_inner_links_hidden links"
                   >
                     Collections
@@ -578,7 +596,11 @@ const Navbar = () => {
                   </div>
                 </li>
                 <li className="_list-links-redirect">
-                  <Link href={""} className="links2 Nav-hover-link">
+                  <Link
+                    href="/collections"
+                    passHref
+                    className="links2 Nav-hover-link"
+                  >
                     Collections
                   </Link>
                 </li>
