@@ -163,7 +163,7 @@ li {
   text-decoration: none;
   transition: all 0.5s linear;
   color: #000;
-  font-weight: 700;
+  font-weight: 400;
 }
 .links:hover {
   color: #000;

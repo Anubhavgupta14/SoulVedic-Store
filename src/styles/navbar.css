@@ -89,7 +89,7 @@ button {
 }
 .header_logo_svg {
   align-content: start;
-  transition: height 0.4s 50ms;
+  /* transition: height 0.4s 50ms; */
   height: 27px;
 }
 
@@ -147,6 +147,7 @@ button {
   transition: opacity 0.4s, visibility 0.4s;
   transition-delay: 50ms;
 }
+
 /* header-navbar-links */
 .header_nav_links {
   display: grid;
@@ -156,7 +157,7 @@ button {
   gap: 4px;
 }
 .header_nav_links .links2 {
-  color: #fff;
+  color: #ffffff;
   mix-blend-mode: darken;
   font-weight: 500;
 }
@@ -346,6 +347,31 @@ button {
   height: 330px;
   z-index: 5;
 }
+.Shop_shopAll_text_wrapper {
+  position: absolute;
+  left: 255px;
+  display: none;
+  transition: opacity 0.4s, visibility 0.4s;
+  gap: 20px;
+}
+.Shop_shopAll_text_onScroll {
+  opacity: 0;
+  /* visibility: hidden; */
+}
+.Shop_shopAll_text_wrapper .Shop_text {
+  font-style: normal;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 20px;
+  line-height: 1.2;
+}
+.Shop_shopAll_text_wrapper span:nth-child(1) {
+  font-family: var(--secondary-font-Hel);
+}
+.Shop_shopAll_text_wrapper span:nth-child(2) {
+  font-family: var(--secondary-font-Hen);
+}
 /* header bg gradient */
 @media only screen and (min-width: 375px) {
   /* .common_style {
@@ -355,7 +381,8 @@ button {
     font-size: calc(15.19px + 0.22vw);
   }
   .Sidenavbar_bottom_blank_cntr,
-  .Sidenavbar_bottom_blank_cntr2 {
+  .Sidenavbar_bottom_blank_cntr2,
+  .Shop_shopAll_text_wrapper .Shop_text {
     font-size: calc(20.81px - 0.22vw);
   }
 }
@@ -372,14 +399,13 @@ button {
     top: 0;
     padding: 0 40px;
     height: 180px;
-    transition: height 0.4s 50ms, background 50ms, color 50ms;
     color: #ffffff;
   }
   .header_inner {
     grid-template-columns: 146px 1fr 110px;
     grid-gap: 64px;
     height: 120px;
-    transition: height 0.4s 50ms;
+    /* transition: height 0.4s 50ms; */
   }
   .header_logo {
     display: none;
@@ -387,12 +413,13 @@ button {
   .header_logo_cntr {
     align-self: start;
   }
+
+  .header_logo_svg {
+    height: 120px;
+  }
   .header_logo_svg_onScroll {
     height: 22px;
     transition: height 0.4s;
-  }
-  .header_logo_svg {
-    height: 120px;
   }
   .responsive_header_wrap {
     display: none;
@@ -400,15 +427,25 @@ button {
   .header_nav_links_wrap {
     display: block;
   }
+  .header_nav_links_wrap-onScroll {
+    opacity: 0;
+  }
   .header_nav_links_left {
     display: grid;
     align-self: start;
   }
+  .Shop_shopAll_text_wrapper {
+    display: inline-flex;
+  }
+  /* .animated {
+    background-color: #ffffff;
+  } */
   .header_cntr_onScroll {
     height: 38px;
     background-color: #ffffff;
     color: #000;
-    transition: height 0.4s, backgroundColor 0.8s 0.4s, color 0.8s 0.4s;
+    transition: height 0.4s, background-color 0.8s 0.4s, color 0.8s 0.4s;
+    /* transition: height 0.4s, backgroundColor 0.8s 0.4s, color 0.8s 0.4s; */
   }
   .header_inner_onScroll {
     height: 22px;
@@ -418,7 +455,8 @@ button {
 @media only screen and (min-width: 1300px) {
   .Sidenavbar_bottom_left_text_cntr,
   .Sidenavbar_bottom_blank_cntr,
-  .Sidenavbar_bottom_blank_cntr2 {
+  .Sidenavbar_bottom_blank_cntr2,
+  .Shop_shopAll_text_wrapper .Shop_text {
     font-size: 18px;
   }
 }

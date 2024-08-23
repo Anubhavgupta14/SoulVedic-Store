@@ -1,5 +1,5 @@
-import Button from "@/components/home/common/Button";
-import Footer from "@/components/home/common/Footer";
+import Button from "@/components/common/Button";
+import Footer from "@/components/common/Footer";
 import { ShopCardDetails } from "@/helpers";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";

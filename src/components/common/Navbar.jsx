@@ -1,10 +1,15 @@
 import Link from "next/link";
-import React, { useEffect } from "react";
-import LinksDot from "../../LinksDot";
+import React, { useEffect, useState } from "react";
+import LinksDot from "../LinksDot";
 import { IoSearchOutline } from "react-icons/io5";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useRouter } from "next/router";
 const Navbar = () => {
+  const router = useRouter();
+
+  const [color, setColor] = useState("");
+  // const [color2, setColor2] = useState(".header_nav_links .links2");
   useEffect(() => {
     const NavHoverLinks = document.querySelectorAll(".Nav-hover-link");
     const overlay = document.querySelector(".screen_overlay_SideNavbar");
@@ -160,43 +165,66 @@ const Navbar = () => {
             end: "bottom 20%",
             scrub: true,
             // markers: true,
+            onEnter: () => {
+              const headerCntr = document.querySelector(".header_cntr");
+              const headerCntrInner = document.querySelector(".header_inner");
+              const headerLogoSvg = document.querySelector(".header_logo_svg");
+              console.log("onEnter triggered");
+              if (headerCntr) {
+                headerCntr.classList.add("header_cntr_onScroll");
+                headerCntrInner.classList.add("header_inner_onScroll");
+                headerLogoSvg.classList.add("header_logo_svg_onScroll");
+              }
+              if (headerLogoSvg) {
+                console.log("Adding class to headerLogoSvg");
+                headerLogoSvg.classList.add("header_logo_svg_onScroll");
+              }
+            },
+            onLeaveBack: () => {
+              const headerCntr = document.querySelector(".header_cntr");
+              const headerCntrInner = document.querySelector(".header_inner");
+              const headerLogoSvg = document.querySelector(".header_logo_svg");
+              if (headerCntr) {
+                headerCntr.classList.remove("header_cntr_onScroll");
+                headerCntrInner.classList.remove("header_inner_onScroll");
+                headerLogoSvg.classList.remove("header_logo_svg_onScroll");
+              }
+              if (headerLogoSvg) {
+                console.log("Removing class from headerLogoSvg");
+                headerLogoSvg.classList.remove("header_logo_svg_onScroll");
+              }
+            },
           },
         });
-        tl.to(
-          ".header_cntr",
-          {
-            height: "38px",
-            // backgroundColor: "#ffffff",
-            color: "#000",
-            // transition: `height 0.4s, backgroundColor 0.8s 0.4s, color 0.8s 0.4s`,
-          },
-          "a"
-        );
-        tl.to(
-          ".header_inner",
-          {
-            height: "22px",
-            // transition: `height 0.4s`,
-          },
-          "a"
-        );
         tl.to(
           ".header_logo_svg",
           {
             height: "22px",
-            // transition: `height 0.4s`,
+            transition: `height 0.4s`,
           },
           "a"
         );
-        tl.to(".header_nav_links_wrap", {
-          opacity: 0,
-        });
-        tl.to(".header_cntr", {
-          backgroundColor: "#ffff",
+        tl.to(
+          ".header_nav_links_wrap",
+          {
+            opacity: 0,
+          },
+          "a"
+        );
+        tl.to(".Shop_shopAll_text_onScroll", {
+          opacity: 1,
+          display: "none",
         });
       }
     });
   });
+  useEffect(() => {
+    if (router.pathname === "/collections/shop-all") {
+      setColor("#000");
+    } else {
+      // setColor("#fff");
+    }
+  }, [router.pathname]);
   return (
     <>
       <div className="top-wht-bg-nav"></div>
@@ -227,7 +255,7 @@ const Navbar = () => {
               <li data-target=".shop" className="dataHoverLink">
                 <div className="SideNavbar_inner_left_links _list-links-redirect">
                   <Link
-                    href={""}
+                    href={"/collections/shop-all"}
                     className="common_style_inherit SideNavbar_inner_links_hidden links"
                   >
                     Shop
@@ -519,8 +547,10 @@ const Navbar = () => {
       </div>
       <div className="screen_overlay_SideNavbar"></div>
       <div className="header_wrapper">
-        <div className="header_lineargradient"></div>
-        <header className="header_cntr">
+        {router.pathname !== "/collections/shop-all" && (
+          <div className="header_lineargradient"></div>
+        )}
+        <header className="header_cntr" style={{ color }}>
           <div className="header_inner">
             <button
               className="header_logo common_style_inherit"
@@ -555,7 +585,7 @@ const Navbar = () => {
               aria-label="Back to homepage"
               aria-current="page"
               className="header_logo_cntr common_style_inherit"
-              href={""}
+              href={"/"}
             >
               <svg
                 viewBox="0 0 146 120"
@@ -583,14 +613,21 @@ const Navbar = () => {
                 {/* </div> */}
               </Link>
             </div>
-            {/* <span className="">
-            <span className=""></span>
-          </span> */}
+            {router.pathname === "/collections/shop-all" && (
+              <span className="Shop_shopAll_text_wrapper Shop_shopAll_text_onScroll">
+                <span className="Shop_text">Shop</span>
+                <span className="Shop_text ShopAll_text">Shop All</span>
+              </span>
+            )}
             <nav className="header_nav_links_wrap">
               <ul className="header_nav_links">
                 <li className="_list-links-redirect">
                   <div>
-                    <Link href={""} className="links2 Nav-hover-link">
+                    <Link
+                      href={""}
+                      className="links2 Nav-hover-link"
+                      style={{ color }}
+                    >
                       Shop
                     </Link>
                   </div>
@@ -600,12 +637,17 @@ const Navbar = () => {
                     href="/collections"
                     passHref
                     className="links2 Nav-hover-link"
+                    style={{ color }}
                   >
                     Collections
                   </Link>
                 </li>
                 <li className="_list-links-redirect">
-                  <Link href={""} className="links2 Nav-hover-link">
+                  <Link
+                    href={""}
+                    className="links2 Nav-hover-link"
+                    style={{ color }}
+                  >
                     About
                   </Link>
                 </li>
