@@ -1405,10 +1405,10 @@ button {
   .ProductDets_info_links {
     display: flex;
     margin-top: 48px;
-    gap: 12px;
+    gap: 0;
   }
   .ProductDets_info_help {
-    margin-top: 48px;
+    margin-top: 52px;
   }
   .Similar_prd_wrap {
     padding-top: 0;

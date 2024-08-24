@@ -76,7 +76,7 @@
 
 @media only screen and (min-width: 1000px) {
   .Collection_inner {
-    min-height: calc(100dvh - 30px);
+    min-height: 100dvh;
     grid-template-rows: 180px 1fr auto;
     gap: 32px;
   }
