@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 gsap.registerPlugin(ScrollTrigger);
 const ProductPage = () => {
   const [product, setProduct] = useState({});
-  const [images, setImages] = useState([])
+  const [images, setImages] = useState([]);
   const router = useRouter();
   const { id } = router.query;
   
@@ -21,6 +21,7 @@ const ProductPage = () => {
       console.log(res,"data")
       if(res){
         setProduct(res);
+        setImages([...res.images,...res.videoPreviewImgs])
       }
     }
     catch(err){
@@ -89,17 +90,17 @@ const ProductPage = () => {
             <div className="ProductDets_img_slider_wrap">
               <div className="ProductDets_img_slider_cntr">
                 <div className="ProductDets_img_slider_cntr_sticky">
-                  {ShopCardDetails.map((items) => {
+                  {images && images.map((items,i) => {
                     return (
                       <button
-                        key={items.id}
+                        key={i}
                         className="ProductDets_img_btn ProductDets_img_align"
                       >
                         <div className="ProductDets_imgs_grid_cntr">
                           <div className="ProductDets_img_single_cntr">
                             <img
-                              src={`${items.image1}`}
-                              alt={`${items.BrandName}`}
+                              src={`${items}`}
+                              alt={`images`}
                             />
                           </div>
                         </div>
@@ -113,14 +114,14 @@ const ProductPage = () => {
               </div>
             </div>
             <div className="ProductDets_Big_img_wrap">
-              {ShopCardDetails.map((items) => {
+              {images && images.map((items) => {
                 return (
                   <button key={items.id} className="ProductDets_Big_img_cntr">
                     <div className="shop_card_img_bgcover">
                       <div className="shop_card_img-main_cntr">
                         <img
-                          src={`${items.image1}`}
-                          alt={`${items.BrandName}`}
+                          src={`${items}`}
+                          alt={`images`}
                         />
                       </div>
                     </div>
