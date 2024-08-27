@@ -86,7 +86,7 @@ const ShopAll = () => {
         </div>
         <div>
           <div className="ShopCards_container">
-            {collections.map((items) => {
+            {collections && collections.map((items) => {
               return (
                 <Link
                   key={items._id}
