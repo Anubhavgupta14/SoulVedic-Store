@@ -1,9 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaArrowsAltV } from "react-icons/fa";
 import { ShopAllCard } from "@/helpers";
+import { useRouter } from 'next/router';
+import {FetchCat} from "../../../api_fetch/admin/Collections"
 import Link from "next/link";
 const ShopAll = () => {
   const [data] = useState(ShopAllCard);
+  const [category, setCategory] = useState('');
+  const [subCategory, setSubCategory] = useState('');
+  const router = useRouter();
+  const [collections, setCollections] = useState([])
+
+  const fetchData = async(cat, subcat)=>{
+    try{
+      const res = await FetchCat({menu:cat, submenu:subcat})
+      if(res){
+        setCollections(res.products)
+      }
+    }
+    catch(err){
+      console.error(err)
+    }
+  }
+
+  useEffect(() => {
+    let cat="", subcat=""
+    if (router.isReady) {
+      const path = router.asPath;
+      const match = path.match(/\/collections\/([^&]+)&(.+)/);
+      if (match) {
+        cat = decodeURIComponent(match[1]);
+        subcat = decodeURIComponent(match[2]);
+        setCategory(decodeURIComponent(match[1]));
+        setSubCategory(decodeURIComponent(match[2]));
+      }
+      fetchData(cat,subcat);
+    }
+  }, [router.isReady, router.asPath]);
 
   return (
     <div className="ShopCollection_wrapper">
@@ -12,9 +45,9 @@ const ShopAll = () => {
           <div className="ShopCollection_top_left">
             <div className="ShopCollection_top_left_text">
               <h1 className="ShopCollection_h1 common_style_collection">
-                Shop All
+                {category ?? ""}
               </h1>
-              <sup className="ShopCollection_sup">(103)</sup>
+              <sup className="ShopCollection_sup">({collections?.length??0})</sup>
             </div>
             {/* <div className="ShopCollection_top_left_text-wrap"></div> */}
           </div>
@@ -53,11 +86,11 @@ const ShopAll = () => {
         </div>
         <div>
           <div className="ShopCards_container">
-            {data.map((items) => {
+            {collections.map((items) => {
               return (
                 <Link
-                  key={items.id}
-                  href={{ pathname: "/product", query: { id: items.id } }}
+                  key={items._id}
+                  href={{ pathname: "/product", query: { id: items._id } }}
                   className="shop-card_grid"
                 >
                   <div className="shop_card_cntr">
@@ -70,8 +103,8 @@ const ShopAll = () => {
                               <div className="shop_card_img_bgcover">
                                 <div className="shop_card_img-main_cntr">
                                   <img
-                                    src={`${items.image1}`}
-                                    alt={`${items.BrandName}`}
+                                    src={`${items.images[0]}`}
+                                    alt={`image`}
                                   />
                                 </div>
                               </div>
@@ -82,7 +115,7 @@ const ShopAll = () => {
                             <div className="shop_card_img_cover">
                               <div className="shop_card_img_bgcover">
                                 <div className="shop_card_img-main_cntr">
-                                  <img src={`${items.image2}`} alt="" />
+                                  <img src={`${items.images[1]}`} alt="" />
                                 </div>
                               </div>
                             </div>
@@ -95,14 +128,14 @@ const ShopAll = () => {
                             <div className="shop_card_img_cover">
                               <div className="shop_card_img_bgcover">
                                 <div className="shop_card_img-main_cntr">
-                                  <img src={`${items.image1}`} alt="" />
+                                  <img src={`${items.images[0]}`} alt="" />
                                 </div>
                               </div>
                             </div>
                             <div className="shop_card_img_cover_hidden">
                               <div className="shop_card_img_bgcover">
                                 <div className="shop_card_img-main_cntr">
-                                  <img src={`${items.image2}`} alt="" />
+                                  <img src={`${items.images[1]}`} alt="" />
                                 </div>
                               </div>
                             </div>
@@ -112,15 +145,15 @@ const ShopAll = () => {
                     </div>
                     {/* </div> */}
                     <div className="shop_card_text_cntr">
-                      <h2 className="shop_card_text_brandName">{`${items.BrandName}`}</h2>
-                      <span className="shop_card_tag">New</span>
+                      <h2 className="shop_card_text_brandName">{`${items?.BrandName??"Zakary"}`}</h2>
+                      <span className="shop_card_tag">{items?.ribbon??"NEW"}</span>
                       <h3 className="shop_card_item_Name">
-                        {`${items.ProductName}`}
+                        {`${items.name}`}
                       </h3>
                       <div className="shop_card_price_wrap">
                         <div className="shop_card_price_cntr">
-                          <span>{`${items.price}`}</span>
-                          <span>&nbsp;EUR</span>
+                          <span>{`${items?.priceperunit??0}`}</span>
+                          <span>&nbsp;INR</span>
                         </div>
                       </div>
                     </div>

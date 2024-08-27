@@ -3,13 +3,34 @@ import Footer from "@/components/common/Footer";
 import { ShopCardDetails } from "@/helpers";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import {editProduct} from "../../../api_fetch/admin/Product"
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 gsap.registerPlugin(ScrollTrigger);
 const ProductPage = () => {
+  const [product, setProduct] = useState({});
+  const [images, setImages] = useState([])
   const router = useRouter();
   const { id } = router.query;
+  
+  const fetchData = async()=>{
+    try{
+      const res = await editProduct(id);
+      console.log(res,"data")
+      if(res){
+        setProduct(res);
+      }
+    }
+    catch(err){
+      console.error(err)
+    }
+  }
+
+  useEffect(()=>{
+    fetchData();
+  },[])
 
   useGSAP(() => {
     if (window.innerWidth >= 1000) {
@@ -117,7 +138,7 @@ const ProductPage = () => {
                     zakary
                   </span>
                   <span className="ProductDets_text_resp_productName ProductDets_common_style">
-                    Belted Leather Jacket
+                    {product?.name ?? ""}
                   </span>
                 </div>
                 <div className="ProductDets_text_price_resp ProductDets_common_style">
@@ -131,7 +152,7 @@ const ProductPage = () => {
                 zakary
               </h1>
               <h2 className="ProductDets_text_productName ProductDets_common_style">
-                Belted Leather Jacket
+              {product?.name ?? ""}
               </h2>
               <div className="ProductDets_text_prdt_Desc-title">
                 Description
