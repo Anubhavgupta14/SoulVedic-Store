@@ -19,7 +19,15 @@
   color: #000;
   background: #ffffff;
   padding: 0 26px;
+  /* color: #fff; */
   /* height: 180px; */
+  z-index: 5;
+}
+.headerconatin {
+  width: 100%;
+  height: 38px;
+  position: fixed;
+  top: 0;
   z-index: 5;
 }
 .header_inner {
@@ -91,6 +99,7 @@ button {
   align-content: start;
   /* transition: height 0.4s 50ms; */
   height: 27px;
+  /* color: #fff; */
 }
 .header_logo_svg_sideNav {
   align-content: start;
@@ -152,8 +161,8 @@ button {
   display: none;
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.4s, visibility 0.4s;
-  transition-delay: 50ms;
+  /* transition: opacity 0.4s, visibility 0.4s; */
+  /* transition-delay: 50ms; */
 }
 
 /* header-navbar-links */
@@ -192,7 +201,9 @@ button {
   display: grid;
   gap: 4px;
   padding-top: 4px;
-  transition: opacity 0.4s, visibility 0.4s, height 0.4s;
+  opacity: 1;
+  visibility: visible;
+  /* transition: opacity 0.4s, visibility 0.4s, height 0.4s; */
 }
 /* header-navbar-links */
 /* SideNavbar */
@@ -361,12 +372,12 @@ button {
   position: absolute;
   left: 255px;
   display: none;
-  transition: opacity 0.4s, visibility 0.4s;
+  /* transition: opacity 0.4s, visibility 0.4s; */
   gap: 20px;
 }
 .Shop_shopAll_text_onScroll {
   opacity: 0;
-  /* visibility: hidden; */
+  visibility: hidden;
 }
 .Shop_shopAll_text_wrapper .Shop_text {
   font-style: normal;
@@ -415,7 +426,7 @@ button {
     grid-template-columns: 146px 1fr 110px;
     grid-gap: 0px;
     height: 120px;
-    /* transition: height 0.4s 50ms; */
+    /* transition: height 0.4s; */
   }
   .header_logo {
     display: none;
@@ -456,11 +467,10 @@ button {
     background-color: #ffffff;
   } */
   .header_cntr_onScroll {
-    height: 38px;
-    background-color: #ffffff;
-    color: #000;
-    transition: height 0.4s, background-color 0.8s 0.4s, color 0.8s 0.4s;
-    /* transition: height 0.4s, backgroundColor 0.8s 0.4s, color 0.8s 0.4s; */
+    /* height: 38px; */
+    /* background-color: #ffffff; */
+    /* color: #000; */
+    /* transition: color 0.8s 0.4s; */
   }
   .header_inner_onScroll {
     height: 22px;
