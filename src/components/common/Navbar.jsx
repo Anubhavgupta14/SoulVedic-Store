@@ -39,6 +39,10 @@ const Navbar = () => {
     }
   };
 
+  const go = (cat, subcat)=>{
+    router.push(`/collections/${cat}&${subcat}`)
+  }
+
   useEffect(() => {
     const NavHoverLinks = document.querySelectorAll(".Nav-hover-link");
     const overlay = document.querySelector(".screen_overlay_SideNavbar");
@@ -431,13 +435,13 @@ const Navbar = () => {
                           category.submenus.data &&
                           category.submenus.data.map((submenu, j) => (
                             <li className="_list-links-redirect" key={j}>
-                              <Link
-                                id="shopData1"
-                                href={`/collections/${category.name}&${submenu.name}`}
+                              <div
+                                id={`shopData${i}`}
+                                onClick={()=>{go(category.name, submenu.name)}}
                                 className={`common_style_inherit SideNavbar_inner_links_hidden links shopData${i}`}
                               >
                                 {submenu.name}
-                              </Link>
+                              </div>
                             </li>
                           ))}
 
