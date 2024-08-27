@@ -19,7 +19,15 @@
   color: #000;
   background: #ffffff;
   padding: 0 26px;
-  height: 180px;
+  /* color: #fff; */
+  /* height: 180px; */
+  z-index: 5;
+}
+.headerconatin {
+  width: 100%;
+  height: 38px;
+  position: fixed;
+  top: 0;
   z-index: 5;
 }
 .header_inner {
@@ -91,7 +99,16 @@ button {
   align-content: start;
   /* transition: height 0.4s 50ms; */
   height: 27px;
+  /* color: #fff; */
 }
+.header_logo_svg_sideNav {
+  align-content: start;
+  /* transition: height 0.4s 50ms; */
+  height: 27px;
+}
+/* .cls-1 {
+  fill: #fefefe;
+} */
 
 .common_style {
   font-family: var(--primary-font-Hel);
@@ -144,8 +161,8 @@ button {
   display: none;
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.4s, visibility 0.4s;
-  transition-delay: 50ms;
+  /* transition: opacity 0.4s, visibility 0.4s; */
+  /* transition-delay: 50ms; */
 }
 
 /* header-navbar-links */
@@ -184,7 +201,9 @@ button {
   display: grid;
   gap: 4px;
   padding-top: 4px;
-  transition: opacity 0.4s, visibility 0.4s, height 0.4s;
+  opacity: 1;
+  visibility: visible;
+  /* transition: opacity 0.4s, visibility 0.4s, height 0.4s; */
 }
 /* header-navbar-links */
 /* SideNavbar */
@@ -203,8 +222,10 @@ button {
   z-index: 6;
 }
 .screen_overlay_SideNavbar {
-  background-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(10px);
+  /* background-color: rgba(255, 255, 255, 0.6); */
+  background-color: rgb(0 0 0 / 60%);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   transform: translateZ(0);
   position: fixed;
   inset: 0;
@@ -227,7 +248,7 @@ button {
   display: grid;
   grid-template-columns: 146px 1fr 1fr;
   grid-template-rows: 1fr auto;
-  column-gap: 64px;
+  column-gap: 0;
   row-gap: 24px;
   height: calc(100dvh - 30px);
 }
@@ -351,12 +372,12 @@ button {
   position: absolute;
   left: 255px;
   display: none;
-  transition: opacity 0.4s, visibility 0.4s;
+  /* transition: opacity 0.4s, visibility 0.4s; */
   gap: 20px;
 }
 .Shop_shopAll_text_onScroll {
   opacity: 0;
-  /* visibility: hidden; */
+  visibility: hidden;
 }
 .Shop_shopAll_text_wrapper .Shop_text {
   font-style: normal;
@@ -403,9 +424,9 @@ button {
   }
   .header_inner {
     grid-template-columns: 146px 1fr 110px;
-    grid-gap: 64px;
+    grid-gap: 0px;
     height: 120px;
-    /* transition: height 0.4s 50ms; */
+    /* transition: height 0.4s; */
   }
   .header_logo {
     display: none;
@@ -415,6 +436,11 @@ button {
   }
 
   .header_logo_svg {
+    height: 120px;
+  }
+  .header_logo_svg_sideNav {
+    align-content: start;
+    /* transition: height 0.4s 50ms; */
     height: 120px;
   }
   .header_logo_svg_onScroll {
@@ -441,11 +467,10 @@ button {
     background-color: #ffffff;
   } */
   .header_cntr_onScroll {
-    height: 38px;
-    background-color: #ffffff;
-    color: #000;
-    transition: height 0.4s, background-color 0.8s 0.4s, color 0.8s 0.4s;
-    /* transition: height 0.4s, backgroundColor 0.8s 0.4s, color 0.8s 0.4s; */
+    /* height: 38px; */
+    /* background-color: #ffffff; */
+    /* color: #000; */
+    /* transition: color 0.8s 0.4s; */
   }
   .header_inner_onScroll {
     height: 22px;
