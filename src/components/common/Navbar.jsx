@@ -8,7 +8,7 @@ import { FaRegUser } from "react-icons/fa";
 import gsap from "gsap";
 import { useRouter } from "next/router";
 import { getMenu, getSubMenu } from "../../../api_fetch/admin/Menu";
-import Modal from "../Modal";
+import Modal from "./Modal";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 const customStyles = {
@@ -23,9 +23,8 @@ const customStyles = {
 };
 const Navbar = () => {
   const [menu, setMenu] = useState([]);
-  const [subMenu, setSubMenu] = useState([]);
   const router = useRouter();
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [color, setColor] = useState(null);
   const [update, setUpdate] = useState(false)
 
@@ -318,11 +317,20 @@ const Navbar = () => {
     }
   }, [router.pathname, color]);
   function openModal() {
-    setIsOpen(true);
+    setModalIsOpen(true);
+    // setTemp(true);
+
+    // document.querySelector("body").style.overflow = "hidden";
+    // document.querySelector(".Modal_bgClr").style.display = "initial";
+    // document.querySelector(".ReactModal__Content").style.transform =
+    //   "translateX(0)";
   }
 
   function closeModal() {
-    setIsOpen(false);
+    setModalIsOpen(false);
+    // setTemp(false);
+
+    // document.querySelector("body").style.overflow = "auto";
   }
 
   return (
@@ -770,17 +778,17 @@ const Navbar = () => {
               </ul>
             </nav>
             <div className="header_nav_links_left">
-              <button className="common_style_inherit common_style">
+              <button className="common_style_inherit common_style _list-links-redirect" onClick={openModal}>
                 <div className="_header_inner links2 _list-links-redirect">
                   {" "}
-                  <span className="" onClick={openModal}>
+                  <span className="">
                     Bag
                   </span>
                   <span className="_header_bagItemQuantity">0</span>
                 </div>
               </button>
               <div className="header_nav_links_left_inner">
-                <button className="common_style_inherit common_style">
+                <button className="common_style_inherit common_style _list-links-redirect">
                   <div className="_header_inner links2 _list-links-redirect">
                     {" "}
                     <span className="">Search</span>
@@ -789,7 +797,7 @@ const Navbar = () => {
                     </span>
                   </div>
                 </button>
-                <button className="common_style_inherit common_style">
+                <button className="common_style_inherit common_style _list-links-redirect">
                   <div className="_header_inner links2 _list-links-redirect">
                     {" "}
                     <span className="">IN</span>
@@ -798,7 +806,7 @@ const Navbar = () => {
                     </span>
                   </div>
                 </button>
-                <button className="common_style_inherit common_style">
+                <button className="common_style_inherit common_style _list-links-redirect">
                   <div className="_header_inner links2 _list-links-redirect">
                     {" "}
                     <span className="">Account</span>
@@ -811,24 +819,14 @@ const Navbar = () => {
             </div>
           </div>
         </header>
-        <Modal
-          isOpen={modalIsOpen}
-          // onAfterOpen={afterOpenModal}
-          onRequestClose={closeModal}
-          className={customStyles}
-          contentLabel="Example Modal"
-        >
-          {/* <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2> */}
-          <button onClick={closeModal}>close</button>
-          <div>I am a modal</div>
-          <form>
-            <input />
-            <button>tab navigation</button>
-            <button>stays</button>
-            <button>inside</button>
-            <button>the modal</button>
-          </form>
-        </Modal>
+        {/* {modalIsOpen && ( */}
+          <Modal
+            closeModal={closeModal}
+            modalIsOpen={modalIsOpen}
+            setModalIsOpen={setModalIsOpen}
+            // temp={temp}
+          />
+        {/* )} */}
       </div>
     </>
   );

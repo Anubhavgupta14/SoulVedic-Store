@@ -1,24 +1,7 @@
-/* .ReactModal__Overlay {
-  background-color: rgba(0, 0, 0, 0.5); 
+.Modal_wrapper {
+  position: relative;
 }
-
-
-.custom-content {
-  background-color: white;
-  border-radius: 8px;
-  padding: 20px;
-  max-width: 600px;
-  margin: auto;
-}
-
-
-.close-modal {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-} */
-.overlay_cart {
+.Modal_Overlay {
   position: fixed;
   height: 100%;
   width: 100%;
@@ -27,8 +10,262 @@
   overflow: auto;
   display: flex;
   opacity: 1;
-  z-index: 6;
+  z-index: 5;
+}
+.Modal_bgClr {
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  /* display: none; */
+}
+.pointEventall{
+  pointer-events: all;
+}
+.pointEventnone{
+  pointer-events: none;
+}
+.Modal_content {
+  align-items: center;
+  justify-content: flex-end;
+}
+.ReactModal__Content {
+  background: #ffff;
+  position: relative;
+  /* animation-timing-function: ease;
+  animation-duration: 0.3s; */
+  transition: all 0.2s linear;
+  outline: none;
+  pointer-events: auto;
+  z-index: 5;
+  transform: translateX(100%);
+}
+.translateCart {
+  transform: translateX(0%);
+}
+.ReactModal__Content_cntr {
+  width: auto;
+  height: auto;
+  /* animation: i5lfqh0 0.3s ease;
+  animation-duration: 0.3s; */
+}
+/* @keyframes i5lfqh0 {
+  0% {
+    transform: translate(100%);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+} */
+.ReactModal__Content_Drawer {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.ReactModal_Drawer_inner {
+  display: grid;
+  width: 100vw;
+  height: 100%;
+  grid-template-rows: auto 1fr;
+}
+.ReactModal_Drawer_inner_top {
+  width: inherit;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  height: 72px;
+  z-index: 5;
+}
+.ReactModal_Drawer_inner_top h1 {
+  margin: 28px;
+  font-family: var(--primary-font-Hel);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  position: relative;
+}
+.Modal_cancel_btn {
+  display: flex;
+  background: none;
+  justify-self: end;
+  align-items: center;
+  padding: 28px;
+  font-size: 28px;
+}
+.ReactModal_Drawer_center {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  border-top: 1px solid lightgray;
+  transition: opacity 0.3s;
   background-color: #ffff;
-  /* backdrop-filter: blur(10px); */
-  /* -webkit-backdrop-filter: blur(10px); */
+}
+.Modal_Drawer_img_cntr {
+  display: block;
+}
+.Modal_drawer_img_wrap {
+  min-height: 195px;
+}
+.Modal_drawer_img_wrap_grid {
+  position: relative;
+  display: grid;
+  border: none;
+}
+.Modal_Drawer_img_grid_cover {
+  display: grid;
+  border: none;
+}
+.Modal_Drawer_img_grid_cover img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+.ReactModal_Drawer_center_content {
+  padding: 28px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  background-color: #fff;
+}
+.Modal_Drawer_center_content_lft {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-rows: auto auto 1fr;
+}
+.Modal_center_lft_top {
+  font-family: var(--primary-font-Hel);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 12px;
+  line-height: 1.35;
+  display: grid;
+  grid-auto-flow: row;
+  row-gap: 2px;
+}
+.Modal_center_lft_top span:nth-child(3) {
+  color: #767676;
+}
+.Modal_center_lft_Qunty {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(4, min-content);
+  color: #767676;
+  font-family: Centra No2, Helvetica, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 12px;
+  line-height: 1.35;
+}
+.cart_Quantity_btn {
+  display: grid;
+  align-items: center;
+  padding: 0 4px;
+}
+.cart_Quantity_number {
+  padding-inline: 4px;
+}
+.Modal_remove_btn {
+  display: grid;
+  justify-self: baseline;
+  align-self: end;
+  color: #767676;
+  font-family: var(--primary-font-Hel);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 12px;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.Modal_Drawer_center_content_ryt {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cmn_style {
+  font-family: var(--primary-font-Hel);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  font-size: 12px;
+  line-height: 1.35;
+}
+.Modal_Drawer_center_content_ryt_price {
+  transition: opacity 0.2s;
+  flex-wrap: wrap;
+  align-content: baseline;
+  justify-content: flex-end;
+  display: flex;
+  /* gap: 8px; */
+}
+.Modal_Drawer_center_content_ryt_price_cntr {
+  display: flex;
+}
+.Modal_drawer_checkout_wrap {
+  width: inherit;
+  position: sticky;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 5;
+}
+.Modal_drawer_checkout_wrap_top {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 32px;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+.Modal_drawer_cross_price {
+  color: #767676;
+  text-decoration: line-through;
+  margin-left: auto;
+  margin-right: 20px;
+}
+.Modal_drawer_main_price {
+  transition: opacity 0.2s;
+}
+.Modal_drawer_checkout_wrap_btm {
+  padding: 16px 32px 20px 32px;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  grid-row-gap: 16px;
+  color: #767676;
+}
+
+@media only screen and (min-width: 375px) {
+  .ReactModal_Drawer_inner_top h1,
+  .Modal_remove_btn,
+  .Modal_drawer_checkout_wrap_top {
+    font-size: calc(14.81px - 0.22vw);
+  }
+}
+@media only screen and (min-width: 740px) {
+  .Modal_drawer_checkout_wrap_btm {
+    grid-template-columns: 1fr 200px;
+    justify-content: unset;
+  }
+  ._btn_wrapper {
+    height: 34px;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  .ReactModal_Drawer_inner {
+    width: 50vw;
+  }
+  .Modal_Drawer_center_content_ryt {
+    justify-content: flex-start;
+  }
 }

@@ -5,6 +5,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "../../store";
 import "@/styles/globals.css";
 import "@/styles/home.css";
+import "@/styles/cartModal.css";
 import "@/styles/navbar.css";
 import "@/styles/collections.css";
 import "@/styles/shopAll.css";

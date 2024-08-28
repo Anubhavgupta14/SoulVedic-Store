@@ -1054,7 +1054,7 @@ button {
   display: grid;
   border: none;
 }
-.ProductDets_collection_img_cntr img {
+.ProductDets_collection_img_cntr .Product_color {
   object-position: center top;
   object-fit: cover;
   position: absolute;
@@ -1062,6 +1062,21 @@ button {
   height: 100%;
   top: 0px;
   left: 0px;
+}
+.Product_active_color{
+  border: 1px solid;
+}
+.ProductDets-size_assist_cntr {
+  grid-area: selectedSize;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  gap: 4px;
+  display: none;
+  font-family: var(--primary-font-Hel);
 }
 .ProductDets-size_assist_cntr {
   grid-area: selectedSize;
@@ -1381,6 +1396,7 @@ button {
       "descriptionTitle description"
       "selectedColorWrap colorPicker"
       "selectedSize sizePicker"
+      "selectedWeight selectweight"
       ". addToCartButtonWrap"
       "additionalInfoButtons needHelpButtonWrap";
   }

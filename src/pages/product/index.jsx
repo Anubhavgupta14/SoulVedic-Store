@@ -3,7 +3,7 @@ import Footer from "@/components/common/Footer";
 import { ShopCardDetails } from "@/helpers";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import {editProduct} from "../../../api_fetch/admin/Product"
+import { editProduct } from "../../../api_fetch/admin/Product";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -14,24 +14,28 @@ const ProductPage = () => {
   const [images, setImages] = useState([]);
   const router = useRouter();
   const { id } = router.query;
-  
-  const fetchData = async()=>{
-    try{
-      const res = await editProduct(id);
-      console.log(res,"data")
-      if(res){
-        setProduct(res);
-        setImages([...res.images,...res.videoPreviewImgs])
-      }
-    }
-    catch(err){
-      console.error(err)
-    }
-  }
+  const [colorSelect, setColorSelect] = useState(null)
 
-  useEffect(()=>{
-    fetchData();
-  },[])
+  const fetchData = async () => {
+    try {
+      if (id) {
+        const res = await editProduct(id);
+        console.log(res, "data");
+        if (res) {
+          setProduct(res);
+          setImages([...res.images, ...res.videoPreviewImgs]);
+        }
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      fetchData();
+    }, 200);
+  }, [id]);
 
   useGSAP(() => {
     if (window.innerWidth >= 1000) {
@@ -90,23 +94,21 @@ const ProductPage = () => {
             <div className="ProductDets_img_slider_wrap">
               <div className="ProductDets_img_slider_cntr">
                 <div className="ProductDets_img_slider_cntr_sticky">
-                  {images && images.map((items,i) => {
-                    return (
-                      <button
-                        key={i}
-                        className="ProductDets_img_btn ProductDets_img_align"
-                      >
-                        <div className="ProductDets_imgs_grid_cntr">
-                          <div className="ProductDets_img_single_cntr">
-                            <img
-                              src={`${items}`}
-                              alt={`images`}
-                            />
+                  {images &&
+                    images.map((items, i) => {
+                      return (
+                        <button
+                          key={i}
+                          className="ProductDets_img_btn ProductDets_img_align"
+                        >
+                          <div className="ProductDets_imgs_grid_cntr">
+                            <div className="ProductDets_img_single_cntr">
+                              <img src={`${items}`} alt={`images`} />
+                            </div>
                           </div>
-                        </div>
-                      </button>
-                    );
-                  })}
+                        </button>
+                      );
+                    })}
                   <div className="ProductDets_img_slider_bar_cntr">
                     <div className="ProductDets_img_slider_bar"></div>
                   </div>
@@ -114,20 +116,18 @@ const ProductPage = () => {
               </div>
             </div>
             <div className="ProductDets_Big_img_wrap">
-              {images && images.map((items) => {
-                return (
-                  <button key={items.id} className="ProductDets_Big_img_cntr">
-                    <div className="shop_card_img_bgcover">
-                      <div className="shop_card_img-main_cntr">
-                        <img
-                          src={`${items}`}
-                          alt={`images`}
-                        />
+              {images &&
+                images.map((items) => {
+                  return (
+                    <button key={items.id} className="ProductDets_Big_img_cntr">
+                      <div className="shop_card_img_bgcover">
+                        <div className="shop_card_img-main_cntr">
+                          <img src={`${items}`} alt={`images`} />
+                        </div>
                       </div>
-                    </div>
-                  </button>
-                );
-              })}
+                    </button>
+                  );
+                })}
             </div>
           </div>
           <div className="ProductDets_text_wrapper">
@@ -153,7 +153,7 @@ const ProductPage = () => {
                 zakary
               </h1>
               <h2 className="ProductDets_text_productName ProductDets_common_style">
-              {product?.name ?? ""}
+                {product?.name ?? ""}
               </h2>
               <div className="ProductDets_text_prdt_Desc-title">
                 Description
@@ -177,72 +177,47 @@ const ProductPage = () => {
                   usual.
                 </div>
               </div>
+              {(product?.color ?? false) && 
               <div className="ProductDets_colorVariant_wrap">
                 <span className="ProductDets_colorVariant">Color</span>
                 <span className="ProductDets_colorVariant">Scotch</span>
               </div>
+              }
               <div className="ProductDets_collection-wrap">
                 <fieldset className="ProfuctDets_fieldset">
+                  {product && product.colorVar && product.colorVar.options.map((el,i)=>(
                   <Link
                     href={""}
                     aria-label="Beige"
-                    className="shop-card_grid collection_grid"
+                    onClick={()=>{setColorSelect(i)}}
+                    className={colorSelect==i ? "shop-card_grid collection_grid Product_active_color":"shop-card_grid collection_grid"}
+                    key={i}
                   >
                     <div className="ProductDets_collection_imgs_grid_cntr">
                       <div className="ProductDets_imgs_grid_cntr ProductDets_imgs_grid_cntr2">
                         <div className="ProductDets_collection_img_cntr">
-                          <img
-                            src="https://cdn.sanity.io/images/h9gyalsq/production/196634a6818e23868fa710fb2b8aa46ed407a2d2-35x35.png?w=420&h=420&q=70&auto=format"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
+                          <div className="Product_color" style={{backgroundColor:el}}>
 
-                  <Link
-                    href={""}
-                    aria-label="Scotch"
-                    className="shop-card_grid collection_grid"
-                  >
-                    <div className="ProductDets_collection_imgs_grid_cntr">
-                      <div className="ProductDets_imgs_grid_cntr ProductDets_imgs_grid_cntr2">
-                        <div className="ProductDets_collection_img_cntr">
-                          <img
-                            src="https://cdn.sanity.io/images/h9gyalsq/production/02ef7b4c18591b945d7f2a716087d60ee1e07113-35x35.png?w=420&h=420&q=70&auto=format"
-                            alt=""
-                          />
+                          </div>
                         </div>
                       </div>
                     </div>
                   </Link>
-
-                  <Link
-                    href={""}
-                    aria-label="Truffle"
-                    className="shop-card_grid collection_grid"
-                  >
-                    <div className="ProductDets_collection_imgs_grid_cntr">
-                      <div className="ProductDets_imgs_grid_cntr ProductDets_imgs_grid_cntr2">
-                        <div className="ProductDets_collection_img_cntr">
-                          <img
-                            src="https://cdn.sanity.io/images/h9gyalsq/production/2077f4e49db0d6ed88ed62df4b1dc150023e03d4-35x35.png?w=420&h=420&q=70&auto=format"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
+                  ))}
                 </fieldset>
               </div>
+              {/* {product && product.varients.map((el,i)=>(
+                
+              ))} */}
               <div className="ProductDets-size_assist_cntr">
-                size
+                {product && product.variants[0].title}
                 <div id="easysize-placeholder"></div>
                 <div id="easysize_button" className="easysize_button">
                   Size Assistance
                 </div>
                 <div id="easysize-recommendation"></div>
               </div>
+              
               <div className="ProductDets-size_numbers_cntr">
                 <div
                   className="ProductDets-size_numbers_inner"

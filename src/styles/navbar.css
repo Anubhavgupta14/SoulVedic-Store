@@ -141,6 +141,11 @@ button {
   opacity: 0;
   transition: transform 0.2s, opacity 0.2s, left 0.2s;
 } */
+.header_icons_grid {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
 ._header_inner {
   display: grid;
   grid-template-columns: auto 24px;
