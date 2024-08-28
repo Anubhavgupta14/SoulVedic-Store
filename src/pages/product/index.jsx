@@ -210,7 +210,7 @@ const ProductPage = () => {
                 
               ))} */}
               <div className="ProductDets-size_assist_cntr">
-                {product && product.variants[0].title}
+                Size
                 <div id="easysize-placeholder"></div>
                 <div id="easysize_button" className="easysize_button">
                   Size Assistance
