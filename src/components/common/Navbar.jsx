@@ -192,7 +192,6 @@ const Navbar = () => {
 
 
 
-  console.log(update)
   useEffect(() => {
     fetchData();
   }, []);
