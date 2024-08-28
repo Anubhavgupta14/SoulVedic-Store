@@ -27,6 +27,7 @@ const Navbar = () => {
   const router = useRouter();
   const [modalIsOpen, setIsOpen] = useState(false);
   const [color, setColor] = useState(null);
+  const [update, setUpdate] = useState(false)
 
   const fetchData = async () => {
     try {
@@ -187,7 +188,11 @@ const Navbar = () => {
       });
       SidebarDrawer.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, []);
+  }, [update]);
+
+
+
+  console.log(update)
   useEffect(() => {
     fetchData();
   }, []);
@@ -729,10 +734,10 @@ const Navbar = () => {
               </span>
             )}
             <nav className="header_nav_links_wrap">
-              <ul className="header_nav_links">
+              <ul className="header_nav_links" onMouseEnter={()=>{setUpdate((prev)=>!prev)}}>
                 {menu &&
                   menu.map((category, i) => (
-                    <li className="_list-links-redirect" key={i}>
+                    <li className="_list-links-redirect" key={i} >
                       <div>
                         <Link
                           href={""}
