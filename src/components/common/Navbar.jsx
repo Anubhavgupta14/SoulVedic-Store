@@ -4,9 +4,11 @@ import LinksDot from "../LinksDot";
 import { IoSearch } from "react-icons/io5";
 import { FaEuroSign } from "react-icons/fa";
 import { useGSAP } from "@gsap/react";
+import { useDispatch, useSelector } from "react-redux";
 import { FaRegUser } from "react-icons/fa";
 import gsap from "gsap";
 import { useRouter } from "next/router";
+import {fetchuser} from "../../features/user/UserSlice"
 import { getMenu, getSubMenu } from "../../../api_fetch/admin/Menu";
 import Modal from "./Modal";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
@@ -23,10 +25,27 @@ const customStyles = {
 };
 const Navbar = () => {
   const [menu, setMenu] = useState([]);
+  const dispatch = useDispatch()
   const router = useRouter();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [color, setColor] = useState(null);
   const [update, setUpdate] = useState(false)
+  const user = useSelector((state)=>state.user.user)
+  
+  useEffect(()=>{
+    dispatch(fetchuser())
+  },[])
+  const verifyUser = ()=>{
+    if(!user){
+      router.push("/login")
+    }
+    else{
+      router.push("/profile")
+    }
+  }
+
+  
+
 
   const fetchData = async () => {
     try {
@@ -806,7 +825,7 @@ const Navbar = () => {
                     </span>
                   </div>
                 </button>
-                <button className="common_style_inherit common_style _list-links-redirect">
+                <button className="common_style_inherit common_style _list-links-redirect" onClick={verifyUser}>
                   <div className="_header_inner links2 _list-links-redirect">
                     {" "}
                     <span className="">Account</span>

@@ -1,0 +1,449 @@
+.login-cont {
+	width: 100vw;
+    /* position: absolute; */
+    /* top: 55%; */
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
+    background-color: #fff;
+    overflow: hidden;
+    height: 100vh;
+    margin: auto auto;
+    display: flex;
+    /* background-color: black;
+	/* background-color: black; */
+}
+.goback{
+	position: absolute;
+    right: 20px;
+    top: 25px;
+    z-index: 10;
+	cursor: pointer;
+}
+.goback:hover{
+	color: rgba(0, 0, 0, .8);
+}
+.react-international-phone-input-container .react-international-phone-input{
+	border: none !important;
+	border-bottom: 1px solid rgba(0, 0, 0, .3) !important;
+}
+.react-international-phone-input-container .react-international-phone-input:focus{
+	/* border: none !important; */
+	border-bottom: 3px solid rgba(0, 0, 0, .3) !important;
+}
+.react-international-phone-input-container .react-international-phone-input:hover{
+	/* border: none !important; */
+	border-bottom: 2px solid rgba(0, 0, 0, .3) !important;
+}
+.react-international-phone-country-selector-button{
+	border: none !important;
+	border-bottom: 1px solid rgba(0, 0, 0, .3) !important;
+}
+.react-international-phone-country-selector-button:hover{
+	border: none !important;
+	border-bottom: 2px solid rgba(0, 0, 0, .3) !important;
+}
+.react-international-phone-country-selector-button:hover{
+	border: none !important;
+	border-bottom: 3px solid rgba(0, 0, 0, .3) !important;
+}
+
+.login-left-cont {
+	width: 60%;
+	transition: all .5s ease;
+	height: 200%;
+	transform: translateX(-50%);
+}
+
+.login-right-cont {
+	width: 40%;
+	transition: all .5s ease;
+
+	height: 200%;
+}
+
+.left-one {
+	width: 100%;
+	height: 50%;
+	position: relative;
+}
+
+.left-one img {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+
+.left-two {
+	height: 50%;
+	width: 100%;
+	background-color: #fff;
+}
+
+.login-inner {
+	flex-direction: column;
+	width: 65%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	height: 100%;
+}
+
+.login-t {
+	font-size: 40px;
+	font-weight: 600;
+	text-align: center;
+	/* padding: 30px 0px 20px 0px; */
+	margin-bottom: 20px;
+}
+
+.login-inp {
+	width: 100%;
+	height: 40px;
+	font-size: 15px;
+	margin: 10px 0px;
+	border: none;
+	background: none;
+	padding: 0 5px;
+	outline: none;
+	position: relative;
+	border-bottom: 1px solid rgba(0, 0, 0, .3);
+}
+
+.login-inp:hover,
+.half-inp:hover,
+.react-tel-input .form-control:hover {
+	border-bottom: 1px solid black !important;
+}
+
+.login-inp:focus,
+.half-inp:focus,
+.react-tel-input .form-control:focus {
+	border-bottom: 2px solid black !important;
+}
+
+.pass-cont {
+	position: relative;
+}
+
+.eye-cont {
+	position: absolute;
+	/* top: 50%;
+  transform: translateY(-50%); */
+	right: 0px;
+	top: 0;
+	width: 37px;
+	height: 69px;
+	/* background-color: aqua; */
+	z-index: 5;
+}
+
+.eye-cont svg {
+	font-size: 20px;
+	/* transition: all .3s ease; */
+	cursor: pointer;
+}
+
+.eye-cont svg:hover {
+	color: rgba(0, 0, 0, .3);
+}
+
+.login-btn {
+	width: 100%;
+    height: 40px;
+    border-radius: 0px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color .3s ease, color .3s ease;
+}
+
+.login-btn:hover {
+	background: rgba(0, 0, 0, 0.7);
+	color: white;
+}
+
+.login-btn:hover .login-load {
+	border: 3px solid rgba(255, 255, 255, .2);
+	border-radius: 50%;
+	border-top: 3px solid black;
+}
+
+.not-up {
+	font-size: 14px;
+	text-align: center;
+	margin: 10px 0px;
+}
+
+.not-up span {
+	color: black;
+	cursor: pointer;
+	font-weight: 600;
+	position: relative;
+}
+
+.not-up span::after {
+	position: absolute;
+	left: 0;
+	bottom: -2px;
+	transition: all .3s ease;
+	width: 100%;
+	height: 2px;
+	background-color: black;
+	content: "";
+	transform: scaleX(0);
+	transform-origin: left;
+}
+.signup-inp{
+	border: none;
+}
+
+.not-up span:hover::after {
+	transform: scaleX(1);
+}
+
+.gender-option {
+	font-size: 14px;
+	align-items: center;
+	display: flex;
+	margin-top: 10px;
+	margin-bottom: 02px;
+}
+
+.gender-cont {
+	width: 30px;
+	height: 30px;
+	/* border: 1px solid #3b82f6; */
+	border-radius: 50%;
+	cursor: pointer;
+	margin: 0px 5px;
+	position: relative;
+}
+
+.gender-inner-cont img {
+	object-fit: contain;
+}
+
+.name-cont {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	margin: 10px 0px;
+}
+
+.half-inp-cont {
+	width: 45%;
+}
+
+.half-inp {
+	width: 100%;
+	height: 30px;
+	border: none;
+	border-bottom: 1px solid rgba(0, 0, 0, .3);
+	outline: none;
+	margin: 10px 0px;
+	padding: 0 5px;
+}
+
+.login-left-cont .login-inp {
+	margin: 10px 0 !important;
+}
+
+.gender-name {
+	color: rgba(0, 0, 0, .6);
+	padding-left: 5px;
+}
+
+.phone-div {
+	margin: 10px 0px;
+}
+
+.phone-div label {
+	color: rgba(0, 0, 0, 1);
+	font-size: 14px;
+}
+
+.gender-t {
+	color: rgba(0, 0, 0, .8);
+	margin-left: 5px;
+}
+
+.react-tel-input .form-control {
+	border: none !important;
+	/* border-bottom: 1px solid rgba(0, 0, 0, .3) !important; */
+}
+
+.react-tel-input {
+	/* overflow-x: hidden!important; */
+	margin-top: 5px;
+}
+
+.signup-btn {
+	margin-top: 20px !important;
+}
+
+.inp-rel {
+	position: relative;
+	
+}
+
+.error-p {
+	position: absolute;
+	left: 0px;
+	bottom: -8px;
+	color: red;
+	font-size: 13px;
+}
+
+.error {
+	color: red;
+	margin-top: -20px;
+	font-size: 13px;
+}
+
+.login-error {
+	color: red;
+	text-align: center;
+	margin-top: 8px;
+	margin-bottom: 15px;
+	font-size: 13px;
+}
+
+
+.phone-error {
+	bottom: -19px;
+}
+
+.gender-err {
+	bottom: -18px;
+}
+
+.inp-cont {
+	width: 100%;
+	height: 40px;
+	border-bottom: rgba(0, 0, 0, .3);
+	display: flex;
+}
+
+.inp-cont input:hover {
+	border-bottom: 1px solid black;
+}
+
+.inp-cont:focus {
+	border-bottom: 2px solid black;
+}
+
+.login-svg-cont {
+	width: 40px;
+	background: none;
+	height: 40px;
+}
+
+.login-input {
+	width: calc(100% - 40px);
+	height: 40px;
+	border: none;
+	outline: none;
+	/* padding: 0 5px; */
+	font-size: 15px;
+	/* border-bottom: rgba(0, 0, 0, .3); */
+}
+
+.login-load {
+	border: 3px solid rgba(255, 255, 255, .2);
+	border-radius: 50%;
+	border-top: 3px solid rgba(255, 255, 255, 1);
+	width: 25px;
+	height: 25px;
+	animation: spin 2s linear infinite;
+}
+
+.react-tel-input .form-control {
+	position: relative;
+	font-size: 14px;
+	letter-spacing: .01rem;
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+	padding-left: 48px;
+	margin-left: 0;
+	background: #fff;
+	border: 1px solid #cacaca;
+	border-radius: 5px;
+	line-height: 25px;
+	height: 35px;
+	width: 300px;
+	outline: none;
+}
+
+.react-tel-input .flag-dropdown {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	padding: 0;
+	background-color: #f5f5f5;
+	border: 1px solid #cacaca;
+	border-radius: 3px 0 0 3px;
+}
+
+.react-tel-input .selected-flag {
+	outline: none;
+	position: relative;
+	width: 38px;
+	height: 100%;
+	padding: 0 0 0 8px;
+	border-radius: 3px 0 0 3px;
+}
+.react-tel-input .selected-flag .flag {
+	position: absolute;
+	top: 50%;
+	margin-top: -5px;
+}
+
+.react-tel-input .selected-flag .arrow {
+	position: relative;
+	top: 50%;
+	margin-top: -2px;
+	left: 20px;
+	width: 0;
+	height: 0;
+	border-left: 3px solid transparent;
+	border-right: 3px solid transparent;
+	border-top: 4px solid #555;
+}
+.react-tel-input {
+	font-size: 15px;
+	position: relative;
+	width: 100%;
+}
+.react-tel-input .special-label {
+	display: none;
+	white-space: nowrap;
+}
+.react-tel-input .invalid-number-message,
+.react-tel-input .special-label {
+	position: absolute;
+	z-index: 1;
+	font-size: 13px;
+	left: 46px;
+	top: -8px;
+	background: #fff;
+	padding: 0 2px;
+}
+.react-tel-input .flag-dropdown.open,
+.react-tel-input .flag-dropdown.open .selected-flag {
+	background: #fff;
+	border-radius: 3px 0 0 0;
+}
+.react-tel-input .flag-dropdown.open {
+	z-index: 2;
+}
+.login-load{
+	border: 3px solid rgba(255, 255, 255, .2);
+	border-radius: 50%;
+	border-top: 3px solid rgba(255, 255, 255, 1);
+	width: 25px;
+	height: 25px;
+	animation: spin 2s linear infinite;
+}

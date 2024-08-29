@@ -249,3 +249,10 @@ li {
   color: #fff;
 }
 /* Button */
+
+
+.flex-all{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
