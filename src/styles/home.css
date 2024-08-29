@@ -904,7 +904,7 @@ button {
   position: sticky;
   bottom: 0;
   /* background-color: red; */
-  padding: 26px 150px 26px 26px;
+  padding: 26px;
 }
 /* .ProductDets_text_cntr_resp {
   font-family: var(--primary-font-Hel);
@@ -941,6 +941,7 @@ button {
   border-top: 1px solid #e6e6e6;
   padding-top: 20px;
   padding-bottom: 16px;
+  display: initial;
 }
 .ProductDets_text_btn_resp_cntr .ProductDets_text_btn_resp_wrap {
   margin-left: 26px;
@@ -1607,6 +1608,9 @@ button {
   .ProductDets_img_wrapper:hover .ProductDets_img_slider_wrap {
     opacity: 1;
     display: initial;
+  }
+  .ProductDets_text_btn_resp_cntr {
+    display: none;
   }
 }
 @media only screen and (min-width: 1024px) {

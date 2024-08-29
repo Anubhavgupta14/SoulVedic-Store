@@ -77,7 +77,7 @@ const ProductPage = () => {
           start: "top -400%",
           end: "top 0%",
           scrub: true,
-          markers: true,
+          markers: false,
         },
         filter: "blur(10px)",
         transform: "translateZ(0)",
@@ -154,7 +154,7 @@ const ProductPage = () => {
                   zakary
                 </h1>
                 <h2 className="ProductDets_text_container_productName ProductDets_common_style">
-                  {product?.name ?? ""}ProductName
+                  {product?.name ?? ""}
                 </h2>
               </div>
               <div className="ProductDets_reverse_content_wrapper">
