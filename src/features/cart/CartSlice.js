@@ -12,7 +12,7 @@ export const CartSlice = createSlice({
   initialState,
   reducers: {
     addtocart: (state, action) => {
-      const { name, qty, price, img, variants, productid } = action.payload;
+      const { qty,variants} = action.payload;
 
       // Extracting the first variant from the array
       const variant = variants[0];
@@ -41,9 +41,9 @@ export const CartSlice = createSlice({
     },
 
     editqty: (state, action) => {
-      const { work, id, price } = action.payload;
+      const { work, id } = action.payload;
       
-      const existingItemIndex = state.cart.findIndex(item => item.id === id);
+      const existingItemIndex = state.cart.findIndex(item => item.productid === id);
       
       if (existingItemIndex !== -1) {
         if (work === -1) {

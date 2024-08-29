@@ -31,6 +31,7 @@ const Navbar = () => {
   const [color, setColor] = useState(null);
   const [update, setUpdate] = useState(false)
   const user = useSelector((state)=>state.user.user)
+  const cartCount = useSelector((state)=>state.cart.itemcount)
   
   useEffect(()=>{
     dispatch(fetchuser())
@@ -681,7 +682,7 @@ const Navbar = () => {
               aria-label="Back to homepage"
               aria-current="page"
               className="header_logo_cntr common_style_inherit"
-              href={"/"}
+              href={""}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -748,7 +749,7 @@ const Navbar = () => {
                   <span className="" onClick={openModal}>
                     Bag
                   </span>
-                  <span className="_header_bagItemQuantity">0</span>
+                  <span className="_header_bagItemQuantity">{cartCount}</span>
                 </div>
                 {/* </div> */}
               </Link>
@@ -803,7 +804,7 @@ const Navbar = () => {
                   <span className="">
                     Bag
                   </span>
-                  <span className="_header_bagItemQuantity">0</span>
+                  <span className="_header_bagItemQuantity">{cartCount}</span>
                 </div>
               </button>
               <div className="header_nav_links_left_inner">

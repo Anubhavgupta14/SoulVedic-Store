@@ -995,7 +995,7 @@ button {
   /* justify-content: space-between; */
   flex-direction: column;
   font-family: var(--primary-font-Hel);
-  margin-top: 36px;
+  margin-block: 36px;
   letter-spacing: 0.02em;
   line-height: 1.35;
   font-weight: 400;
@@ -1182,12 +1182,28 @@ button {
   font-size: 14px;
   letter-spacing: 0.02em;
   line-height: 1.35;
+  cursor: pointer;
   padding: 4px 8px;
   color: #000000;
   text-decoration: none;
 }
 .ProductDets-size_numbers:hover {
   text-decoration: underline;
+}
+.acitve{
+  text-decoration: underline;
+}
+.no-item{
+  font-size: calc(14.81px - 0.22vw);
+  margin: 28px;
+    font-family: var(--primary-font-Hel);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    line-height: 1.35;
+    position: relative;
 }
 .ProductDets-size_numbers.acitve {
   /* text-decoration: underline; */

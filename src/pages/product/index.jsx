@@ -3,18 +3,25 @@ import Footer from "@/components/common/Footer";
 import { ShopCardDetails } from "@/helpers";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import {useDispatch, useSelector} from 'react-redux'
 import { editProduct } from "../../../api_fetch/admin/Product";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Link from "next/link";
+import toast, { Toaster } from 'react-hot-toast';
 import { useRouter } from "next/router";
+import {addtocart} from "@/features/cart/CartSlice"
 import { useEffect, useState } from "react";
 gsap.registerPlugin(ScrollTrigger);
 const ProductPage = () => {
   const [product, setProduct] = useState({});
   const [images, setImages] = useState([]);
   const router = useRouter();
+  const dispatch = useDispatch();
   const { id } = router.query;
   const [colorSelect, setColorSelect] = useState(null);
+  const [variantSelect, setVariantSelect] = useState(null);
+  const [enableAddToCart, setEnableAddToCart] = useState(false);
+  const [selectedVarients, setSelectedVariants] = useState({});
 
   const fetchData = async () => {
     try {
@@ -30,12 +37,47 @@ const ProductPage = () => {
       console.error(err);
     }
   };
+  const handleEnablebtn = () => {
+    console.log(Object.keys(selectedVarients).length+1, "object")
+    console.log(product.variants.length, "data")
+    if (product) {
+      if (product.colorVar) {
+        if (
+          Object.keys(selectedVarients).length+1 ==
+          product.variants.length + 1
+        ) {
+          setEnableAddToCart(true);
+        }
+      } else {
+        if (Object.keys(selectedVarients).length+1 == product.variants.length) {
+          setEnableAddToCart(true);
+        }
+      }
+    }
+  };
 
   useEffect(() => {
     setTimeout(() => {
       fetchData();
     }, 200);
   }, [id]);
+
+  const handleVariants = (name, value) => {
+    setSelectedVariants((prev) => ({ ...prev, [name]: value }));
+    handleEnablebtn();
+  };
+
+  const handleAddToCart = ()=>{
+    if(enableAddToCart){
+      const vararray =[];
+      vararray.push(selectedVarients)
+      dispatch(addtocart({name:product.name, img:images[0], productid:product._id ,qty:1, variants:vararray}))
+      setSelectedVariants({})
+      setColorSelect(null)
+      setVariantSelect(null)
+      toast.success("Product Added Successfully")
+    }
+  }
 
   gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
@@ -86,6 +128,8 @@ const ProductPage = () => {
   }, []);
 
   return (
+    <>
+    <Toaster />
     <div className="ProductDetails_wrapper">
       <div className="ProductDetails_cntr">
         <div className="ProductDets_main"></div>
@@ -194,11 +238,14 @@ const ProductPage = () => {
                       {product &&
                         product.colorVar &&
                         product.colorVar.options.map((el, i) => (
-                          <Link
-                            href={""}
+                          <div
                             aria-label="Beige"
                             onClick={() => {
                               setColorSelect(i);
+                              handleVariants(
+                                "color",
+                                product.colorVar.options[i]
+                              );
                             }}
                             className={
                               colorSelect == i
@@ -217,165 +264,85 @@ const ProductPage = () => {
                                 </div>
                               </div>
                             </div>
-                          </Link>
+                          </div>
                         ))}
                     </fieldset>
                   </div>
                 </div>
-                <div className="ProductDets_size_wrap">
-                  <div className="ProductDets-size_assist_cntr">
-                    Size
-                    {/* <div id="easysize-placeholder"></div> */}
-                    <div id="easysize_button" className="easysize_button">
-                      Size Assistance
+
+                {product &&
+                  product.variants &&
+                  product.variants.map((variant, i) => (
+                    <div className="ProductDets_size_wrap" key={`varient-${i}`}>
+                      <div className="ProductDets-size_assist_cntr">
+                        {variant?.title ?? ""}
+                        {/* <div id="easysize-placeholder"></div> */}
+                        <div id="easysize_button" className="easysize_button">
+                          {variant?.title ?? ""} Assistance
+                        </div>
+                        {/* <div id="easysize-recommendation"></div> */}
+                      </div>
+                      <div className="ProductDets-size_numbers_cntr">
+                        <div
+                          className="ProductDets-size_numbers_inner"
+                          id="easysize-size-selector"
+                        >
+                          {variant.options &&
+                            variant.options.map((option, j) => (
+                              <div
+                                key={`varientOptions-${j}`}
+                                onClick={() => {
+                                  handleVariants(variant.title, option);
+                                  setVariantSelect(`${variant.title}-${j}`);
+                                }}
+                                aria-current="page"
+                                className={
+                                  variantSelect == `${variant.title}-${j}`
+                                    ? "ProductDets-size_numbers acitve"
+                                    : "ProductDets-size_numbers"
+                                }
+                              >
+                                {option}
+                              </div>
+                            ))}
+                        </div>
+                      </div>
                     </div>
-                    {/* <div id="easysize-recommendation"></div> */}
-                  </div>
-                  <div className="ProductDets-size_numbers_cntr">
-                    <div
-                      className="ProductDets-size_numbers_inner"
-                      id="easysize-size-selector"
-                    >
-                      <Link
-                        href={""}
-                        aria-current="page"
-                        className="ProductDets-size_numbers acitve"
-                      >
-                        32
-                      </Link>
-                      <Link
-                        href={""}
-                        aria-current="page"
-                        className="ProductDets-size_numbers acitve"
-                      >
-                        32
-                      </Link>
-                      <Link
-                        href={""}
-                        aria-current="page"
-                        className="ProductDets-size_numbers acitve"
-                      >
-                        32
-                      </Link>
-                      <Link
-                        href={""}
-                        aria-current="page"
-                        className="ProductDets-size_numbers acitve"
-                      >
-                        32
-                      </Link>
-                      <Link
-                        href={""}
-                        aria-current="page"
-                        className="ProductDets-size_numbers acitve"
-                      >
-                        32
-                      </Link>
-                      <Link
-                        href={""}
-                        aria-current="page"
-                        className="ProductDets-size_numbers acitve"
-                      >
-                        32
-                      </Link>
-                      <Link
-                        href={""}
-                        aria-current="page"
-                        className="ProductDets-size_numbers acitve"
-                      >
-                        32
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-                <div className="ProductDets_weight_wrap">
-                  <div className="ProductDets-weight_assist_cntr">
-                    Weight
-                    {/* <div id="easysize-placeholder"></div> */}
-                    <div id="easyweight_button" className="easyweight_button">
-                      Weight Assistance
-                    </div>
-                    {/* <div id="easysize-recommendation"></div> */}
-                  </div>
-                  <div className="ProductDets-weight_numbers_cntr">
-                    <div
-                      className="ProductDets-weight_numbers_inner"
-                      id="easyweight-weight-selector"
-                    >
-                      <Link
-                        href={""}
-                        aria-current="page"
-                        className="ProductDets-weight_numbers acitve"
-                      >
-                        32
-                      </Link>
-                      <Link
-                        href={""}
-                        aria-current="page"
-                        className="ProductDets-weight_numbers acitve"
-                      >
-                        32
-                      </Link>
-                      <Link
-                        href={""}
-                        aria-current="page"
-                        className="ProductDets-weight_numbers acitve"
-                      >
-                        32
-                      </Link>
-                      <Link
-                        href={""}
-                        aria-current="page"
-                        className="ProductDets-weight_numbers acitve"
-                      >
-                        32
-                      </Link>
-                      <Link
-                        href={""}
-                        aria-current="page"
-                        className="ProductDets-weight_numbers acitve"
-                      >
-                        32
-                      </Link>
-                      <Link
-                        href={""}
-                        aria-current="page"
-                        className="ProductDets-weight_numbers acitve"
-                      >
-                        32
-                      </Link>
-                      <Link
-                        href={""}
-                        aria-current="page"
-                        className="ProductDets-weight_numbers acitve"
-                      >
-                        32
-                      </Link>
-                    </div>
-                  </div>
-                </div>
+                  ))}
               </div>
               <div className="ProductDets_Notify_main_wrap">
                 <div className="ProductDets_Notify_wrap"></div>
                 <div className="ProductDets_Notify_wrap">
-                  <Button
+                  <button
                     className="ProductDets_ntfy_btn ProductDets_ntfy_btn_grid"
                     id="easysize-cart-button"
+                    onClick={handleAddToCart}
                   >
+                    {!enableAddToCart ? 
                     <span className="ProductDets_ntfy_btn_slect_size">
                       Select a Size
                     </span>
-
-                    <span className="ProductDets_ntfy_btn_AddtoBeg">
+                    :
+                    <span className="ProductDets_ntfy_btn_slect_size">
                       Add to Bag
                     </span>
+                    }
+                    {!enableAddToCart ? (
+                      <span className="ProductDets_ntfy_btn_AddtoBeg">
+                        Select Varients
+                      </span>
+                    ) : (
+                      <span className="ProductDets_ntfy_btn_AddtoBeg">
+                        Add to Bag
+                      </span>
+                    )}
                     <div className="ProductDets_ntfy_btn_price">
                       <div className="">
                         <span>1,545</span>
                         <span>&nbsp;EUR</span>
                       </div>
                     </div>
-                  </Button>
+                  </button>
                   <div className="ProductDets_shipping_para">
                     Complimentary shipping on orders above 500 EUR.
                   </div>
@@ -636,6 +603,7 @@ const ProductPage = () => {
       </div>
       {/* Render product details */}
     </div>
+    </>
   );
 };
 
