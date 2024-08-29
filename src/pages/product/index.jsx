@@ -14,7 +14,7 @@ const ProductPage = () => {
   const [images, setImages] = useState([]);
   const router = useRouter();
   const { id } = router.query;
-  const [colorSelect, setColorSelect] = useState(null)
+  const [colorSelect, setColorSelect] = useState(null);
 
   const fetchData = async () => {
     try {
@@ -37,9 +37,9 @@ const ProductPage = () => {
     }, 200);
   }, [id]);
 
-  useGSAP(() => {
+  gsap.registerPlugin(ScrollTrigger);
+  useEffect(() => {
     if (window.innerWidth >= 1000) {
-      gsap.registerPlugin(ScrollTrigger);
       const container = document.querySelector(".ProductDets_Big_img_wrap");
       const BlurContainer = document.querySelector(".ProductDets_grid");
       if (container) {
@@ -74,16 +74,16 @@ const ProductPage = () => {
       gsap.to(BlurContainer, {
         scrollTrigger: {
           trigger: ".Similar_prd_wrap",
-          start: "top 100%",
-          end: "top 100%",
+          start: "top -400%",
+          end: "top 0%",
           scrub: true,
-          markers: false,
+          markers: true,
         },
         filter: "blur(10px)",
         transform: "translateZ(0)",
       });
     }
-  });
+  }, []);
 
   return (
     <div className="ProductDetails_wrapper">
@@ -132,7 +132,271 @@ const ProductPage = () => {
           </div>
           <div className="ProductDets_text_wrapper">
             <div className="ProductDets_blank-div"></div>
-            <div className="ProductDets_text_cntr">
+            <div className="ProductDets_text-container">
+              <div className="ProductDets_text_container_resp">
+                <div>
+                  <span className="ProductDets_text_container_resp_brandName ProductDets_common_style">
+                    zakary
+                  </span>
+                  <span className="ProductDets_text_container_resp_productName ProductDets_common_style">
+                    {product?.name ?? ""}
+                  </span>
+                </div>
+                <div className="ProductDets_text_container_price_resp ProductDets_common_style">
+                  <div className="ProductDets_text_container_price_resp_flex">
+                    <span>1,545</span>
+                    <span>&nbsp;EUR</span>
+                  </div>
+                </div>
+              </div>
+              <div className="ProductDets_title_wrap">
+                <h1 className="ProductDets_text_container_brandName ProductDets_common_style">
+                  zakary
+                </h1>
+                <h2 className="ProductDets_text_container_productName ProductDets_common_style">
+                  {product?.name ?? ""}ProductName
+                </h2>
+              </div>
+              <div className="ProductDets_reverse_content_wrapper">
+                <div className="ProductDets_description_wrap">
+                  <div className="ProductDets_text_container_prdt_Desc-title">
+                    Description
+                  </div>
+                  <div className="ProductDets_text-container_prdt_Desc">
+                    <div>
+                      <p>
+                        <meta charSet="utf-8" />
+                        <span>
+                          This lambskin leather jacket offers a relaxed yet
+                          sophisticated fit, featuring a matching belt to cinch
+                          the waist and flatter the figure. Hidden zippers
+                          provide a sleek finish, making it versatile and easy
+                          to style. Wear it loose for a casual look or cinched
+                          for a refined silhouette.
+                        </span>
+                      </p>
+                    </div>
+                    <div>
+                      Fits large to size, we suggest taking one size smaller
+                      than usual.
+                    </div>
+                  </div>
+                </div>
+                <div className="ProductDets_Variants">
+                  {/* {(product?.color ?? false) && ( */}
+                  <div className="ProductDets_colorVariant_wrap">
+                    <span className="ProductDets_colorVariant">Color</span>
+                    <span className="ProductDets_colorVariant">Scotch</span>
+                  </div>
+                  {/* )} */}
+                  <div className="ProductDets_collection-wrap">
+                    <fieldset className="ProfuctDets_fieldset">
+                      {product &&
+                        product.colorVar &&
+                        product.colorVar.options.map((el, i) => (
+                          <Link
+                            href={""}
+                            aria-label="Beige"
+                            onClick={() => {
+                              setColorSelect(i);
+                            }}
+                            className={
+                              colorSelect == i
+                                ? "shop-card_grid collection_grid Product_active_color"
+                                : "shop-card_grid collection_grid"
+                            }
+                            key={i}
+                          >
+                            <div className="ProductDets_collection_imgs_grid_cntr">
+                              <div className="ProductDets_imgs_grid_cntr ProductDets_imgs_grid_cntr2">
+                                <div className="ProductDets_collection_img_cntr">
+                                  <div
+                                    className="Product_color"
+                                    style={{ backgroundColor: el }}
+                                  ></div>
+                                </div>
+                              </div>
+                            </div>
+                          </Link>
+                        ))}
+                    </fieldset>
+                  </div>
+                </div>
+                <div className="ProductDets_size_wrap">
+                  <div className="ProductDets-size_assist_cntr">
+                    Size
+                    {/* <div id="easysize-placeholder"></div> */}
+                    <div id="easysize_button" className="easysize_button">
+                      Size Assistance
+                    </div>
+                    {/* <div id="easysize-recommendation"></div> */}
+                  </div>
+                  <div className="ProductDets-size_numbers_cntr">
+                    <div
+                      className="ProductDets-size_numbers_inner"
+                      id="easysize-size-selector"
+                    >
+                      <Link
+                        href={""}
+                        aria-current="page"
+                        className="ProductDets-size_numbers acitve"
+                      >
+                        32
+                      </Link>
+                      <Link
+                        href={""}
+                        aria-current="page"
+                        className="ProductDets-size_numbers acitve"
+                      >
+                        32
+                      </Link>
+                      <Link
+                        href={""}
+                        aria-current="page"
+                        className="ProductDets-size_numbers acitve"
+                      >
+                        32
+                      </Link>
+                      <Link
+                        href={""}
+                        aria-current="page"
+                        className="ProductDets-size_numbers acitve"
+                      >
+                        32
+                      </Link>
+                      <Link
+                        href={""}
+                        aria-current="page"
+                        className="ProductDets-size_numbers acitve"
+                      >
+                        32
+                      </Link>
+                      <Link
+                        href={""}
+                        aria-current="page"
+                        className="ProductDets-size_numbers acitve"
+                      >
+                        32
+                      </Link>
+                      <Link
+                        href={""}
+                        aria-current="page"
+                        className="ProductDets-size_numbers acitve"
+                      >
+                        32
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+                <div className="ProductDets_weight_wrap">
+                  <div className="ProductDets-weight_assist_cntr">
+                    Weight
+                    {/* <div id="easysize-placeholder"></div> */}
+                    <div id="easyweight_button" className="easyweight_button">
+                      Weight Assistance
+                    </div>
+                    {/* <div id="easysize-recommendation"></div> */}
+                  </div>
+                  <div className="ProductDets-weight_numbers_cntr">
+                    <div
+                      className="ProductDets-weight_numbers_inner"
+                      id="easyweight-weight-selector"
+                    >
+                      <Link
+                        href={""}
+                        aria-current="page"
+                        className="ProductDets-weight_numbers acitve"
+                      >
+                        32
+                      </Link>
+                      <Link
+                        href={""}
+                        aria-current="page"
+                        className="ProductDets-weight_numbers acitve"
+                      >
+                        32
+                      </Link>
+                      <Link
+                        href={""}
+                        aria-current="page"
+                        className="ProductDets-weight_numbers acitve"
+                      >
+                        32
+                      </Link>
+                      <Link
+                        href={""}
+                        aria-current="page"
+                        className="ProductDets-weight_numbers acitve"
+                      >
+                        32
+                      </Link>
+                      <Link
+                        href={""}
+                        aria-current="page"
+                        className="ProductDets-weight_numbers acitve"
+                      >
+                        32
+                      </Link>
+                      <Link
+                        href={""}
+                        aria-current="page"
+                        className="ProductDets-weight_numbers acitve"
+                      >
+                        32
+                      </Link>
+                      <Link
+                        href={""}
+                        aria-current="page"
+                        className="ProductDets-weight_numbers acitve"
+                      >
+                        32
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="ProductDets_Notify_main_wrap">
+                <div className="ProductDets_Notify_wrap"></div>
+                <div className="ProductDets_Notify_wrap">
+                  <Button
+                    className="ProductDets_ntfy_btn ProductDets_ntfy_btn_grid"
+                    id="easysize-cart-button"
+                  >
+                    <span className="ProductDets_ntfy_btn_slect_size">
+                      Select a Size
+                    </span>
+
+                    <span className="ProductDets_ntfy_btn_AddtoBeg">
+                      Add to Bag
+                    </span>
+                    <div className="ProductDets_ntfy_btn_price">
+                      <div className="">
+                        <span>1,545</span>
+                        <span>&nbsp;EUR</span>
+                      </div>
+                    </div>
+                  </Button>
+                  <div className="ProductDets_shipping_para">
+                    Complimentary shipping on orders above 500 EUR.
+                  </div>
+                  <div className="_1l9nr81l"></div>
+                </div>
+                <div className="ProductDets_Notify_wrap"></div>
+              </div>
+              <div className="ProductDets_bottom_links_wrap">
+                <div className="ProductDets_info_links">
+                  <button className="ProductDets_info-btn">Details</button>
+                  <button className="ProductDets_info-btn">Care</button>
+                  <button className="ProductDets_info-btn">Shipping</button>
+                </div>
+                <div className="ProductDets_info_help">
+                  <button className="ProductDets_info_text sql38zc _1l9nr81o">
+                    Need help?
+                  </button>
+                </div>
+              </div>
+            </div>
+            {/* <div className="ProductDets_text_cntr">
               <div className="ProductDets_text_cntr_resp">
                 <div>
                   <span className="ProductDets_text_resp_brandName ProductDets_common_style">
@@ -177,38 +441,45 @@ const ProductPage = () => {
                   usual.
                 </div>
               </div>
-              {(product?.color ?? false) && 
-              <div className="ProductDets_colorVariant_wrap">
-                <span className="ProductDets_colorVariant">Color</span>
-                <span className="ProductDets_colorVariant">Scotch</span>
-              </div>
-              }
+              {(product?.color ?? false) && (
+                <div className="ProductDets_colorVariant_wrap">
+                  <span className="ProductDets_colorVariant">Color</span>
+                  <span className="ProductDets_colorVariant">Scotch</span>
+                </div>
+              )}
               <div className="ProductDets_collection-wrap">
                 <fieldset className="ProfuctDets_fieldset">
-                  {product && product.colorVar && product.colorVar.options.map((el,i)=>(
-                  <Link
-                    href={""}
-                    aria-label="Beige"
-                    onClick={()=>{setColorSelect(i)}}
-                    className={colorSelect==i ? "shop-card_grid collection_grid Product_active_color":"shop-card_grid collection_grid"}
-                    key={i}
-                  >
-                    <div className="ProductDets_collection_imgs_grid_cntr">
-                      <div className="ProductDets_imgs_grid_cntr ProductDets_imgs_grid_cntr2">
-                        <div className="ProductDets_collection_img_cntr">
-                          <div className="Product_color" style={{backgroundColor:el}}>
-
+                  {product &&
+                    product.colorVar &&
+                    product.colorVar.options.map((el, i) => (
+                      <Link
+                        href={""}
+                        aria-label="Beige"
+                        onClick={() => {
+                          setColorSelect(i);
+                        }}
+                        className={
+                          colorSelect == i
+                            ? "shop-card_grid collection_grid Product_active_color"
+                            : "shop-card_grid collection_grid"
+                        }
+                        key={i}
+                      >
+                        <div className="ProductDets_collection_imgs_grid_cntr">
+                          <div className="ProductDets_imgs_grid_cntr ProductDets_imgs_grid_cntr2">
+                            <div className="ProductDets_collection_img_cntr">
+                              <div
+                                className="Product_color"
+                                style={{ backgroundColor: el }}
+                              ></div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  </Link>
-                  ))}
+                      </Link>
+                    ))}
                 </fieldset>
               </div>
-              {/* {product && product.varients.map((el,i)=>(
-                
-              ))} */}
+
               <div className="ProductDets-size_assist_cntr">
                 Size
                 <div id="easysize-placeholder"></div>
@@ -217,7 +488,7 @@ const ProductPage = () => {
                 </div>
                 <div id="easysize-recommendation"></div>
               </div>
-              
+
               <div className="ProductDets-size_numbers_cntr">
                 <div
                   className="ProductDets-size_numbers_inner"
@@ -282,7 +553,7 @@ const ProductPage = () => {
                   <span className="ProductDets_ntfy_btn_slect_size">
                     Select a Size
                   </span>
-                  {/* <span className="_18b043z3 _18b043z4">Notify Me</span> */}
+
                   <span className="ProductDets_ntfy_btn_AddtoBeg">
                     Add to Bag
                   </span>
@@ -308,7 +579,7 @@ const ProductPage = () => {
                   Need help?
                 </button>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="ProductDets_text_btn_resp_cntr ProductDets_common_style">
             <div className="ProductDets_text_btn_resp_wrap">
