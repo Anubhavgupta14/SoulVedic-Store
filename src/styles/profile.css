@@ -114,6 +114,7 @@
   background-color: rgba(0,0,0,0.2);
   height: 0.5px;
   width: 100%;
+  margin-bottom: 30px;
 }
 .cards{
   display: flex;

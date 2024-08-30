@@ -6,7 +6,7 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 // import toast, { Toaster } from "react-hot-toast";
-// import Orders from "./orders";
+import Orders from "./Order";
 import Payment from "./Payment";
 import Security from "./Security";
 import { styled } from "@mui/material/styles";
@@ -399,7 +399,7 @@ export default function BasicTabs() {
             <Security email={userData.email} />
           </CustomTabPanel>
           <CustomTabPanel value={value} index={1}>
-            {/* <Orders /> */}
+            <Orders />
           </CustomTabPanel>
           <CustomTabPanel value={value} index={2}>
             <Payment email={userData.email} />

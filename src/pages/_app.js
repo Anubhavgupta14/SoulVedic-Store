@@ -8,6 +8,7 @@ import "@/styles/home.css";
 import "@/styles/login.css";
 import "@/styles/checkout.css";
 import "@/styles/success.css";
+import "@/styles/address.css";
 import "@/styles/cartModal.css";
 import "@/styles/navbar.css";
 import "@/styles/profile.css";
