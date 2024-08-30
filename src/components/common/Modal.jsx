@@ -2,6 +2,7 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { FiMinus } from "react-icons/fi";
+import { useRouter } from "next/router";
 import { FiPlus } from "react-icons/fi";
 import { useSelector, useDispatch } from "react-redux";
 import { FinalPrice } from "../../../api_fetch/admin/Cart";
@@ -10,6 +11,7 @@ import OutsideClickHandler from "react-outside-click-handler";
 import Button from "./Button";
 const Modal = ({ closeModal, temp, setModalIsOpen, modalIsOpen }) => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const cart = useSelector((state) => state.cart.cart);
   const cartCount = useSelector((state) => state.cart.itemcount);
   const [prices, setPrices] = useState([]);
@@ -27,6 +29,9 @@ const Modal = ({ closeModal, temp, setModalIsOpen, modalIsOpen }) => {
               productid: el.productid,
               variants: el.variants[0], // assuming variants is an array and you want to send the first variant
             });
+            if(data.err){
+              return 100
+            }
             // const data = await response.json();
             // console.log("plplpll", data);
             return data; // Assuming you get the price from the response
@@ -168,7 +173,10 @@ const Modal = ({ closeModal, temp, setModalIsOpen, modalIsOpen }) => {
                               <div className="Modal_Drawer_center_content_ryt">
                                 <div className="cmn_style Modal_Drawer_center_content_ryt_price">
                                   <div className="Modal_Drawer_center_content_ryt_price_cntr"></div>
+                                  {!price ? <></>
+                                  :
                                   <span>{price}</span>
+                                }
 
                                   <span>&nbsp;INR</span>
                                 </div>
@@ -200,9 +208,9 @@ const Modal = ({ closeModal, temp, setModalIsOpen, modalIsOpen }) => {
                         Free worldwide shipping on orders over 500 INR
                       </span>
                       {/* <button className="cmn_style common_style_inherit"></button> */}
-                      <Button className="Modal_drawer_checkout_btn">
+                      <button className="_btn_wrapper" onClick={()=>{router.push("/checkout"); setModalIsOpen(false)}}>
                         Checkout
-                      </Button>
+                      </button>
                     </div>
                   </div>
                 </div>

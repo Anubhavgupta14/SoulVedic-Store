@@ -1,0 +1,212 @@
+.check-r{
+    width: 80vw;
+    margin: auto;
+    cursor: pointer;
+    font-weight: 600;
+}
+.check-r input{
+    margin-right: 10px;
+}
+
+.rnr-btn-cont {
+    display: flex;
+    justify-content: flex-end;
+    margin:40px 0;
+    /* padding:  0 30px; */
+}
+
+.rnr-accept {
+    width: 30vw;
+    margin-bottom: 50px;
+    gap: 10px;
+    height: 45px;
+    border-radius: 25px;
+    transition: all .3s ease;
+    background-color: #3b82f6;
+    color: white;
+}
+
+.rnr-accept:hover {
+    background-color: black;
+    cursor: pointer;
+}
+
+.white-arrow-cont {
+    /* margin-left: 10px; */
+    position: relative;
+    width: 20px;
+    height: 40%;
+    transition: all .3s ease;
+    color: white;
+}
+
+.rnr-accept:hover .white-arrow-cont {
+    transform: translateX(5px);
+}
+
+.white-arrow-cont img {
+    object-fit: contain;
+}
+
+.thank-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    /* padding: 20px 50px; */
+    margin-bottom: 8rem;
+    margin-top: 7vh;
+    background-color: #f9fbfc;
+    padding-top: 10vh;
+}
+.t-logo-check {
+    margin: 30px 0;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 0;
+    position: relative;
+}
+.t-logo {
+    margin: 30px 0;
+    width: 150px;
+    height: 150px;
+    animation-name: circle;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    animation-timing-function: linear;
+    /* animation-fill-mode: ; */
+    margin-bottom: 0;
+    position: relative;
+}
+@keyframes tick {
+    0%{
+        transform: rotate(360deg);
+
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
+@keyframes circle_pay {
+    0%{
+        transform: rotate(0deg);
+
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.t-tick{
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation-name: tick;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    animation-timing-function: linear;
+    width: 100%;
+    height: 100%;
+    font-size: 45px;
+    color: white;
+}
+.t-logo img {
+    object-fit: contain;
+}
+
+.t-t {
+    font-size: 90px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    color: #3b82f6;
+}
+
+.t-p {
+    font-size: 16px;
+    text-align: center;
+    line-height: 25px;
+    width: 80%;
+
+}
+
+.t-h {
+    font-size: 17px;
+    color: #3b82f6;
+    margin: 40px 0;
+}
+
+.t-btn {
+    outline: none;
+    border: none;
+    background-color: #3b82f6;
+    width: 130px;
+    cursor: pointer;
+    height: 45px;
+    border-radius: 25px;
+    transition: all .3s;
+    color: white;
+    font-size: 16px;
+}
+
+.t-btn:hover {
+    background-color: black;
+}
+
+
+.trc-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding: 20px 50px; */
+}
+
+.trc {
+  flex: 2;
+  padding: 20px;
+}
+
+.trc p{
+    font-size: 16px;
+    text-align: start;
+    line-height: 25px;
+    width: 80%;
+    margin: 0;
+}
+
+.trc p span{
+    font-weight: 600;
+}
+
+.donation-success__btn{
+    width: 100%;
+    height: 45px;
+    border-radius: 25px;
+    transition: all .3s ease;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px 10px 20px 10px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.donation-success__contact{
+    color:#707070;
+}
+.t-text h1{
+    margin-bottom:15px;
+}
+.t-text p,.t-text .donation-success__btn{
+        line-height: 2;
+        width:100%;
+        padding-top:2px;
+        font-size: 14px;
+        padding-bottom:2px;
+}
+
