@@ -147,9 +147,9 @@ const General = ({email}) => {
           <p>Easily manage your saved addresses for seamless checkout experiences.</p>
           <p>
             Your information is kept safe and secure with us.{" "}
-            <span style={{ color: "#3b82f6", cursor:'pointer' }}>
+            {/* <span style={{ color: "#3b82f6", cursor:'pointer' }}>
               Learn More.
-            </span>{" "}
+            </span>{" "} */}
           </p>
         </div>
         <div className="fixed-right">

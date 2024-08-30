@@ -13,9 +13,9 @@ const General = () => {
           <h4>Email Preferences</h4>
           <p>
           Manage your email preferences for a personalized experience tailored to your preferences. Your data security is our utmost priority.{" "}
-            <span style={{ color: "#3b82f6", cursor: "pointer" }}>
+            {/* <span style={{ color: "#3b82f6", cursor: "pointer" }}>
               Learn More.
-            </span>{" "}
+            </span>{" "} */}
           </p>
           <p>
           

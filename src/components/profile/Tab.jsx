@@ -19,7 +19,7 @@ import {Getone, Updateuser} from "../../../api_fetch/admin/User"
 const AntTabs = styled(Tabs)({
   borderBottom: "1px solid #e8e8e8",
   "& .MuiTabs-indicator": {
-    backgroundColor: "#1890ff",
+    backgroundColor: "#000",
   },
 });
 
@@ -46,15 +46,15 @@ const AntTab = styled((props) => <Tab disableRipple {...props} />)(
       '"Segoe UI Symbol"',
     ].join(","),
     "&:hover": {
-      color: "#40a9ff",
+      color: "#000",
       opacity: 1,
     },
     "&.Mui-selected": {
-      color: "#1890ff",
+      color: "#000",
       fontWeight: theme.typography.fontWeightMedium,
     },
     "&.Mui-focusVisible": {
-      backgroundColor: "#d1eaff",
+      backgroundColor: "#000",
     },
   })
 );
@@ -301,9 +301,9 @@ export default function BasicTabs() {
                     Easily update your profile details on our platform for a
                     personalized experience. Your information is safeguarded
                     with us.{" "}
-                    <span style={{ color: "#3b82f6", cursor: "pointer" }}>
+                    {/* <span style={{ color: "#3b82f6", cursor: "pointer" }}>
                       Learn More.
-                    </span>{" "}
+                    </span>{" "} */}
                   </p>
                   <p></p>
                 </div>
@@ -381,7 +381,8 @@ export default function BasicTabs() {
                             defaultCountry="in"
                             disabled={!dis}
                             value={phone}
-                            className="phone-con"
+                            className="phone-con2"
+                            style={{borderBottom:'none'}}
                             inputClassName="general__input__phone"
                             onChange={(phone) =>
                               setUserData({ ...userData, phoneno: phone })

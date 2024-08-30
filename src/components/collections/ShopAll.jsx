@@ -145,8 +145,10 @@ const ShopAll = () => {
                     </div>
                     {/* </div> */}
                     <div className="shop_card_text_cntr">
+                      <div className="shop_card_brandwrap">
                       <h2 className="shop_card_text_brandName">{`${items?.BrandName??"Zakary"}`}</h2>
-                      <span className="shop_card_tag">{items?.ribbon??"NEW"}</span>
+                      <div className="shop_card_tag">{items?.ribbon??"NEW"}</div>
+                      </div>
                       <h3 className="shop_card_item_Name">
                         {`${items.name}`}
                       </h3>

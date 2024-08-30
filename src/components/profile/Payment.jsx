@@ -86,9 +86,9 @@ const Layout = ({ email }) => {
           <p>Easily manage your saved payment methods for seamless checkout experiences.</p>
           <p>
           Your information is kept safe and secure with us. {" "}
-            <span style={{ color: "#3b82f6", cursor:'pointer' }}>
+            {/* <span style={{ color: "#3b82f6", cursor:'pointer' }}>
                Learn more.
-            </span>
+            </span> */}
           </p>
         </div>
         <div className="fixed-right">

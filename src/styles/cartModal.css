@@ -36,6 +36,15 @@
   align-items: center;
   /* justify-content: flex-end; */
 }
+.Modal_item_name{
+  font-family: Centra No2, Helvetica, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 12px;
+    line-height: 1.35;
+    text-transform: capitalize;
+}
 .ReactModal__Content {
   background: #ffff;
   position: relative;
@@ -109,7 +118,7 @@
   justify-self: end;
   align-items: center;
   padding: 28px;
-  font-size: 28px;
+  font-size: 16px;
 }
 .ReactModal_Drawer_center {
   display: grid;
@@ -122,12 +131,13 @@
   display: block;
 }
 .Modal_drawer_img_wrap {
-  min-height: 195px;
+  height: 195px;
 }
 .Modal_drawer_img_wrap_grid {
   position: relative;
   display: grid;
   border: none;
+  height: 100%;
 }
 .Modal_Drawer_img_grid_cover {
   display: grid;

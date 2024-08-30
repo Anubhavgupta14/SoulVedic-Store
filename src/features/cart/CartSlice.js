@@ -16,7 +16,6 @@ export const CartSlice = createSlice({
 
       // Extracting the first variant from the array
       const variant = variants[0];
-      console.log("Variant:", variant);
 
       // Find the index of the existing item, starting from the second element
       let existingItemIndex = -1;
@@ -26,7 +25,6 @@ export const CartSlice = createSlice({
           existingItemIndex = index + 1; // Adjust index to account for slicing
         }
       });
-      console.log("Existing item index:", existingItemIndex);
 
       if (existingItemIndex !== -1) {
         // If the item already exists, update the qty
@@ -36,7 +34,6 @@ export const CartSlice = createSlice({
         state.itemcount += qty;
         state.cart.push({...action.payload});
       }
-      console.log("state", state)
       sendData(state)
     },
 
@@ -77,7 +74,6 @@ export const CartSlice = createSlice({
 
     updateCartFromBackend: (state, action) => {
       const cartData = action.payload;
-      console.log("slice mai", cartData)
       return{
          ...cartData
       }
@@ -98,21 +94,10 @@ const sendData = async (fullinfocart) => {
           console.error("JWT token not found in local storage");
           return;
       }
-      console.log("data gaya", fullinfocart)
 
       const datagone = {token: token, ...fullinfocart}
-      console.log("datagone", datagone)
-
-      // const response = await fetch(`https://backend.mamoshfashion.com/api/addcart`, {
-      //     method: "POST",
-      //     headers: {
-      //         "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify(datagone)
-      // });
 
       const responseData = await Addtocart(datagone)
-      console.log(responseData,"naaaaaa")
 
       if (!responseData) {
           throw new Error(`Failed to add to cart: ${responseData.status} - ${responseData.statusText}`);

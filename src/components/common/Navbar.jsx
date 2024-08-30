@@ -363,7 +363,7 @@ const Navbar = () => {
             aria-label="Back to homepage"
             aria-current="page"
             className="header_logo_cntr common_style_inherit"
-            href={""}
+            href={"/"}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -682,7 +682,7 @@ const Navbar = () => {
               aria-label="Back to homepage"
               aria-current="page"
               className="header_logo_cntr common_style_inherit"
-              href={""}
+              href={"/"}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

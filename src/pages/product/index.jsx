@@ -19,27 +19,40 @@ const ProductPage = () => {
   const dispatch = useDispatch();
   const { id } = router.query;
   const [colorSelect, setColorSelect] = useState(null);
-  const [variantSelect, setVariantSelect] = useState(null);
+  const [variantSelect, setVariantSelect] = useState({});
   const [enableAddToCart, setEnableAddToCart] = useState(false);
   const [selectedVarients, setSelectedVariants] = useState({});
+  const [finalPrice, setFinalPrice] = useState(0);
+  const [desc, setDesc] = useState("")
 
   const fetchData = async () => {
     try {
       if (id) {
         const res = await editProduct(id);
-        console.log(res, "data");
         if (res) {
           setProduct(res);
           setImages([...res.images, ...res.videoPreviewImgs]);
+          if(res.discountperunit){
+            setFinalPrice(res.priceperunit - res.discountperunit)
+          }
+          else{
+            setFinalPrice(res.priceperunit)
+          }
+
+          if(product.info){
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(product.info, "text/html");
+            const paragraph = doc.body.firstChild;
+            setDesc(paragraph.textContent)
+          }
         }
       }
     } catch (err) {
       console.error(err);
     }
   };
+  
   const handleEnablebtn = () => {
-    console.log(Object.keys(selectedVarients).length+1, "object")
-    console.log(product.variants.length, "data")
     if (product) {
       if (product.colorVar) {
         if (
@@ -63,9 +76,49 @@ const ProductPage = () => {
   }, [id]);
 
   const handleVariants = (name, value) => {
+    const newVar = {...selectedVarients, [name]: value}
     setSelectedVariants((prev) => ({ ...prev, [name]: value }));
     handleEnablebtn();
+     const resultIndex = linearSearch(product.variantsData, newVar);
+     if(resultIndex !=-1){
+      const diffPrice = (product.variantsDetails[resultIndex].priceDifference || 0);
+      let finalPriceNew=0
+      if(product.discountperunit){
+        finalPriceNew = product.priceperunit - product.discountperunit + diffPrice
+      }
+      else{
+        finalPriceNew = product.priceperunit + diffPrice
+      }
+     setFinalPrice(finalPriceNew);
+    }
   };
+
+  function linearSearch(arr, criteria) {
+    for (let i = 0; i < arr.length; i++) {
+      const variant = arr[i];
+      if (isObjectMatch(variant, criteria)) {
+        return i;
+      }
+    }
+
+    return -1;
+  }
+
+  function isObjectMatch(obj, criteria) {
+    return Object.keys(criteria).every((key) =>
+      obj.some((prop) => prop[key] === criteria[key])
+    );
+  }
+
+  const handleVariantSelection = (variantTitle, option, index) => {
+    setVariantSelect((prev) => {
+      // Create a new object to avoid mutating the previous state
+      const updatedVariants = { ...prev };
+      // Update or add the new variant selection
+      updatedVariants[variantTitle] = `${variantTitle}-${index}`;
+      return updatedVariants;
+    });
+  }
 
   const handleAddToCart = ()=>{
     if(enableAddToCart){
@@ -74,7 +127,7 @@ const ProductPage = () => {
       dispatch(addtocart({name:product.name, img:images[0], productid:product._id ,qty:1, variants:vararray}))
       setSelectedVariants({})
       setColorSelect(null)
-      setVariantSelect(null)
+      setVariantSelect({})
       toast.success("Product Added Successfully")
     }
   }
@@ -188,8 +241,8 @@ const ProductPage = () => {
                 </div>
                 <div className="ProductDets_text_container_price_resp ProductDets_common_style">
                   <div className="ProductDets_text_container_price_resp_flex">
-                    <span>1,545</span>
-                    <span>&nbsp;EUR</span>
+                    <span>{finalPrice}</span>
+                    <span>&nbsp;INR</span>
                   </div>
                 </div>
               </div>
@@ -211,12 +264,7 @@ const ProductPage = () => {
                       <p>
                         <meta charSet="utf-8" />
                         <span>
-                          This lambskin leather jacket offers a relaxed yet
-                          sophisticated fit, featuring a matching belt to cinch
-                          the waist and flatter the figure. Hidden zippers
-                          provide a sleek finish, making it versatile and easy
-                          to style. Wear it loose for a casual look or cinched
-                          for a refined silhouette.
+                          {desc ?? ""}
                         </span>
                       </p>
                     </div>
@@ -243,7 +291,7 @@ const ProductPage = () => {
                             onClick={() => {
                               setColorSelect(i);
                               handleVariants(
-                                "color",
+                                "Color",
                                 product.colorVar.options[i]
                               );
                             }}
@@ -293,11 +341,11 @@ const ProductPage = () => {
                                 key={`varientOptions-${j}`}
                                 onClick={() => {
                                   handleVariants(variant.title, option);
-                                  setVariantSelect(`${variant.title}-${j}`);
+                                  handleVariantSelection(variant.title, option, j);
                                 }}
                                 aria-current="page"
                                 className={
-                                  variantSelect == `${variant.title}-${j}`
+                                  variantSelect[variant.title] == `${variant.title}-${j}`
                                     ? "ProductDets-size_numbers acitve"
                                     : "ProductDets-size_numbers"
                                 }
@@ -338,13 +386,13 @@ const ProductPage = () => {
                     )}
                     <div className="ProductDets_ntfy_btn_price">
                       <div className="">
-                        <span>1,545</span>
-                        <span>&nbsp;EUR</span>
+                        <span>{finalPrice}</span>
+                        <span>&nbsp;INR</span>
                       </div>
                     </div>
                   </button>
                   <div className="ProductDets_shipping_para">
-                    Complimentary shipping on orders above 500 EUR.
+                    Complimentary shipping on orders above 500 INR.
                   </div>
                   <div className="_1l9nr81l"></div>
                 </div>
@@ -376,7 +424,7 @@ const ProductPage = () => {
                 <div className="ProductDets_text_price_resp ProductDets_common_style">
                   <div className="ProductDets_text_price_resp_flex">
                     <span>1,545</span>
-                    <span>&nbsp;EUR</span>
+                    <span>&nbsp;INR</span>
                   </div>
                 </div>
               </div>
@@ -527,12 +575,12 @@ const ProductPage = () => {
                   <div className="ProductDets_ntfy_btn_price">
                     <div className="">
                       <span>1,545</span>
-                      <span>&nbsp;EUR</span>
+                      <span>&nbsp;INR</span>
                     </div>
                   </div>
                 </button>
                 <div className="ProductDets_shipping_para">
-                  Complimentary shipping on orders above 500 EUR.
+                  Complimentary shipping on orders above 500 INR.
                 </div>
                 <div className="_1l9nr81l"></div>
               </div>
@@ -554,8 +602,8 @@ const ProductPage = () => {
                 <div className="ProductDets_text_btn_resp_flex">
                   <span>Select a Size</span>
                   <div>
-                    <span>1,545</span>
-                    <span>&nbsp;EUR</span>
+                    <span>{finalPrice}</span>
+                    <span>&nbsp;INR</span>
                   </div>
                 </div>
               </Button>
@@ -589,7 +637,7 @@ const ProductPage = () => {
                       <div className="shop_card_price_wrap">
                         <div className="shop_card_price_cntr">
                           <span>{`${items.price}`}</span>
-                          <span>&nbsp;EUR</span>
+                          <span>&nbsp;INR</span>
                         </div>
                       </div>
                     </div>

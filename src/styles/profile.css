@@ -5,7 +5,8 @@
     padding-top: 10vh;
   }
   .parent-div{
-    padding-top: 12vh;
+    padding-top: 135px;
+    padding-bottom: 100px;
     background-color: #f9fbfc;
     min-height: 100vh;
     background: url("https://res.cloudinary.com/dhlsvwpny/image/upload/v1711703321/bgpro_gfnjos.jpg") no-repeat;
@@ -486,6 +487,10 @@
     background-color: white;
 }
 .phone-con{
+  /* border: 0.5px solid rgba(0, 0, 0, 0.2); */
+  border-radius: 5px;
+}
+.phone-con2{
   border: 0.5px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
 }
@@ -508,11 +513,11 @@
 .outerdiv-pro{
   border: 1px solid rgba(0,0,0,0.2);
     margin-inline: 9vw;
-    margin-top: 7vh;
+    margin-top: 50px;
     border-radius: 5px;
     background-color: white;
-    height: 615px;
-    overflow: auto;
+    /* height: 615px;
+    overflow: auto; */
 }
 
 .general__input {
@@ -918,7 +923,7 @@ height: 40px;
   cursor: pointer;
   transition: all .3s ease;
   border-radius: 20px;
-  color: #3b82f6;
+  color: #000;
   border: 1px solid;
 }
 .de-btn{
