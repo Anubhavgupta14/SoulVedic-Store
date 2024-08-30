@@ -1,9 +1,10 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { FiMinus } from "react-icons/fi";
 import { FiPlus } from "react-icons/fi";
 import { useSelector, useDispatch } from "react-redux";
+import { FinalPrice } from "../../../api_fetch/admin/Cart";
 import {editqty} from "@/features/cart/CartSlice"
 import OutsideClickHandler from "react-outside-click-handler";
 import Button from "./Button";
@@ -12,6 +13,43 @@ const Modal = ({ closeModal, temp, setModalIsOpen, modalIsOpen }) => {
   const cart = useSelector((state) => state.cart.cart);
   const cartCount = useSelector((state) => state.cart.itemcount);
   console.log(cart, "Cartdata");
+  const [prices, setPrices] = useState([])
+
+  console.log(prices,"proces")
+
+  useEffect(() => {
+    const fetchPrices = async () => {
+      const updatedPrices = await Promise.all(
+        cart.map(async (el) => {
+          // Start from index 1
+          try {
+            const data = await FinalPrice({
+              productid: el.productid,
+              variants: el.variants[0], // assuming variants is an array and you want to send the first variant
+            });
+            // const data = await response.json();
+            console.log("plplpll", data);
+            return data; // Assuming you get the price from the response
+          } catch (error) {
+            console.error("Error fetching price:", error);
+            return null;
+          }
+        })
+      );
+      setPrices(updatedPrices);
+      console.log("kokok", updatedPrices);
+      let sum = 0;
+      for (let i = 0; i < updatedPrices.length; i++) {
+        sum += updatedPrices[i] * cart[i].qty;
+      }
+      console.log("total amount", sum);
+      
+    };
+    {
+      cart && fetchPrices();
+    }
+  }, [cart]);
+
   return (
     <div
       className={

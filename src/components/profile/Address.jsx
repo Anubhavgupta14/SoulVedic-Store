@@ -6,7 +6,7 @@ import { GoPlus } from "react-icons/go";
 import { IoLocationOutline } from "react-icons/io5";
 // import "../../styles/address.css";
 // import Profilebtn from "../common/Profilebtn2"
-import Addaddress from "./popupaddress"
+import Addaddress from "./PopUpAddress"
 import {Checkaddress} from "../../../api_fetch/admin/User"
 
 const General = ({email}) => {
