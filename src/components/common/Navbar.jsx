@@ -422,6 +422,24 @@ const Navbar = () => {
                     </div>
                     <nav className={`header_nav_linksInner_wrap shop-${i}`}>
                       <ul>
+                      {menu &&
+                          category.submenus.data &&
+                          category.submenus.data.map((submenu, j) => (
+                            <li className="_list-links-redirect" key={j}>
+                              <div
+                                id={`shopData${i}`}
+                                onClick={()=>{go(category.name, submenu.name)}}
+                                className={`common_style_inherit SideNavbar_inner_links_hidden links shopData${i}`}
+                              >
+                                {submenu.name}
+                              </div>
+                            </li>
+                          ))}
+                          <li>
+                          <div className="SideNavbar_space_btw_links"></div>
+                        </li>
+
+
                         <li className="_list-links-redirect">
                           <Link
                             id="shopData1"
@@ -449,7 +467,7 @@ const Navbar = () => {
                             Best Sellers
                           </Link>
                         </li>
-                        <li className="_list-links-redirect">
+                        <li className="_list-links-redirect" style={{color:'red'}}>
                           <Link
                             id="shopData1"
                             href={""}
@@ -458,30 +476,38 @@ const Navbar = () => {
                             Sale
                           </Link>
                         </li>
+
                         <li>
                           <div className="SideNavbar_space_btw_links"></div>
                         </li>
 
-                        {menu &&
-                          category.submenus.data &&
-                          category.submenus.data.map((submenu, j) => (
-                            <li className="_list-links-redirect" key={j}>
-                              <div
-                                id={`shopData${i}`}
-                                onClick={()=>{go(category.name, submenu.name)}}
-                                className={`common_style_inherit SideNavbar_inner_links_hidden links shopData${i}`}
-                              >
-                                {submenu.name}
-                              </div>
-                            </li>
-                          ))}
+
+                        <li className="_list-links-redirect">
+                      <Link
+                        href={"/collection"}
+                        className="common_style_inherit SideNavbar_inner_links_hidden links"
+                      >
+                        La Mediterranée
+                      </Link>
+                    </li>
+                    <li className="_list-links-redirect">
+                      <Link
+                        href={"/collection"}
+                        className="common_style_inherit SideNavbar_inner_links_hidden links"
+                      >
+                        Decadence of a Parisian Winter
+                      </Link>
+                    </li>
+                        
+
+                        
 
 
                       </ul>
                     </nav>
                   </li>
                 ))}
-              <li data-target=".collection" className="dataHoverLink">
+              {/* <li data-target=".collection" className="dataHoverLink">
                 <div className="SideNavbar_inner_left_links _list-links-redirect">
                   <Link
                     href="/collections"
@@ -511,7 +537,7 @@ const Navbar = () => {
                     </li>
                   </ul>
                 </nav>
-              </li>
+              </li> */}
               <li data-target=".about" className="dataHoverLink">
                 <div className="SideNavbar_inner_left_links _list-links-redirect">
                   <Link
@@ -778,7 +804,7 @@ const Navbar = () => {
                       </div>
                     </li>
                   ))}
-                <li className="_list-links-redirect">
+                {/* <li className="_list-links-redirect">
                   <Link
                     href="/collections"
                     passHref
@@ -787,7 +813,7 @@ const Navbar = () => {
                   >
                     Collections
                   </Link>
-                </li>
+                </li> */}
                 <li className="_list-links-redirect">
                   <Link
                     href={""}

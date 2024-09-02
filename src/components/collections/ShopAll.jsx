@@ -158,6 +158,14 @@ const ShopAll = () => {
                           <span>&nbsp;INR</span>
                         </div>
                       </div>
+                      {items.discountperunit && 
+                      <div className="shop_card_price_wrap" style={{color:'red'}}>
+                        <div className="shop_card_price_cntr">
+                          <span>{`${items?.discountperunit??0}`}</span>
+                          <span>&nbsp;INR Off At Checkout</span>
+                        </div>
+                      </div>
+                      }
                     </div>
                   </div>
                 </Link>

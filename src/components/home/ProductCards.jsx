@@ -1,9 +1,9 @@
-import { ShopCardDetails } from "@/helpers";
+import { ShopCardDetailsHome } from "@/helpers";
 import Link from "next/link";
 import React, { useState } from "react";
 
 const ShopCards_section = () => {
-  const [data] = useState(ShopCardDetails);
+  const [data] = useState(ShopCardDetailsHome);
   return (
     // <div className="ShopCards_section">
     <div className="ShopCards_container">
