@@ -27,15 +27,17 @@ const Navbar = () => {
   const [menu, setMenu] = useState([]);
   const dispatch = useDispatch()
   const router = useRouter();
+  const path = router.pathname
+  const pathName = router.pathname.split('/')[1];
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [color, setColor] = useState(null);
   const [update, setUpdate] = useState(false)
   const user = useSelector((state)=>state.user.user)
   const cartCount = useSelector((state)=>state.cart.itemcount)
-  
   useEffect(()=>{
     dispatch(fetchuser())
   },[])
+  
   const verifyUser = ()=>{
     if(!user){
       router.push("/login")
@@ -44,10 +46,7 @@ const Navbar = () => {
       router.push("/profile")
     }
   }
-
   
-
-
   const fetchData = async () => {
     try {
       const res = await getMenu({ limit: 20, offset: 0 });
@@ -423,6 +422,24 @@ const Navbar = () => {
                     </div>
                     <nav className={`header_nav_linksInner_wrap shop-${i}`}>
                       <ul>
+                      {menu &&
+                          category.submenus.data &&
+                          category.submenus.data.map((submenu, j) => (
+                            <li className="_list-links-redirect" key={j}>
+                              <div
+                                id={`shopData${i}`}
+                                onClick={()=>{go(category.name, submenu.name)}}
+                                className={`common_style_inherit SideNavbar_inner_links_hidden links shopData${i}`}
+                              >
+                                {submenu.name}
+                              </div>
+                            </li>
+                          ))}
+                          <li>
+                          <div className="SideNavbar_space_btw_links"></div>
+                        </li>
+
+
                         <li className="_list-links-redirect">
                           <Link
                             id="shopData1"
@@ -450,7 +467,7 @@ const Navbar = () => {
                             Best Sellers
                           </Link>
                         </li>
-                        <li className="_list-links-redirect">
+                        <li className="_list-links-redirect" style={{color:'red'}}>
                           <Link
                             id="shopData1"
                             href={""}
@@ -459,30 +476,38 @@ const Navbar = () => {
                             Sale
                           </Link>
                         </li>
+
                         <li>
                           <div className="SideNavbar_space_btw_links"></div>
                         </li>
 
-                        {menu &&
-                          category.submenus.data &&
-                          category.submenus.data.map((submenu, j) => (
-                            <li className="_list-links-redirect" key={j}>
-                              <div
-                                id={`shopData${i}`}
-                                onClick={()=>{go(category.name, submenu.name)}}
-                                className={`common_style_inherit SideNavbar_inner_links_hidden links shopData${i}`}
-                              >
-                                {submenu.name}
-                              </div>
-                            </li>
-                          ))}
+
+                        <li className="_list-links-redirect">
+                      <Link
+                        href={"/collection"}
+                        className="common_style_inherit SideNavbar_inner_links_hidden links"
+                      >
+                        La Mediterranée
+                      </Link>
+                    </li>
+                    <li className="_list-links-redirect">
+                      <Link
+                        href={"/collection"}
+                        className="common_style_inherit SideNavbar_inner_links_hidden links"
+                      >
+                        Decadence of a Parisian Winter
+                      </Link>
+                    </li>
+                        
+
+                        
 
 
                       </ul>
                     </nav>
                   </li>
                 ))}
-              <li data-target=".collection" className="dataHoverLink">
+              {/* <li data-target=".collection" className="dataHoverLink">
                 <div className="SideNavbar_inner_left_links _list-links-redirect">
                   <Link
                     href="/collections"
@@ -512,7 +537,7 @@ const Navbar = () => {
                     </li>
                   </ul>
                 </nav>
-              </li>
+              </li> */}
               <li data-target=".about" className="dataHoverLink">
                 <div className="SideNavbar_inner_left_links _list-links-redirect">
                   <Link
@@ -689,6 +714,7 @@ const Navbar = () => {
                 id="Layer_2"
                 viewBox="0 0 374.44 444.84"
                 className="header_logo_svg "
+                style={(pathName=="collections") || (pathName=="product") ? {color:'black'}:{color:'white'}}
               >
                 <defs></defs>
                 <g id="Layer_1-2" data-name="Layer_1">
@@ -745,12 +771,14 @@ const Navbar = () => {
                 className="_list-links-redirect responsive_header_cntr common_style_inherit common_style"
               >
                 {/* <div className="links"> */}
+                {!(path == '/login') && 
                 <div className="_header_inner links">
                   <span className="" onClick={openModal}>
                     Bag
                   </span>
                   <span className="_header_bagItemQuantity">{cartCount}</span>
                 </div>
+                }
                 {/* </div> */}
               </Link>
             </div>
@@ -769,37 +797,38 @@ const Navbar = () => {
                         <Link
                           href={""}
                           className="links2 Nav-hover-link"
-                          style={{ color }}
+                          style={(pathName=="collections") || (pathName=="product")? { color:'#000' }:{color:'white'}}
                         >
                           {category.name}
                         </Link>
                       </div>
                     </li>
                   ))}
-                <li className="_list-links-redirect">
+                {/* <li className="_list-links-redirect">
                   <Link
                     href="/collections"
                     passHref
                     className="links2 Nav-hover-link"
-                    style={{ color }}
+                    style={(pathName=="collections") || (pathName=="product")? { color:'#000' }:{color:'white'}}
                   >
                     Collections
                   </Link>
-                </li>
+                </li> */}
                 <li className="_list-links-redirect">
                   <Link
                     href={""}
                     className="links2 Nav-hover-link"
-                    style={{ color }}
+                    style={(pathName=="collections") || (pathName=="product") ? { color:'#000' }:{color:'white'}}
                   >
                     About
                   </Link>
                 </li>
               </ul>
             </nav>
+            {!(path == '/login') && 
             <div className="header_nav_links_left">
               <button className="common_style_inherit common_style _list-links-redirect" onClick={openModal}>
-                <div className="_header_inner links2 _list-links-redirect">
+                <div className={(pathName=="collections") || (pathName=="product")? "_header_inner links2 _list-links-redirect colorBlack":"_header_inner links2 _list-links-redirect"}>
                   {" "}
                   <span className="">
                     Bag
@@ -808,7 +837,7 @@ const Navbar = () => {
                 </div>
               </button>
               <div className="header_nav_links_left_inner">
-                <button className="common_style_inherit common_style _list-links-redirect">
+                <button className={(pathName=="collections") || (pathName=="product")? "common_style_inherit common_style _list-links-redirect colorBlack":"common_style_inherit common_style _list-links-redirect"}>
                   <div className="_header_inner links2 _list-links-redirect">
                     {" "}
                     <span className="">Search</span>
@@ -817,7 +846,7 @@ const Navbar = () => {
                     </span>
                   </div>
                 </button>
-                <button className="common_style_inherit common_style _list-links-redirect">
+                <button className={(pathName=="collections") || (pathName=="product")? "common_style_inherit common_style _list-links-redirect colorBlack":"common_style_inherit common_style _list-links-redirect"}>
                   <div className="_header_inner links2 _list-links-redirect">
                     {" "}
                     <span className="">IN</span>
@@ -826,7 +855,7 @@ const Navbar = () => {
                     </span>
                   </div>
                 </button>
-                <button className="common_style_inherit common_style _list-links-redirect" onClick={verifyUser}>
+                <button className={(pathName=="collections") || (pathName=="product")? "common_style_inherit common_style _list-links-redirect colorBlack":"common_style_inherit common_style _list-links-redirect"} onClick={verifyUser}>
                   <div className="_header_inner links2 _list-links-redirect">
                     {" "}
                     <span className="">Account</span>
@@ -837,6 +866,7 @@ const Navbar = () => {
                 </button>
               </div>
             </div>
+            }
           </div>
         </header>
         {/* {modalIsOpen && ( */}

@@ -4,6 +4,7 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 import {updateCartFromBackend} from "../../features/cart/CartSlice"
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from 'next/router';
+import {setUserTrue} from "../../features/user/UserSlice"
 import {Const} from "../../../utils/Constants"
 
 // Functional component for the login form
@@ -90,6 +91,7 @@ const LoginForm = ({ setLogin }) => {
 				if (response.ok) {
 					// Store the token in local storage
 					localStorage.setItem('token', data.token);
+					dispatch(setUserTrue())
 					await fetchData()
 
 					// Clear any previous error messages

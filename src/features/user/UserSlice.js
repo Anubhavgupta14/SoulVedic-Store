@@ -13,10 +13,13 @@ export const userSlice = createSlice({
         {
             state.user = true
         }
+    },
+    setUserTrue:(state, action)=>{
+      state.user = true;
     }
   }
 })
 
-export const { fetchuser } = userSlice.actions;
+export const { fetchuser, setUserTrue } = userSlice.actions;
   
 export default userSlice.reducer;

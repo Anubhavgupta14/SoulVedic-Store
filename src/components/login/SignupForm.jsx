@@ -4,17 +4,19 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 // import toast, { Toaster } from "react-hot-toast";
+import {useDispatch} from 'react-redux'
+import {setUserTrue} from "../../features/user/UserSlice"
 import { useRouter } from 'next/router';
 import {Const} from "../../../utils/Constants"
 
 
 const Signup = ({ setLogin }) => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [load, setLoad] = useState(false);
   const [user, setUser] = useState({
     firstname: "",
     lastname: "",
-    phoneno: "",
     email: "",
     password: "",
   });
@@ -72,11 +74,18 @@ const Signup = ({ setLogin }) => {
     setError(formErrors);
     return false;
   };
-
+  console.log(user,"user")
   const signUp = async () => {
     if (signupvalidate()) {
       setLoad(true);
       try {
+        const userToSend = { ...user };
+        if (userToSend.phoneno.length < 10) {
+          setLoad(false)
+          setError({phoneno:"This is not a valid phone no."})
+          return;
+        }
+        console.log(userToSend,"to send")
         const response = await fetch(
           `${Const.Link}api/user/signup`,
           {
@@ -84,18 +93,17 @@ const Signup = ({ setLogin }) => {
             headers: {
               "Content-type": "Application/json",
             },
-            body: JSON.stringify(user),
+            body: JSON.stringify(userToSend),
           }
         );
 
         const data = await response.json();
-        localStorage.setItem('token',data.token)
-
-        // Check if the response is successful and contains the token
+        if(data){
+          localStorage.setItem('token',data.token)
+          dispatch(setUserTrue());
+        }
         if (response.ok) {
-          // setError("");
-          // navigate('/')
-          console.log("yaa", data);
+          setError("");
         } else {
         }
 
@@ -114,10 +122,8 @@ const Signup = ({ setLogin }) => {
           password: "",
         });
 
-        // setEmail("")
-        // setPassword("")
         setLoad(false);
-        // router.push('/')
+        router.push("/")
       } catch (error) {
         console.error("Oops,", error);
       }

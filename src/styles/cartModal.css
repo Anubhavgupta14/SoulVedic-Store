@@ -50,7 +50,7 @@
   position: relative;
   animation-timing-function: ease;
   animation-duration: 0.3s;
-  transition: all 0.2s linear;
+  transition: all 0.5s linear;
   outline: none;
   pointer-events: auto;
   z-index: 5;
@@ -58,6 +58,9 @@
   position: absolute;
   top: 0;
   right: -100%;
+}
+.colorBlack{
+  color: #000 !important;
 }
 .translateCart {
   right: 0%;
