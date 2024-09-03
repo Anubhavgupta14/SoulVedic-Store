@@ -5,7 +5,7 @@
     padding-top: 10vh;
   }
   .parent-div{
-    padding-top: 135px;
+    padding-top: 5px;
     padding-bottom: 100px;
     background-color: #f9fbfc;
     min-height: 100vh;
@@ -493,7 +493,13 @@
 }
 .phone-con2{
   border: 0.5px solid rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
+  /* border-radius: 5px; */
+}
+.react-international-phone-input-container .react-international-phone-input{
+  border-radius: 0px !important;
+}
+.react-international-phone-input-container .react-international-phone-country-selector-button{
+  border-radius: 0px !important;
 }
 .general__input__phone{
   width: 100%;
@@ -514,7 +520,6 @@
 .outerdiv-pro{
   border: 1px solid rgba(0,0,0,0.2);
     margin-inline: 9vw;
-    margin-top: 50px;
     border-radius: 5px;
     background-color: white;
     /* height: 615px;
@@ -525,7 +530,6 @@
   margin: 5px 0;
   padding: 8px 14px;
   border: 1px solid rgba(0,0,0,0.2);
-  border-radius: 5px;
   outline: none;
   font-size: 16px;
   width: 100%;
@@ -811,16 +815,25 @@
   width: 40%;
 }
 .pay-top h4{
-  font-weight: 600;
+  font-weight: 400;
+  font-family: var(--secondary-font-Hen);
+  font-size: 1.5rem;
 }
 .security-left h4{
-  font-weight: 600;
+  font-weight: 400;
+    font-family: var(--secondary-font-Hen);
+    font-size: 1.5rem;
 }
 .pay-top2{
   width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+.pay-head h4{
+  font-weight: 400;
+  font-family: var(--secondary-font-Hen);
+  font-size: 1.5rem;
 }
 .w-13vw{
   width: 13vw;

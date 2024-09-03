@@ -34,16 +34,7 @@ const AntTab = styled((props) => <Tab disableRipple {...props} />)(
     marginRight: theme.spacing(1),
     color: "rgba(0, 0, 0, 0.85)",
     fontFamily: [
-      "-apple-system",
-      "BlinkMacSystemFont",
-      '"Segoe UI"',
-      "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
+      "Helvetica, sans-serif"
     ].join(","),
     "&:hover": {
       color: "#000",
@@ -310,9 +301,9 @@ export default function BasicTabs() {
               </div>
               <div style={{ width: "50%" }}>
                 <div
-                  className="fr-cancel"
+                  className="_btn_wrapper _btn_height _w-full"
                   onClick={()=>{Updatefun(userData)}}
-                  style={{ position: "relative", left: "85%" }}
+                  style={{ position: "relative", left: "85%", width:'90px' }}
                 >
                   {textbtn}
                 </div>
@@ -327,7 +318,7 @@ export default function BasicTabs() {
                       class="fixed-right"
                       style={{ marginTop: "2vh", justifyContent: "center" }}
                     >
-                      <div class="fr-save" style={{width:'170px'}}>Upload Avatar</div>
+                      <div className="_btn_wrapper _btn_height _w-full" style={{width:'170px'}}>Upload Avatar</div>
                     </div>
                   </div>
 

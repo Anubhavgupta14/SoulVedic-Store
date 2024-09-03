@@ -56,7 +56,6 @@ const ProductPage = () => {
       console.error(err);
     }
   };
-  console.log(selectedVarients,"sel")
   const handleEnablebtn = () => {
     if (product) {
       if (product.colorVar) {

@@ -92,7 +92,7 @@ const Layout = ({ email }) => {
           </p>
         </div>
         <div className="fixed-right">
-          <div className="fr-save w-13vw" onClick={()=>{Setopen(true)}} style={{width:'200px'}}>Add a Payment Method</div>
+          <div className="_btn_wrapper _btn_height _w-full" onClick={()=>{Setopen(true)}} style={{width:'200px'}}>Add a Payment Method</div>
         </div>
       </div>
 

@@ -153,7 +153,7 @@ const General = ({email}) => {
           </p>
         </div>
         <div className="fixed-right">
-          <div className="fr-save" style={{width:'150px'}} onClick={()=>{Setopen(true)}}>Add address</div>
+          <div className="_btn_wrapper _btn_height _w-full" style={{width:'150px'}} onClick={()=>{Setopen(true)}}>Add address</div>
         </div>
       </div>
       <div
