@@ -3,6 +3,8 @@ import { AiOutlineTag } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Const } from "../../../utils/Constants";
 import { MdOutlineErrorOutline } from "react-icons/md";
+import { countrys } from "../../helpers/country";
+import { Savecards } from "../../../api_fetch/admin/User";
 import { useRouter } from "next/router";
 import { IoBagHandleOutline } from "react-icons/io5";
 import {
@@ -96,6 +98,10 @@ const Checkout2 = () => {
       type: "Number",
     },
   ]);
+  const [details, setDetails] = useState({});
+  const [isBilling, setIsBilling] = useState(false);
+  const [billingDetails, setBillingDetails] = useState({});
+  const [paymentDetails, setPaymentDetails] = useState({});
 
   const generateOrderId = () => {
     const characters =
@@ -150,6 +156,7 @@ const Checkout2 = () => {
         console.log(err);
       }
       await saveorder();
+      await handleSubmit();
       router.push(`/paymentstatus?id=${orderId}&amount=${total}`);
     } else {
       saveordernologin();
@@ -193,37 +200,20 @@ const Checkout2 = () => {
 
     return hasErrors;
   };
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     // Prevent default form submission
-    event.preventDefault();
+    // event.preventDefault();
 
-    const hasErrors = checkErrors();
+    const hasErrors = false;
 
     // If there are no errors, set addresssaved to true and send the data to the API
     if (!hasErrors) {
-      Setaddresssaved(true);
-
-      // Construct the data to send to the API
-      const requestData = {
-        firstname: inputs[1].input,
-        lastname: inputs[2].input,
-        flat: inputs[4].input,
-        address: Delivery[1].input,
-        phone: inputs[3].input,
-        city: Delivery[2].input,
-        country: Delivery[0].input,
-        pincode: Delivery[4].input,
-      };
-
-      Setaddressdata(requestData);
-
-      // Make a POST request to the API
       fetch(`${Const.Link}api/user/saveaddress`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ userId: userid, addressData: requestData }),
+        body: JSON.stringify({ userId: userid, addressData: details }),
       })
         .then((response) => {
           if (!response.ok) {
@@ -238,9 +228,9 @@ const Checkout2 = () => {
         .catch((error) => {
           console.error("Error saving address:", error);
         });
-    } else {
-      // There are errors, do not set addresssaved to true
-      Setaddresssaved(false);
+      if (Object.keys(paymentDetails).length != 0) {
+        await Savecards({ email: userid, ...paymentDetails });
+      }
     }
   };
   const handleSubmitnologin = (event) => {
@@ -324,6 +314,7 @@ const Checkout2 = () => {
         if (data) {
           //  const data = await response.json();
           Setuserid(data.userId);
+          setDetails({ email: data.userId });
         }
       } catch (err) {
         console.log(err);
@@ -352,6 +343,19 @@ const Checkout2 = () => {
     } else {
       setNewadd(true);
     }
+  };
+
+  const handleDetailChange = (e) => {
+    const { name, value } = e.target;
+    setDetails((prev) => ({ ...prev, [name]: value }));
+  };
+  const handleBillingDetailChange = (e) => {
+    const { name, value } = e.target;
+    setBillingDetails((prev) => ({ ...prev, [name]: value }));
+  };
+  const handlePaymentChange = (e) => {
+    const { name, value } = e.target;
+    setPaymentDetails((prev) => ({ ...prev, [name]: value }));
   };
 
   useEffect(() => {
@@ -393,6 +397,9 @@ const Checkout2 = () => {
     fetchPrices();
   }, [cart]);
 
+  console.log(details, "details");
+  console.log(paymentDetails, "detailspayment");
+
   return (
     <div className="checkout-cont">
       <div className="checkout-left">
@@ -415,14 +422,20 @@ const Checkout2 = () => {
           </span>
         </header>
         <div className="checkout-main">
-          <form action="POST" className="">
+          
             <div className="contact_container">
               <div className="contact_text_cntr">
                 <h2 className="same_style_text">Contact</h2>
-                <Link href={""}>Login</Link>
+                {!user && <Link href={"/login"}>Login</Link>}
               </div>
               <div className="contact_input_cntr">
-                <input type="email" placeholder="Email" />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={details?.email ?? ""}
+                  name="email"
+                  onChange={handleDetailChange}
+                />
               </div>
               <label class="checkbox-container">
                 <input type="checkbox" />
@@ -449,35 +462,79 @@ const Checkout2 = () => {
               <div className="Delivery_cntr_form">
                 <div className="Delivery_input_cntr">
                   <label htmlFor="Select0">
-                    <span>Country/Region</span>
-                    <h4 className="country_name">India</h4>
+                    {/* <span>Country/Region</span> */}
                     <div>
                       <select
-                        name="countryCode"
+                        name="country"
                         id=""
                         required
+                        onChange={handleDetailChange}
                         autoComplete="shipping country"
-                      ></select>
+                      >
+                        <option value="">Country/Region</option>
+                        {countrys.map((el, i) => (
+                          <option value={el.name}>
+                            {el.code} {el.name}
+                          </option>
+                        ))}
+                      </select>
                     </div>
                   </label>
                   <div className="Name_input_cntr">
-                    <input required type="text" placeholder="First name" />
-                    <input required type="text" placeholder="Last name" />
+                    <input
+                      required
+                      type="text"
+                      placeholder="First name"
+                      name="firstname"
+                      onChange={handleDetailChange}
+                    />
+                    <input
+                      required
+                      type="text"
+                      placeholder="Last name"
+                      name="lastname"
+                      onChange={handleDetailChange}
+                    />
                   </div>
                   <div className="Company_input_cntr">
-                    <input type="text" placeholder="Company(optional)" />
+                    <input
+                      type="text"
+                      placeholder="Company(optional)"
+                      onChange={handleDetailChange}
+                      name="company"
+                    />
                   </div>
                   <div className="pincode_city_input_cntr">
-                    <input required type="text" placeholder="postal code" />
-                    <input required type="text" placeholder="city" />
+                    <input
+                      required
+                      type="text"
+                      placeholder="postal code"
+                      onChange={handleDetailChange}
+                      name="pincode"
+                    />
+                    <input
+                      required
+                      type="text"
+                      placeholder="city"
+                      onChange={handleDetailChange}
+                      name="city"
+                    />
                   </div>
                   <div className="Address_input_cntr">
-                    <input required type="text" placeholder="Address" />
+                    <input
+                      required
+                      type="text"
+                      placeholder="Address"
+                      onChange={handleDetailChange}
+                      name="addressline1"
+                    />
                   </div>
                   <div className="Appartment_input_cntr">
                     <input
                       type="text"
                       placeholder="Appartment, suite, etc. (optional)"
+                      onChange={handleDetailChange}
+                      name="addressline2"
                     />
                   </div>
                   <div className="Phone_input_cntr">
@@ -487,6 +544,8 @@ const Checkout2 = () => {
                       placeholder="Phone"
                       aria-required="true"
                       autocomplete="off"
+                      onChange={handleDetailChange}
+                      name="phone"
                     />
                   </div>
                 </div>
@@ -546,6 +605,9 @@ const Checkout2 = () => {
                                   <input
                                     type="text"
                                     placeholder="Card number"
+                                    value={paymentDetails?.cardnumber ?? null}
+                                    onChange={handlePaymentChange}
+                                    name="cardnumber"
                                   />
                                   <IoBagHandleOutline />
                                 </div>
@@ -561,12 +623,12 @@ const Checkout2 = () => {
                                   <input
                                     required
                                     type="text"
-                                    inputmode="numeric"
-                                    pattern="[0-9]*"
-                                    name="expiry"
+                                    name="expirydate"
                                     data-current-field="expiry"
                                     aria-describedby="error-for-expiry tooltip-for-expiry"
                                     placeholder="Expiration date (MM / YY)"
+                                    value={paymentDetails?.expirydate ?? null}
+                                    onChange={handlePaymentChange}
                                   />
                                   <span>Enter a valid expiration date</span>
                                 </div>
@@ -576,11 +638,13 @@ const Checkout2 = () => {
                                     type="text"
                                     autocomplete="cc-csc"
                                     id="verification_value"
-                                    name="verification_value"
+                                    name="cvv"
                                     inputmode="numeric"
                                     pattern="[0-9]*"
                                     aria-describedby="error-for-verification_value tooltip-for-verification_value"
                                     placeholder="Security code"
+                                    value={paymentDetails?.cvv ?? null}
+                                    onChange={handlePaymentChange}
                                   />
                                   <span>
                                     Enter the CVV or security code on your card
@@ -592,10 +656,18 @@ const Checkout2 = () => {
                                   <input
                                     type="text"
                                     placeholder="Name on card"
+                                    value={paymentDetails?.cardholder ?? ""}
+                                    onChange={handlePaymentChange}
+                                    name="cardholder"
                                   />
                                 </div>
                                 <label class="checkbox-container">
-                                  <input type="checkbox" />
+                                  <input
+                                    type="checkbox"
+                                    onChange={() => {
+                                      setIsBilling(!isBilling);
+                                    }}
+                                  />
                                   <span class="checkmark">
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
@@ -626,15 +698,25 @@ const Checkout2 = () => {
                                   <div className="Delivery_cntr_form">
                                     <div className="Delivery_input_cntr">
                                       <label htmlFor="Select0">
-                                        <span>Country/Region</span>
-                                        <h4 className="country_name">India</h4>
+                                        {/* <span>Country/Region</span> */}
                                         <div>
                                           <select
-                                            name="countryCode"
+                                            name="country"
                                             id=""
                                             required
+                                            value={isBilling ? details.country:billingDetails.country}
+                                            onChange={handleBillingDetailChange}
                                             autoComplete="shipping country"
-                                          ></select>
+                                          >
+                                            <option value="">
+                                              Country/Region
+                                            </option>
+                                            {countrys.map((el, i) => (
+                                              <option value={el.name}>
+                                                {el.code} {el.name}
+                                              </option>
+                                            ))}
+                                          </select>
                                         </div>
                                       </label>
                                       <div className="Name_input_cntr">
@@ -642,17 +724,26 @@ const Checkout2 = () => {
                                           required
                                           type="text"
                                           placeholder="First name"
+                                          name="firstname"
+                                          onChange={handleBillingDetailChange}
+                                          value={isBilling ? details.firstname : billingDetails.firstname}
                                         />
                                         <input
                                           required
                                           type="text"
                                           placeholder="Last name"
+                                          name="lastname"
+                                          onChange={handleBillingDetailChange}
+                                          value={isBilling ? details.lastname : billingDetails.lastname}
                                         />
                                       </div>
                                       <div className="Company_input_cntr">
                                         <input
                                           type="text"
                                           placeholder="Company(optional)"
+                                          name="company"
+                                          onChange={handleBillingDetailChange}
+                                          value={isBilling ? details.company : billingDetails.company}
                                         />
                                       </div>
                                       <div className="pincode_city_input_cntr">
@@ -660,11 +751,17 @@ const Checkout2 = () => {
                                           required
                                           type="text"
                                           placeholder="postal code"
+                                          name="pincode"
+                                          onChange={handleBillingDetailChange}
+                                          value={isBilling ? details.pincode : billingDetails.pincode}
                                         />
                                         <input
                                           required
                                           type="text"
                                           placeholder="city"
+                                          name="city"
+                                          onChange={handleBillingDetailChange}
+                                          value={isBilling ? details.city : billingDetails.city}
                                         />
                                       </div>
                                       <div className="Address_input_cntr">
@@ -672,12 +769,18 @@ const Checkout2 = () => {
                                           required
                                           type="text"
                                           placeholder="Address"
+                                          name="addressline1"
+                                          onChange={handleBillingDetailChange}
+                                          value={isBilling ? details.addressline1 : billingDetails.addressline1}
                                         />
                                       </div>
                                       <div className="Appartment_input_cntr">
                                         <input
                                           type="text"
                                           placeholder="Appartment, suite, etc. (optional)"
+                                          name="addressline2"
+                                          onChange={handleBillingDetailChange}
+                                          value={isBilling ? details.addressline2 : billingDetails.addressline2}
                                         />
                                       </div>
                                       <div className="Phone_input_cntr">
@@ -687,6 +790,9 @@ const Checkout2 = () => {
                                           placeholder="Phone"
                                           aria-required="true"
                                           autocomplete="off"
+                                          name="phone"
+                                          onChange={handleBillingDetailChange}
+                                          value={isBilling ? details.phone : billingDetails.phone}
                                         />
                                       </div>
                                     </div>
@@ -778,10 +884,13 @@ const Checkout2 = () => {
             {/* <div className="Remember_section">
               <h2 className="same_style_text">Remember me</h2>
             </div> */}
-            <button type="submit" aria-hidden="true">
+            <button
+              aria-hidden="true"
+              onClick={handleGenerateOrderId}
+            >
               Pay now
             </button>
-          </form>
+          
         </div>
       </div>
 

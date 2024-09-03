@@ -1,6 +1,6 @@
 .checkout-cont {
   display: flex;
-  margin: 150px 0px;
+  margin: 50px 0px;
   justify-content: center;
 }
 /* new-left-code */
@@ -167,7 +167,7 @@ a {
 }
 .Delivery_input_cntr label {
   position: relative;
-  padding-block: 1rem;
+  padding-block: 1.5rem;
   padding-inline: 1rem;
   font-size: 1rem;
   margin: 1.2rem 0 0 0;
@@ -187,7 +187,10 @@ a {
   top: 0;
   left: 0;
   width: 100%;
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.5);
   height: 100%;
+  padding-left: 12px;
   background-color: transparent;
   outline: none;
   cursor: pointer;

@@ -3,6 +3,7 @@ import Navbar from "@/components/common/Navbar";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "../../store";
+import { useRouter } from "next/router";
 import "@/styles/globals.css";
 import "@/styles/home.css";
 import "@/styles/login.css";
@@ -17,11 +18,16 @@ import "@/styles/collections.css";
 import "@/styles/shopAll.css";
 // import Modal from "@/components/Modal";
 export default function App({ Component, pageProps }) {
+  const router = useRouter();
+  const pathName = router.pathname;
+  console.log(pathName,"path")
   return (
     <>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
+          {!((pathName=='/checkout')||(pathName=='/profile')||(pathName=='/paymentstatus')) && 
           <Navbar />
+          }
           <Component {...pageProps} />
           <Footer />
         </PersistGate>
