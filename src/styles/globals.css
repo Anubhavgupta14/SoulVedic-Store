@@ -4,7 +4,7 @@
 }
 :root {
   --primary-font-Hel: Helvetica, sans-serif;
-  --secondary-font-Hen: Henry-Italic;
+  --secondary-font-Hen: Henry-Italic, sans-serif;
 }
 * {
   margin: 0;
@@ -250,8 +250,7 @@ li {
 }
 /* Button */
 
-
-.flex-all{
+.flex-all {
   display: flex;
   align-items: center;
   justify-content: center;

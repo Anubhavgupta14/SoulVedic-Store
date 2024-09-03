@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { AiOutlineTag } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import {Const} from "../../../utils/Constants"
+import { Const } from "../../../utils/Constants";
 import { MdOutlineErrorOutline } from "react-icons/md";
-import { useRouter } from 'next/router';
-import {Checkoutitem,Saveorders, CheckAddress,Getcart} from "../../../api_fetch/admin/Checkout"
-import {FinalPrice} from "../../../api_fetch/admin/Cart"
+import { useRouter } from "next/router";
+import {
+  Checkoutitem,
+  Saveorders,
+  CheckAddress,
+  Getcart,
+} from "../../../api_fetch/admin/Checkout";
+import { FinalPrice } from "../../../api_fetch/admin/Cart";
 
 const Checkout = () => {
-
   const router = useRouter();
   const cartdata = useSelector((state) => state.cart);
   const [user, setUser] = useState(null);
   const [cart, setCart] = useState(null);
-  const [isUpdated, setIsUpdated] = useState(false)
-  const [userid, Setuserid] = useState("")
+  const [isUpdated, setIsUpdated] = useState(false);
+  const [userid, Setuserid] = useState("");
   const [open, Setopen] = useState(false);
   const [open2, Setopen2] = useState(false);
   const [newadd, setNewadd] = useState(false);
@@ -103,61 +107,54 @@ const Checkout = () => {
     }
     return result;
   };
-  const saveorder = async()=>{
-    try{
-        const newOrderId = generateOrderId();
-        setOrderId(newOrderId);
-        let order = cartdata.cart.map(item => ({
-            ...item,
-            orderNo: newOrderId
-          }));
-        const responseData = await Saveorders({ userId: userid, orders: order})
+  const saveorder = async () => {
+    try {
+      const newOrderId = generateOrderId();
+      setOrderId(newOrderId);
+      let order = cartdata.cart.map((item) => ({
+        ...item,
+        orderNo: newOrderId,
+      }));
+      const responseData = await Saveorders({ userId: userid, orders: order });
+
+      // const responseData = await response.json();
+      //   console.log(responseData)
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const saveordernologin = async () => {
+    try {
+      const responseData = await Saveorders({
+        userId: inputs[0].input,
+        orders: cartdata.cart,
+      });
+      // const responseData = await response.json();
+      console.log(responseData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const handleGenerateOrderId = async () => {
+    localStorage.removeItem("persist:root");
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const responseData = await Checkoutitem(token);
 
         // const responseData = await response.json();
-    //   console.log(responseData) 
+        //   console.log(responseData)
+      } catch (err) {
+        console.log(err);
+      }
+      await saveorder();
+      router.push(`/paymentstatus?id=${orderId}&amount=${total}`);
+    } else {
+      saveordernologin();
+      window.location.reload();
+      router.push(`/paymentstatus?id=${orderId}&amount=${total}`);
     }
-    catch(err){
-      console.log(err)
-    }
-  }
-  const saveordernologin = async()=>{
-    try{
-
-      const responseData = await Saveorders({ userId:inputs[0].input, orders: cartdata.cart})
-      // const responseData = await response.json();
-      console.log(responseData) 
-    }
-    catch(err){
-      console.log(err)
-    }
-  }
-  const handleGenerateOrderId = async() => {
-    
-    localStorage.removeItem("persist:root");
-    const token = localStorage.getItem('token');
-    if(token){
-    try{
-
-    const responseData = await Checkoutitem(token)
-
-      // const responseData = await response.json();
-    //   console.log(responseData)
-    }
-    catch(err){
-      console.log(err)
-    }
-    await saveorder();
-    router.push(`/paymentstatus?id=${orderId}&amount=${total}`);
-  }
-  else{
-    saveordernologin();
-    window.location.reload();
-    router.push(`/paymentstatus?id=${orderId}&amount=${total}`);
-  }
   };
-
-
-  
 
   const checkErrors = () => {
     let hasErrors = false;
@@ -216,7 +213,7 @@ const Checkout = () => {
         pincode: Delivery[4].input,
       };
 
-      Setaddressdata(requestData)
+      Setaddressdata(requestData);
 
       // Make a POST request to the API
       fetch(`${Const.Link}api/user/saveaddress`, {
@@ -234,7 +231,7 @@ const Checkout = () => {
         })
         .then((data) => {
           console.log("Address saved successfully:", data);
-          setIsUpdated((prev)=>!prev)
+          setIsUpdated((prev) => !prev);
         })
         .catch((error) => {
           console.error("Error saving address:", error);
@@ -271,7 +268,10 @@ const Checkout = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ userId: inputs[0].input, addressData: requestData }),
+        body: JSON.stringify({
+          userId: inputs[0].input,
+          addressData: requestData,
+        }),
       })
         .then((response) => {
           if (!response.ok) {
@@ -318,11 +318,11 @@ const Checkout = () => {
           return;
         }
         setUser(true);
-         const data = await Getcart(token)
-         if (data) {
+        const data = await Getcart(token);
+        if (data) {
           //  const data = await response.json();
-           Setuserid(data.userId);
-         }
+          Setuserid(data.userId);
+        }
       } catch (err) {
         console.log(err);
       }
@@ -330,7 +330,7 @@ const Checkout = () => {
     let getdata = () => {
       setCart(cartdata);
     };
-    
+
     func();
     getdata();
   }, []);
@@ -340,9 +340,9 @@ const Checkout = () => {
       return;
     }
 
-    const data = await CheckAddress(token)
-    if(data.error){
-      setNewadd(true)
+    const data = await CheckAddress(token);
+    if (data.error) {
+      setNewadd(true);
       return;
     }
     if (data) {
@@ -352,39 +352,38 @@ const Checkout = () => {
     }
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     setTimeout(() => {
-      fetchaddress()
+      fetchaddress();
     }, 500);
-  },[isUpdated])
-
+  }, [isUpdated]);
 
   useEffect(() => {
     const fetchPrices = async () => {
       if (cart) {
         const updatedPrices = await Promise.all(
-        cart.cart.map(async (el) => {
-          // Start from index 1
-          try {
-            const data = await FinalPrice({
-              productid: el.productid,
-              variants: el.variants[0], // assuming variants is an array and you want to send the first variant
-            })
-            if(data.err){
-                return 100
+          cart.cart.map(async (el) => {
+            // Start from index 1
+            try {
+              const data = await FinalPrice({
+                productid: el.productid,
+                variants: el.variants[0], // assuming variants is an array and you want to send the first variant
+              });
+              if (data.err) {
+                return 100;
               }
-            return data; // Assuming you get the price from the response
-          } catch (error) {
-            console.error("Error fetching price:", error);
-            return null;
-          }
-        })
-      );
+              return data; // Assuming you get the price from the response
+            } catch (error) {
+              console.error("Error fetching price:", error);
+              return null;
+            }
+          })
+        );
         setPrices(updatedPrices);
         let sum = 0;
-      for (let i = 0; i < updatedPrices.length; i++) {
-        sum += updatedPrices[i] * cartdata.cart[i].qty;
-      }
+        for (let i = 0; i < updatedPrices.length; i++) {
+          sum += updatedPrices[i] * cartdata.cart[i].qty;
+        }
         setTotal(sum);
       }
     };
@@ -399,7 +398,12 @@ const Checkout = () => {
           {!user ? (
             <>
               Already have an account?{" "}
-              <a style={{cursor:'pointer'}} onClick={()=>{router.push("/login")}}>
+              <a
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  router.push("/login");
+                }}
+              >
                 <div className="checkout-in">Log in </div>
               </a>
               for a faster checkout.
@@ -564,7 +568,10 @@ const Checkout = () => {
                   </p>
                 </div>
               </div>
-              <button className="fr-save placeorder" onClick={handleGenerateOrderId}>
+              <button
+                className="fr-save placeorder"
+                onClick={handleGenerateOrderId}
+              >
                 Place Order & Pay
               </button>
             </div>
@@ -583,7 +590,7 @@ const Checkout = () => {
                           style={{
                             display: "flex",
                             justifyContent: "space-between",
-                            alignItems:'center'
+                            alignItems: "center",
                           }}
                         >
                           <p className="address-p">
@@ -630,26 +637,27 @@ const Checkout = () => {
                         {open && (
                           <div className="selectadd">
                             <div className="selbtn">
-                            <select
-                              className="add-sel"
-                              onChange={(event) => {
-                                Setindex(event.target.selectedIndex);
-                              }}
-                            >
-                              {addressdata.map((el, i) => (
-                                <option className="add-sel" key={i}>
-                                  {el.firstname} {el.lastname} {el.address}
-                                </option>
-                              ))}
-                            </select>
-                            <button
-                              className="fr-cancel sel" style={{backgroundColor:'white'}}
-                              onClick={() => {
-                                Setopen(false);
-                              }}
-                            >
-                              Select
-                            </button>
+                              <select
+                                className="add-sel"
+                                onChange={(event) => {
+                                  Setindex(event.target.selectedIndex);
+                                }}
+                              >
+                                {addressdata.map((el, i) => (
+                                  <option className="add-sel" key={i}>
+                                    {el.firstname} {el.lastname} {el.address}
+                                  </option>
+                                ))}
+                              </select>
+                              <button
+                                className="fr-cancel sel"
+                                style={{ backgroundColor: "white" }}
+                                onClick={() => {
+                                  Setopen(false);
+                                }}
+                              >
+                                Select
+                              </button>
                             </div>
                             <button onClick={tempfunc} className="fr-save">
                               Add New
@@ -724,7 +732,7 @@ const Checkout = () => {
                             <button
                               type="submit"
                               className="fr-save"
-                              style={{marginBottom:'20px'}}
+                              style={{ marginBottom: "20px" }}
                               onClick={handleSubmit}
                             >
                               Submit
@@ -773,32 +781,39 @@ const Checkout = () => {
 
                   {open2 && (
                     <div className="selectadd">
-                    <div className="selbtn">
-                    <select
-                      className="add-sel"
-                      onChange={(event) => {
-                        Setindex(event.target.selectedIndex);
-                      }}
-                    >
-                      {addressdata && addressdata.map((el, i) => (
-                        <option className="add-sel" key={i}>
-                          {el.firstname} {el.lastname} {el.address}
-                        </option>
-                      ))}
-                    </select>
-                    <button
-                      className="fr-cancel sel" style={{backgroundColor:'white'}}
-                      onClick={() => {
-                        Setopen2(false);
-                      }}
-                    >
-                      Select
-                    </button>
+                      <div className="selbtn">
+                        <select
+                          className="add-sel"
+                          onChange={(event) => {
+                            Setindex(event.target.selectedIndex);
+                          }}
+                        >
+                          {addressdata &&
+                            addressdata.map((el, i) => (
+                              <option className="add-sel" key={i}>
+                                {el.firstname} {el.lastname} {el.address}
+                              </option>
+                            ))}
+                        </select>
+                        <button
+                          className="fr-cancel sel"
+                          style={{ backgroundColor: "white" }}
+                          onClick={() => {
+                            Setopen2(false);
+                          }}
+                        >
+                          Select
+                        </button>
+                      </div>
+                      <button
+                        onClick={() => {
+                          tempfunc();
+                        }}
+                        className="fr-save"
+                      >
+                        Add New
+                      </button>
                     </div>
-                    <button onClick={()=>{tempfunc()}} className="fr-save">
-                      Add New
-                    </button>
-                  </div>
                   )}
                 </div>
               )}
@@ -833,7 +848,11 @@ const Checkout = () => {
                   </p>
                 </div>
               </div>
-              <button className="fr-save placeorder" style={{width:'150px'}} onClick={handleGenerateOrderId}>
+              <button
+                className="fr-save placeorder"
+                style={{ width: "150px" }}
+                onClick={handleGenerateOrderId}
+              >
                 Place Order & Pay
               </button>
             </div>
@@ -853,16 +872,20 @@ const Checkout = () => {
                 return (
                   <div key={index} className="summary-cont">
                     {!price ? (
-                    //   <FinalpriceLoader2 />
-                    <></>
+                      //   <FinalpriceLoader2 />
+                      <></>
                     ) : (
                       <>
-                      <div className="summary-price"> &#8377; {price}</div>
-                      <div className="summary-qty"> Qty: {item.qty}</div>
+                        <div className="summary-price"> &#8377; {price}</div>
+                        <div className="summary-qty"> Qty: {item.qty}</div>
                       </>
                     )}
                     <div className="summary-img-cont">
-                      <img alt="" src={item.img} style={{maxHeight:'100%'}} />
+                      <img
+                        alt=""
+                        src={item.img}
+                        style={{ maxHeight: "100%" }}
+                      />
                     </div>
                     <div className="summary-details">
                       <div className="summary-name">{item.name}</div>
@@ -870,31 +893,35 @@ const Checkout = () => {
                         item.variants.map((op, j) => (
                           <div key={j}>
                             {Object.keys(op).map((key, index) => (
-                                        <div key={index} style={{position:'relative'}} className="cart_item_det">
-                                          {key === "Color" ? (
-                                            <>
-                                            <p className="cart-p" key={index}>
-                                              {key}:
-                                            </p>
-                                            <div
-                                              className="color-box-cart"
-                                              style={{
-                                                backgroundColor: op[key],
-                                                width: "12px",
-                                                height: "12px",
-                                                position:'relative',
-                                                borderRadius:'50%',
-                                                top:'2px'
-                                              }}
-                                            ></div>
-                                            </>
-                                          ) : (
-                                            <p className="cart-p" key={index}>
-                                              {key}: <span>{op[key]}</span>
-                                            </p>
-                                          )}
-                                        </div>
-                                      ))}
+                              <div
+                                key={index}
+                                style={{ position: "relative" }}
+                                className="cart_item_det"
+                              >
+                                {key === "Color" ? (
+                                  <>
+                                    <p className="cart-p" key={index}>
+                                      {key}:
+                                    </p>
+                                    <div
+                                      className="color-box-cart"
+                                      style={{
+                                        backgroundColor: op[key],
+                                        width: "12px",
+                                        height: "12px",
+                                        position: "relative",
+                                        borderRadius: "50%",
+                                        top: "2px",
+                                      }}
+                                    ></div>
+                                  </>
+                                ) : (
+                                  <p className="cart-p" key={index}>
+                                    {key}: <span>{op[key]}</span>
+                                  </p>
+                                )}
+                              </div>
+                            ))}
                           </div>
                         ))}
                     </div>
@@ -931,8 +958,8 @@ const Checkout = () => {
           <div className="checkout-total">
             Total:
             {!total ? (
-            //   <FinalpriceLoader2 />
-            <></>
+              //   <FinalpriceLoader2 />
+              <></>
             ) : (
               <div className="checkout-price">&#8377; {total + 100}</div>
             )}

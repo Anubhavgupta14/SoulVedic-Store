@@ -7,6 +7,7 @@ import "@/styles/globals.css";
 import "@/styles/home.css";
 import "@/styles/login.css";
 import "@/styles/checkout.css";
+import "@/styles/checkout2.css";
 import "@/styles/success.css";
 import "@/styles/address.css";
 import "@/styles/cartModal.css";
