@@ -67,12 +67,13 @@ const ShopCards_section = () => {
               {/* </div> */}
               <div className="shop_card_text_cntr">
                 <div className="shop_card_brandwrap">
-                <h2 className="shop_card_text_brandName">{`${items.BrandName}`}</h2>
-                <div className="shop_card_tag">New</div>
+                  {/* <h2 className="shop_card_text_brandName">{`${items.BrandName}`}</h2> */}
+                  <h3 className="shop_card_item_Name">
+                    {`${items.ProductName}`}
+                  </h3>
+                  <div className="shop_card_tag">New</div>
                 </div>
-                <h3 className="shop_card_item_Name">
-                  {`${items.ProductName}`}
-                </h3>
+
                 <div className="shop_card_price_wrap">
                   <div className="shop_card_price_cntr">
                     <span>{`${items.price}`}</span>

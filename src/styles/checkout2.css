@@ -362,6 +362,7 @@ a {
   grid-template-columns: auto 1fr;
   border: 1px solid #000;
   padding-inline: 1rem;
+  cursor: pointer;
 }
 
 .cards_inner_content input {

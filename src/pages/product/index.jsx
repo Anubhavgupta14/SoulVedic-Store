@@ -242,190 +242,195 @@ const ProductPage = () => {
               </div>
             </div>
             <div className="ProductDets_text_wrapper">
-              <div className="ProductDets_blank-div"></div>
-              <div className="ProductDets_text-container">
-                <div className="ProductDets_text_container_resp">
-                  <div>
-                    <span className="ProductDets_text_container_resp_brandName ProductDets_common_style">
-                      zakary
-                    </span>
-                    <span className="ProductDets_text_container_resp_productName ProductDets_common_style">
-                      {product?.name ?? ""}
-                    </span>
-                  </div>
-                  <div className="ProductDets_text_container_price_resp ProductDets_common_style">
-                    <div className="ProductDets_text_container_price_resp_flex">
-                      <span>{finalPrice}</span>
-                      <span>&nbsp;INR</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="ProductDets_title_wrap">
-                  <h1 className="ProductDets_text_container_brandName ProductDets_common_style">
-                    zakary
-                  </h1>
-                  <h2 className="ProductDets_text_container_productName ProductDets_common_style">
-                    {product?.name ?? ""}
-                  </h2>
-                </div>
-
-                <div className="ProductDets_reverse_content_wrapper">
-                  <div className="ProductDets_description_wrap">
-                    <div className="ProductDets_text_container_prdt_Desc-title">
-                      Description
-                    </div>
-                    <div className="ProductDets_text-container_prdt_Desc">
-                      <div>
-                        <p>
-                          <meta charSet="utf-8" />
-                          <span>{desc ?? ""}</span>
-                        </p>
-                      </div>
-                      <div>
-                        Fits large to size, we suggest taking one size smaller
-                        than usual.
-                      </div>
-                    </div>
-                  </div>
-                  <div className="ProductDets_Variants">
-                    {/* {(product?.color ?? false) && ( */}
-                    <div className="ProductDets_colorVariant_wrap">
-                      <span className="ProductDets_colorVariant">Color</span>
-                      <span className="ProductDets_colorVariant">Scotch</span>
-                    </div>
-                    {/* )} */}
-                    <div className="ProductDets_collection-wrap">
-                      <fieldset className="ProfuctDets_fieldset">
-                        {product &&
-                          product.colorVar &&
-                          product.colorVar.options.map((el, i) => (
-                            <div
-                              aria-label="Beige"
-                              onClick={() => {
-                                setColorSelect(i);
-                                handleVariants(
-                                  "Color",
-                                  product.colorVar.options[i]
-                                );
-                              }}
-                              className={
-                                colorSelect == i
-                                  ? "shop-card_grid collection_grid Product_active_color"
-                                  : "shop-card_grid collection_grid"
-                              }
-                              key={i}
-                            >
-                              <div className="ProductDets_collection_imgs_grid_cntr">
-                                <div className="ProductDets_imgs_grid_cntr ProductDets_imgs_grid_cntr2">
-                                  <div className="ProductDets_collection_img_cntr">
-                                    <div
-                                      className="Product_color"
-                                      style={{ backgroundColor: el }}
-                                    ></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          ))}
-                      </fieldset>
-                    </div>
-                  </div>
-
-                  {product &&
-                    product.variants &&
-                    product.variants.map((variant, i) => (
-                      <div
-                        className="ProductDets_size_wrap"
-                        key={`varient-${i}`}
-                      >
-                        <div className="ProductDets-size_assist_cntr">
-                          {variant?.title ?? ""}
-                          {/* <div id="easysize-placeholder"></div> */}
-                          <div id="easysize_button" className="easysize_button">
-                            {variant?.title ?? ""} Assistance
-                          </div>
-                          {/* <div id="easysize-recommendation"></div> */}
-                        </div>
-                        <div className="ProductDets-size_numbers_cntr">
-                          <div
-                            className="ProductDets-size_numbers_inner"
-                            id="easysize-size-selector"
-                          >
-                            {variant.options &&
-                              variant.options.map((option, j) => (
-                                <div
-                                  key={`varientOptions-${j}`}
-                                  onClick={() => {
-                                    handleVariants(variant.title, option);
-                                    handleVariantSelection(
-                                      variant.title,
-                                      option,
-                                      j
-                                    );
-                                  }}
-                                  aria-current="page"
-                                  className={
-                                    variantSelect[variant.title] ==
-                                    `${variant.title}-${j}`
-                                      ? "ProductDets-size_numbers acitve"
-                                      : "ProductDets-size_numbers"
-                                  }
-                                >
-                                  {option}
-                                </div>
-                              ))}
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                </div>
-
-                <div className="ProductDets_Notify_wrap">
-                  <button
-                    className="ProductDets_ntfy_btn ProductDets_ntfy_btn_grid"
-                    id="easysize-cart-button"
-                    onClick={handleAddToCart}
-                  >
-                    {!enableAddToCart ? (
-                      <span className="ProductDets_ntfy_btn_slect_size">
-                        Select a Size
+              <div className="ProductDets_blank-div">
+                <div className="ProductDets_text-container">
+                  <div className="ProductDets_text_container_resp">
+                    <div>
+                      {/* <span className="ProductDets_text_container_resp_brandName ProductDets_common_style">
+                        zakary
+                      </span> */}
+                      <span className="ProductDets_text_container_resp_productName ProductDets_common_style">
+                        {product?.name ?? ""}
                       </span>
-                    ) : (
-                      <span className="ProductDets_ntfy_btn_slect_size">
-                        Add to Bag
-                      </span>
-                    )}
-                    {!enableAddToCart ? (
-                      <span className="ProductDets_ntfy_btn_AddtoBeg">
-                        Select Varients
-                      </span>
-                    ) : (
-                      <span className="ProductDets_ntfy_btn_AddtoBeg">
-                        Add to Bag
-                      </span>
-                    )}
-                    <div className="ProductDets_ntfy_btn_price">
-                      <div className="">
+                    </div>
+                    <div className="ProductDets_text_container_price_resp ProductDets_common_style">
+                      <div className="ProductDets_text_container_price_resp_flex">
                         <span>{finalPrice}</span>
                         <span>&nbsp;INR</span>
                       </div>
                     </div>
-                  </button>
-                  <div className="ProductDets_shipping_para">
-                    Complimentary shipping on orders above 500 INR.
                   </div>
-                </div>
+                  <div className="ProductDets_title_wrap">
+                    {/* <h1 className="ProductDets_text_container_brandName ProductDets_common_style">
+                      zakary
+                    </h1> */}
+                    <h2 className="ProductDets_text_container_productName ProductDets_common_style">
+                      {product?.name ?? ""}
+                    </h2>
+                  </div>
 
-                <div className="ProductDets_bottom_links_wrap">
-                  <div className="ProductDets_info_links">
-                    <button className="ProductDets_info-btn">Details</button>
-                    <button className="ProductDets_info-btn">Care</button>
-                    <button className="ProductDets_info-btn">Shipping</button>
+                  <div className="ProductDets_reverse_content_wrapper">
+                    <div className="ProductDets_description_wrap">
+                      {/* <div className="ProductDets_text_container_prdt_Desc-title">
+                        Description
+                      </div> */}
+                      <div className="ProductDets_text-container_prdt_Desc">
+                        <div>
+                          <p>
+                            <meta charSet="utf-8" />
+                            <span>{desc ?? ""}</span>
+                          </p>
+                        </div>
+                        <div>
+                          Fits large to size, we suggest taking one size smaller
+                          than usual.
+                        </div>
+                      </div>
+                    </div>
+                    <div className="ProductDets_Variants">
+                      {/* {(product?.color ?? false) && ( */}
+                      {/* <div className="ProductDets_colorVariant_wrap">
+                        <span className="ProductDets_colorVariant">Color</span>
+                        <span className="ProductDets_colorVariant">Scotch</span>
+                      </div> */}
+                      {/* )} */}
+                      <div className="ProductDets_collection-wrap">
+                        <fieldset className="ProfuctDets_fieldset">
+                          {product &&
+                            product.colorVar &&
+                            product.colorVar.options.map((el, i) => (
+                              <div
+                                aria-label="Beige"
+                                onClick={() => {
+                                  setColorSelect(i);
+                                  handleVariants(
+                                    "Color",
+                                    product.colorVar.options[i]
+                                  );
+                                }}
+                                className={
+                                  colorSelect == i
+                                    ? "shop-card_grid collection_grid Product_active_color"
+                                    : "shop-card_grid collection_grid"
+                                }
+                                key={i}
+                              >
+                                <div className="ProductDets_collection_imgs_grid_cntr">
+                                  <div className="ProductDets_imgs_grid_cntr ProductDets_imgs_grid_cntr2">
+                                    <div className="ProductDets_collection_img_cntr">
+                                      <div
+                                        className="Product_color"
+                                        style={{ backgroundColor: el }}
+                                      ></div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                        </fieldset>
+                      </div>
+                    </div>
+
+                    {product &&
+                      product.variants &&
+                      product.variants.map((variant, i) => (
+                        <div
+                          className="ProductDets_size_wrap"
+                          key={`varient-${i}`}
+                        >
+                          <div className="ProductDets-size_assist_cntr">
+                            {variant?.title ?? ""}
+                            {/* <div id="easysize-placeholder"></div> */}
+                            <div
+                              id="easysize_button"
+                              className="easysize_button"
+                            >
+                              {variant?.title ?? ""} Assistance
+                            </div>
+                            {/* <div id="easysize-recommendation"></div> */}
+                          </div>
+                          <div className="ProductDets-size_numbers_cntr">
+                            <div
+                              className="ProductDets-size_numbers_inner"
+                              id="easysize-size-selector"
+                            >
+                              {variant.options &&
+                                variant.options.map((option, j) => (
+                                  <div
+                                    key={`varientOptions-${j}`}
+                                    onClick={() => {
+                                      handleVariants(variant.title, option);
+                                      handleVariantSelection(
+                                        variant.title,
+                                        option,
+                                        j
+                                      );
+                                    }}
+                                    aria-current="page"
+                                    className={
+                                      variantSelect[variant.title] ==
+                                      `${variant.title}-${j}`
+                                        ? "ProductDets-size_numbers acitve"
+                                        : "ProductDets-size_numbers"
+                                    }
+                                  >
+                                    {option}
+                                  </div>
+                                ))}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                   </div>
-                  <div className="ProductDets_info_help">
-                    <button className="ProductDets_info_text sql38zc _1l9nr81o">
-                      Need help?
+
+                  <div className="ProductDets_Notify_wrap">
+                    <button
+                      className="ProductDets_ntfy_btn ProductDets_ntfy_btn_grid"
+                      id="easysize-cart-button"
+                      onClick={handleAddToCart}
+                    >
+                      {!enableAddToCart ? (
+                        <span className="ProductDets_ntfy_btn_slect_size">
+                          Select a Size
+                        </span>
+                      ) : (
+                        <span className="ProductDets_ntfy_btn_slect_size">
+                          Add to Bag
+                        </span>
+                      )}
+                      {!enableAddToCart ? (
+                        <span className="ProductDets_ntfy_btn_AddtoBeg">
+                          Select Varients
+                        </span>
+                      ) : (
+                        <span className="ProductDets_ntfy_btn_AddtoBeg">
+                          Add to Bag
+                        </span>
+                      )}
+                      <div className="ProductDets_ntfy_btn_price">
+                        <div className="">
+                          <span>{finalPrice}</span>
+                          <span>&nbsp;INR</span>
+                        </div>
+                      </div>
                     </button>
+                    <div className="ProductDets_shipping_para">
+                      Complimentary shipping on orders above 500 INR.
+                    </div>
+                  </div>
+
+                  <div className="ProductDets_bottom_links_wrap">
+                    <div className="ProductDets_info_links">
+                      <button className="ProductDets_info-btn">Details</button>
+                      <button className="ProductDets_info-btn">Care</button>
+                      <button className="ProductDets_info-btn">Shipping</button>
+                      <button className="ProductDets_info-btn">Help</button>
+                    </div>
+                    <div className="ProductDets_info_help">
+                      <p className="ProductDets_info_text sql38zc _1l9nr81o">
+                        Complimentary shipping on orders above 500 EUR.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -647,7 +652,7 @@ const ProductPage = () => {
                         </div>
                       </div>
                       <div className="similar-prd-text">
-                        <h3 className="similar-prd-dets _brandName">{`${items.BrandName}`}</h3>
+                        {/* <h3 className="similar-prd-dets _brandName">{`${items.BrandName}`}</h3> */}
                         <h4 className="similar-prd-dets _ProductName">
                           {" "}
                           {`${items.ProductName}`}

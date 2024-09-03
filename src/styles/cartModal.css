@@ -19,9 +19,9 @@
   display: none;
 }
 .Modal_bgClr {
-  background-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background-color: rgb(0 0 0 / 60%);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   overflow: hidden;
 
   /* display: none; */
@@ -36,14 +36,14 @@
   align-items: center;
   /* justify-content: flex-end; */
 }
-.Modal_item_name{
+.Modal_item_name {
   font-family: Centra No2, Helvetica, sans-serif;
-    font-weight: 400;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-size: 12px;
-    line-height: 1.35;
-    text-transform: capitalize;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 12px;
+  line-height: 1.35;
+  text-transform: capitalize;
 }
 .ReactModal__Content {
   background: #ffff;
@@ -59,7 +59,7 @@
   top: 0;
   right: -100%;
 }
-.colorBlack{
+.colorBlack {
   color: #000 !important;
 }
 .translateCart {

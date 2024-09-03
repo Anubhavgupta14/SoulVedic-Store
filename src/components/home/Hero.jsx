@@ -55,7 +55,7 @@ const Hero = () => {
             src="https://ark8.net/_next/image?url=https%3A%2F%2Fa.storyblok.com%2Ff%2F161230%2F2796x1573%2F981ca2286b%2Ftlb-hpban.jpg&w=1920&q=90"
             alt=""
           />
-          <div className="tile__inner">
+          {/* <div className="tile__inner">
             <div className="tiles_inner_text">
               <Link href={""}>
                 <h1>
@@ -66,14 +66,14 @@ const Hero = () => {
             <Link href={""} className="tiles_inner_button">
               <span>SEE COLLECTION</span>
             </Link>
-          </div>
+          </div> */}
         </div>
         <div className="Vertical_wrapper_video_sec Vertical_wrapper_video_sec-2 Vertical_wrapper_video_sec_common">
           <img
             src="https://ark8.net/_next/image?url=https%3A%2F%2Fa.storyblok.com%2Ff%2F161230%2F3000x2007%2Faa5a74f01f%2Fantihero-home-16x9-2.jpg&w=1920&q=90"
             alt=""
           />
-          <div className="tile__inner">
+          {/* <div className="tile__inner">
             <div className="tiles_inner_text">
               <Link href={""}>
                 <h1>
@@ -84,14 +84,14 @@ const Hero = () => {
             <Link href={""} className="tiles_inner_button">
               <span>SEE COLLECTION</span>
             </Link>
-          </div>
+          </div> */}
         </div>
         <div className="Vertical_wrapper_video_sec Vertical_wrapper_video_sec-3 Vertical_wrapper_video_sec_common">
           <img
             src="https://ark8.net/_next/image?url=https%3A%2F%2Fa.storyblok.com%2Ff%2F161230%2F3000x1688%2F5a3deae10e%2Foverwatch-home.jpg&w=1920&q=90"
             alt=""
           />
-          <div className="tile__inner">
+          {/* <div className="tile__inner">
             <div className="tiles_inner_text">
               <Link href={""}>
                 <h1>
@@ -102,7 +102,7 @@ const Hero = () => {
             <Link href={""} className="tiles_inner_button">
               <span>SEE COLLECTION</span>
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
