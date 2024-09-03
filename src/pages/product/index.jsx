@@ -38,6 +38,12 @@ const ProductPage = () => {
             setFinalPrice(res.priceperunit);
           }
 
+          if(res.color){
+            setColorSelect(0);
+            const c = res.colorVar.options[0]
+            setSelectedVariants((prev) => ({ ...prev, Color: c }));
+          }
+
           if (product.info) {
             const parser = new DOMParser();
             const doc = parser.parseFromString(product.info, "text/html");
@@ -51,6 +57,7 @@ const ProductPage = () => {
     }
   };
 
+  console.log(selectedVarients,"sel")
   const handleEnablebtn = () => {
     if (product) {
       if (product.colorVar) {
@@ -136,9 +143,9 @@ const ProductPage = () => {
           variants: vararray,
         })
       );
-      setSelectedVariants({});
-      setColorSelect(null);
-      setVariantSelect({});
+      // setSelectedVariants({});
+      // setColorSelect(null);
+      // setVariantSelect({});
       toast.success("Product Added Successfully");
     }
   };
@@ -388,22 +395,16 @@ const ProductPage = () => {
                   >
                     {!enableAddToCart ? (
                       <span className="ProductDets_ntfy_btn_slect_size">
-                        Select a Size
+                        Select Variant
                       </span>
                     ) : (
                       <span className="ProductDets_ntfy_btn_slect_size">
                         Add to Bag
                       </span>
                     )}
-                    {!enableAddToCart ? (
-                      <span className="ProductDets_ntfy_btn_AddtoBeg">
-                        Select Varients
-                      </span>
-                    ) : (
-                      <span className="ProductDets_ntfy_btn_AddtoBeg">
+                    <span className="ProductDets_ntfy_btn_AddtoBeg">
                         Add to Bag
                       </span>
-                    )}
                     <div className="ProductDets_ntfy_btn_price">
                       <div className="">
                         <span>{finalPrice}</span>
