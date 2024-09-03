@@ -255,3 +255,13 @@ li {
   align-items: center;
   justify-content: center;
 }
+
+.back{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 1rem;
+  padding: 10px;
+  cursor: pointer;
+  width: 80px;
+}

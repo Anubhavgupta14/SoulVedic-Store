@@ -44,11 +44,11 @@ const ProductPage = () => {
             setSelectedVariants((prev) => ({ ...prev, Color: c }));
           }
 
-          if (product.info) {
+          if (res.info) {
             const parser = new DOMParser();
-            const doc = parser.parseFromString(product.info, "text/html");
+            const doc = parser.parseFromString(res.info, "text/html");
             const paragraph = doc.body.firstChild;
-            setDesc(paragraph.textContent);
+            setDesc(paragraph.textContent,"eedcde");
           }
         }
       }
@@ -56,7 +56,6 @@ const ProductPage = () => {
       console.error(err);
     }
   };
-
   console.log(selectedVarients,"sel")
   const handleEnablebtn = () => {
     if (product) {
