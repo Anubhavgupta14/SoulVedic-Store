@@ -1,30 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { FaArrowsAltV } from "react-icons/fa";
 import { ShopAllCard } from "@/helpers";
-import { useRouter } from 'next/router';
-import {FetchCat} from "../../../api_fetch/admin/Collections"
+import { useRouter } from "next/router";
+import { FetchCat } from "../../../api_fetch/admin/Collections";
 import Link from "next/link";
 const ShopAll = () => {
   const [data] = useState(ShopAllCard);
-  const [category, setCategory] = useState('');
-  const [subCategory, setSubCategory] = useState('');
+  const [category, setCategory] = useState("");
+  const [subCategory, setSubCategory] = useState("");
   const router = useRouter();
-  const [collections, setCollections] = useState([])
+  const [collections, setCollections] = useState([]);
 
-  const fetchData = async(cat, subcat)=>{
-    try{
-      const res = await FetchCat({menu:cat, submenu:subcat})
-      if(res){
-        setCollections(res.products)
+  const fetchData = async (cat, subcat) => {
+    try {
+      const res = await FetchCat({ menu: cat, submenu: subcat });
+      if (res) {
+        setCollections(res.products);
       }
+    } catch (err) {
+      console.error(err);
     }
-    catch(err){
-      console.error(err)
-    }
-  }
+  };
 
   useEffect(() => {
-    let cat="", subcat=""
+    let cat = "",
+      subcat = "";
     if (router.isReady) {
       const path = router.asPath;
       const match = path.match(/\/collections\/([^&]+)&(.+)/);
@@ -34,7 +34,7 @@ const ShopAll = () => {
         setCategory(decodeURIComponent(match[1]));
         setSubCategory(decodeURIComponent(match[2]));
       }
-      fetchData(cat,subcat);
+      fetchData(cat, subcat);
     }
   }, [router.isReady, router.asPath]);
 
@@ -47,7 +47,9 @@ const ShopAll = () => {
               <h1 className="ShopCollection_h1 common_style_collection">
                 {category ?? ""}
               </h1>
-              <sup className="ShopCollection_sup">({collections?.length??0})</sup>
+              <sup className="ShopCollection_sup">
+                ({collections?.length ?? 0})
+              </sup>
             </div>
             {/* <div className="ShopCollection_top_left_text-wrap"></div> */}
           </div>
@@ -86,99 +88,110 @@ const ShopAll = () => {
         </div>
         <div>
           <div className="ShopCards_container">
-            {collections && collections.map((items) => {
-              return (
-                <Link
-                  key={items._id}
-                  href={{ pathname: "/product", query: { id: items._id } }}
-                  className="shop-card_grid"
-                >
-                  <div className="shop_card_cntr">
-                    {/* <div className="shop_card_top"> */}
-                    <div className="shop_card_img_wrapper">
-                      <div className="responsive_shop_wrapper">
-                        <div className="respo-shop_card-img_wrap">
-                          <div className="shop_card_img-wrapper">
-                            <div className="shop_card_img_cover">
-                              <div className="shop_card_img_bgcover">
-                                <div className="shop_card_img-main_cntr">
-                                  <img
-                                    src={`${items.images[0]}`}
-                                    alt={`image`}
-                                  />
+            {collections &&
+              collections.map((items) => {
+                return (
+                  <Link
+                    key={items._id}
+                    href={{ pathname: "/product", query: { id: items._id } }}
+                    className="shop-card_grid"
+                  >
+                    <div className="shop_card_cntr">
+                      {/* <div className="shop_card_top"> */}
+                      <div className="shop_card_img_wrapper">
+                        <div className="responsive_shop_wrapper">
+                          <div className="respo-shop_card-img_wrap">
+                            <div className="shop_card_img-wrapper">
+                              <div className="shop_card_img_cover">
+                                <div className="shop_card_img_bgcover">
+                                  <div className="shop_card_img-main_cntr">
+                                    <img
+                                      src={`${items.images[0]}`}
+                                      alt={`image`}
+                                    />
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
 
-                          <div className="shop_card_img-wrapper">
-                            <div className="shop_card_img_cover">
-                              <div className="shop_card_img_bgcover">
-                                <div className="shop_card_img-main_cntr">
-                                  <img src={`${items.images[1]}`} alt="" />
+                            <div className="shop_card_img-wrapper">
+                              <div className="shop_card_img_cover">
+                                <div className="shop_card_img_bgcover">
+                                  <div className="shop_card_img-main_cntr">
+                                    <img src={`${items.images[1]}`} alt="" />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="shop_card_img_cntr">
+                          <div className="shop_card_img_inner">
+                            <div className="shop_card_img-wrapper">
+                              <div className="shop_card_img_cover">
+                                <div className="shop_card_img_bgcover">
+                                  <div className="shop_card_img-main_cntr">
+                                    <img src={`${items.images[0]}`} alt="" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="shop_card_img_cover_hidden">
+                                <div className="shop_card_img_bgcover">
+                                  <div className="shop_card_img-main_cntr">
+                                    <img src={`${items.images[1]}`} alt="" />
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div className="shop_card_img_cntr">
-                        <div className="shop_card_img_inner">
-                          <div className="shop_card_img-wrapper">
-                            <div className="shop_card_img_cover">
-                              <div className="shop_card_img_bgcover">
-                                <div className="shop_card_img-main_cntr">
-                                  <img src={`${items.images[0]}`} alt="" />
-                                </div>
-                              </div>
-                            </div>
-                            <div className="shop_card_img_cover_hidden">
-                              <div className="shop_card_img_bgcover">
-                                <div className="shop_card_img-main_cntr">
-                                  <img src={`${items.images[1]}`} alt="" />
-                                </div>
-                              </div>
-                            </div>
+                      {/* </div> */}
+                      <div className="shop_card_text_cntr">
+                        <div className="shop_card_brandwrap">
+                          <h3 className="shop_card_item_Name">
+                            {`${items.name}`}
+                          </h3>
+                          <div className="shop_card_tag">
+                            {items?.ribbon ?? "NEW"}
                           </div>
                         </div>
+
+                        <div className="shop_card_price_wrap">
+                          <div className="shop_card_price_cntr">
+                            <span>{`${items?.priceperunit ?? 0}`}</span>
+                            <span>&nbsp;INR</span>
+                          </div>
+                        </div>
+                        {items.discountTypeRs ? (
+                          <div
+                            className="shop_card_price_wrap"
+                            style={{ color: "red" }}
+                          >
+                            <div className="shop_card_price_cntr">
+                              <span>{`${items?.discountperunit ?? 0}`}</span>
+                              <span>
+                                &nbsp;{items.discountperunit ? "INR" : "%"} Off
+                                At Checkout
+                              </span>
+                            </div>
+                          </div>
+                        ) : (
+                          <div
+                            className="shop_card_price_wrap"
+                            style={{ color: "red" }}
+                          >
+                            <div className="shop_card_price_cntr">
+                              <span>{`${items?.discountperunit ?? 0}`}</span>
+                              <span>&nbsp;% Off At Checkout</span>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
-                    {/* </div> */}
-                    <div className="shop_card_text_cntr">
-                      <div className="shop_card_brandwrap">
-                      <h2 className="shop_card_text_brandName">{`${items?.BrandName??"Zakary"}`}</h2>
-                      <div className="shop_card_tag">{items?.ribbon??"NEW"}</div>
-                      </div>
-                      <h3 className="shop_card_item_Name">
-                        {`${items.name}`}
-                      </h3>
-                      <div className="shop_card_price_wrap">
-                        <div className="shop_card_price_cntr">
-                          <span>{`${items?.priceperunit??0}`}</span>
-                          <span>&nbsp;INR</span>
-                        </div>
-                      </div>
-                      {items.discountTypeRs ? 
-                      <div className="shop_card_price_wrap" style={{color:'red'}}>
-                        <div className="shop_card_price_cntr">
-                          <span>{`${items?.discountperunit??0}`}</span>
-                          <span>&nbsp;{items.discountperunit ? "INR":"%"} Off At Checkout</span>
-                        </div>
-                      </div>
-                      :
-                      <div className="shop_card_price_wrap" style={{color:'red'}}>
-                        <div className="shop_card_price_cntr">
-                          <span>{`${items?.discountperunit??0}`}</span>
-                          <span>&nbsp;% Off At Checkout</span>
-                        </div>
-                      </div>
-                      }
-                      
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
+                  </Link>
+                );
+              })}
           </div>
         </div>
       </div>

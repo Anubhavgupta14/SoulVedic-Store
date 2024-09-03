@@ -38,6 +38,12 @@ const ProductPage = () => {
             setFinalPrice(res.priceperunit);
           }
 
+          if (res.color) {
+            setColorSelect(0);
+            const c = res.colorVar.options[0];
+            setSelectedVariants((prev) => ({ ...prev, Color: c }));
+          }
+
           if (product.info) {
             const parser = new DOMParser();
             const doc = parser.parseFromString(product.info, "text/html");
@@ -51,6 +57,7 @@ const ProductPage = () => {
     }
   };
 
+  console.log(selectedVarients, "sel");
   const handleEnablebtn = () => {
     if (product) {
       if (product.colorVar) {
@@ -136,9 +143,9 @@ const ProductPage = () => {
           variants: vararray,
         })
       );
-      setSelectedVariants({});
-      setColorSelect(null);
-      setVariantSelect({});
+      // setSelectedVariants({});
+      // setColorSelect(null);
+      // setVariantSelect({});
       toast.success("Product Added Successfully");
     }
   };
@@ -338,17 +345,6 @@ const ProductPage = () => {
                           className="ProductDets_size_wrap"
                           key={`varient-${i}`}
                         >
-                          <div className="ProductDets-size_assist_cntr">
-                            {variant?.title ?? ""}
-                            {/* <div id="easysize-placeholder"></div> */}
-                            <div
-                              id="easysize_button"
-                              className="easysize_button"
-                            >
-                              {variant?.title ?? ""} Assistance
-                            </div>
-                            {/* <div id="easysize-recommendation"></div> */}
-                          </div>
                           <div className="ProductDets-size_numbers_cntr">
                             <div
                               className="ProductDets-size_numbers_inner"
@@ -379,6 +375,17 @@ const ProductPage = () => {
                                 ))}
                             </div>
                           </div>
+                          <div className="ProductDets-size_assist_cntr">
+                            {variant?.title ?? ""}
+                            {/* <div id="easysize-placeholder"></div> */}
+                            <div
+                              id="easysize_button"
+                              className="easysize_button"
+                            >
+                              {variant?.title ?? ""} Assistance
+                            </div>
+                            {/* <div id="easysize-recommendation"></div> */}
+                          </div>
                         </div>
                       ))}
                   </div>
@@ -398,15 +405,9 @@ const ProductPage = () => {
                           Add to Bag
                         </span>
                       )}
-                      {!enableAddToCart ? (
-                        <span className="ProductDets_ntfy_btn_AddtoBeg">
-                          Select Varients
-                        </span>
-                      ) : (
-                        <span className="ProductDets_ntfy_btn_AddtoBeg">
-                          Add to Bag
-                        </span>
-                      )}
+                      <span className="ProductDets_ntfy_btn_AddtoBeg">
+                        Add to Bag
+                      </span>
                       <div className="ProductDets_ntfy_btn_price">
                         <div className="">
                           <span>{finalPrice}</span>

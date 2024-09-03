@@ -53,10 +53,8 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    /* padding: 20px 50px; */
     margin-bottom: 8rem;
     margin-top: 7vh;
-    background-color: #f9fbfc;
     padding-top: 10vh;
 }
 .t-logo-check {

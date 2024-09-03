@@ -703,7 +703,6 @@
   width: 100%;
   /* padding: 26px; */
   overflow: hidden;
-  background-color: blue;
 }
 
 .ProductDets_text_container_brandName {
@@ -1827,7 +1826,7 @@ button {
     justify-content: center;
   }
   .ProductDets_text-container {
-    gap: 64px;
+    gap: 32px;
   }
 
   /* .ProductDets_text_cntr {
