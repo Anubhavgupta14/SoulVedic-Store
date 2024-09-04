@@ -11,6 +11,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/router";
 import { addtocart } from "@/features/cart/CartSlice";
 import { useEffect, useState } from "react";
+import { RxCross2 } from "react-icons/rx";
 gsap.registerPlugin(ScrollTrigger);
 const ProductPage = () => {
   const [product, setProduct] = useState({});
@@ -44,11 +45,11 @@ const ProductPage = () => {
             setSelectedVariants((prev) => ({ ...prev, Color: c }));
           }
 
-          if (product.info) {
+          if (res.info) {
             const parser = new DOMParser();
-            const doc = parser.parseFromString(product.info, "text/html");
+            const doc = parser.parseFromString(res.info, "text/html");
             const paragraph = doc.body.firstChild;
-            setDesc(paragraph.textContent);
+            setDesc(paragraph.textContent, "eedcde");
           }
         }
       }
@@ -56,7 +57,6 @@ const ProductPage = () => {
       console.error(err);
     }
   };
-
   console.log(selectedVarients, "sel");
   const handleEnablebtn = () => {
     if (product) {
@@ -198,9 +198,85 @@ const ProductPage = () => {
     }
   }, []);
 
+  // State to manage modal visibility and the selected image
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1000) {
+        const ReactModalPortalImageCntr = document.querySelector(
+          ".ReactModalPortal_img_cntr"
+        );
+        const cursor = document.querySelector(
+          ".ReactModalPortal_img_cntr_cursor"
+        );
+        const allBigImgCntr = document.querySelectorAll(
+          ".ProductDets_Big_card_img-main_cntr img"
+        );
+
+        allBigImgCntr.forEach((img) => {
+          img.addEventListener("click", () => {
+            setSelectedImage(img.src); // Set the selected image URL
+            setModalVisible(true); // Show the modal
+            console.log("clicked img");
+          });
+        });
+
+        if (cursor) {
+          cursor.addEventListener("click", () => {
+            setModalVisible(false); // Hide the modal
+          });
+        }
+
+        // Cleanup event listeners on component unmount
+        return () => {
+          allBigImgCntr.forEach((img) => {
+            img.removeEventListener("click", () => {
+              setSelectedImage(img.src);
+              setModalVisible(true);
+            });
+          });
+
+          if (cursor) {
+            cursor.removeEventListener("click", () => {
+              setModalVisible(false);
+            });
+          }
+        };
+      }
+    };
+
+    handleResize(); // Initial call to handle any pre-existing elements
+    window.addEventListener("resize", handleResize); // Add resize event listener
+
+    // Cleanup on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
+
   return (
     <>
       <Toaster />
+      {isModalVisible && (
+        <div className="ReactModalPortal_img_cntr">
+          <div className="ReactModalPortal_img_cntr_overlay">
+            <div className="ReactModalPortal_img_cntr_cursor">
+              <div className="ReactModalPortal_img_cross">
+                <RxCross2 />
+              </div>
+              <div className="ReactModalPortal_img_cntr_grid">
+                <div className="ReactModalPortal_img_cntr_grid_cover">
+                  <img
+                    src={selectedImage}
+                    alt="Model is wearing Nour Hammour's Henri Double Breasted Leather Trench Coat in beige - Front  "
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="ProductDetails_wrapper">
         <div className="ProductDetails_cntr">
           <div className="ProductDets_main"></div>
@@ -239,7 +315,7 @@ const ProductPage = () => {
                         className="ProductDets_Big_img_cntr"
                       >
                         <div className="shop_card_img_bgcover">
-                          <div className="shop_card_img-main_cntr">
+                          <div className="ProductDets_Big_card_img-main_cntr">
                             <img src={`${items}`} alt={`images`} />
                           </div>
                         </div>
@@ -275,7 +351,6 @@ const ProductPage = () => {
                       {product?.name ?? ""}
                     </h2>
                   </div>
-
                   <div className="ProductDets_reverse_content_wrapper">
                     <div className="ProductDets_description_wrap">
                       {/* <div className="ProductDets_text_container_prdt_Desc-title">
@@ -376,7 +451,7 @@ const ProductPage = () => {
                             </div>
                           </div>
                           <div className="ProductDets-size_assist_cntr">
-                            {variant?.title ?? ""}
+                            {/* {variant?.title ?? ""} */}
                             {/* <div id="easysize-placeholder"></div> */}
                             <div
                               id="easysize_button"

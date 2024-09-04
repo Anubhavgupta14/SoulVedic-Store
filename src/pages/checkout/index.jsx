@@ -6,6 +6,7 @@ import { MdOutlineErrorOutline } from "react-icons/md";
 import { countrys } from "../../helpers/country";
 import { Savecards } from "../../../api_fetch/admin/User";
 import { useRouter } from "next/router";
+import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { IoBagHandleOutline } from "react-icons/io5";
 import {
   Checkoutitem,
@@ -283,25 +284,6 @@ const Checkout2 = () => {
     }
   };
 
-  const handleInputChange = (index, value) => {
-    const newInputs = [...inputs];
-    newInputs[index].input = value;
-    setInputs(newInputs);
-  };
-  const tempfunc = () => {
-    Settemp(false);
-    setNewadd(true);
-  };
-  const tempfunc2 = () => {
-    Settemp(false);
-    setNewadd(true);
-  };
-  const handleInputChange2 = (index, value) => {
-    const newInputs = [...Delivery];
-    newInputs[index].input = value;
-    setDelivery(newInputs);
-  };
-
   useEffect(() => {
     let func = async () => {
       try {
@@ -401,6 +383,11 @@ const Checkout2 = () => {
   console.log(paymentDetails, "detailspayment");
 
   return (
+    <>
+    <div className="back" onClick={()=>{router.back()}}>
+        <FaRegArrowAltCircleLeft/>
+        <p>Back</p>
+      </div>
     <div className="checkout-cont">
       <div className="checkout-left">
         <header role="banner" className="checkout_header">
@@ -555,9 +542,15 @@ const Checkout2 = () => {
               <div className="Shipping_title_cntr">
                 <h2 className="same_style_text">Shipping method</h2>
               </div>
+              {Object.keys(details)!=0 ?
               <div className="Shipping_method_cntr">
                 <p>Enter your shipping address</p>
               </div>
+              :
+              <div className="Shipping_method_cntr">
+                <p>Free</p>
+              </div>
+              }
             </div>
             <div className="Payment_container">
               <div className="payment_title_cntr">
@@ -724,6 +717,7 @@ const Checkout2 = () => {
                                           required
                                           type="text"
                                           placeholder="First name"
+                                          style={{backgroundColor:'#edecec',border:'1px solid'}}
                                           name="firstname"
                                           onChange={handleBillingDetailChange}
                                           value={isBilling ? details.firstname : billingDetails.firstname}
@@ -733,6 +727,7 @@ const Checkout2 = () => {
                                           type="text"
                                           placeholder="Last name"
                                           name="lastname"
+                                          style={{backgroundColor:'#edecec',border:'1px solid'}}
                                           onChange={handleBillingDetailChange}
                                           value={isBilling ? details.lastname : billingDetails.lastname}
                                         />
@@ -742,6 +737,7 @@ const Checkout2 = () => {
                                           type="text"
                                           placeholder="Company(optional)"
                                           name="company"
+                                          style={{backgroundColor:'#edecec',border:'1px solid'}}
                                           onChange={handleBillingDetailChange}
                                           value={isBilling ? details.company : billingDetails.company}
                                         />
@@ -752,6 +748,7 @@ const Checkout2 = () => {
                                           type="text"
                                           placeholder="postal code"
                                           name="pincode"
+                                          style={{backgroundColor:'#edecec',border:'1px solid'}}
                                           onChange={handleBillingDetailChange}
                                           value={isBilling ? details.pincode : billingDetails.pincode}
                                         />
@@ -760,6 +757,7 @@ const Checkout2 = () => {
                                           type="text"
                                           placeholder="city"
                                           name="city"
+                                          style={{backgroundColor:'#edecec',border:'1px solid'}}
                                           onChange={handleBillingDetailChange}
                                           value={isBilling ? details.city : billingDetails.city}
                                         />
@@ -769,6 +767,7 @@ const Checkout2 = () => {
                                           required
                                           type="text"
                                           placeholder="Address"
+                                          style={{backgroundColor:'#edecec',border:'1px solid'}}
                                           name="addressline1"
                                           onChange={handleBillingDetailChange}
                                           value={isBilling ? details.addressline1 : billingDetails.addressline1}
@@ -779,6 +778,7 @@ const Checkout2 = () => {
                                           type="text"
                                           placeholder="Appartment, suite, etc. (optional)"
                                           name="addressline2"
+                                          style={{backgroundColor:'#edecec',border:'1px solid'}}
                                           onChange={handleBillingDetailChange}
                                           value={isBilling ? details.addressline2 : billingDetails.addressline2}
                                         />
@@ -787,6 +787,7 @@ const Checkout2 = () => {
                                         <input
                                           required
                                           type="number"
+                                          style={{backgroundColor:'#edecec',border:'1px solid'}}
                                           placeholder="Phone"
                                           aria-required="true"
                                           autocomplete="off"
@@ -926,7 +927,7 @@ const Checkout2 = () => {
                       <div className="summary-name">{item.name}</div>
                       {cart &&
                         item.variants.map((op, j) => (
-                          <div key={j}>
+                          <div key={j} className="varients-cart">
                             {Object.keys(op).map((key, index) => (
                               <div
                                 key={index}
@@ -969,7 +970,7 @@ const Checkout2 = () => {
               <AiOutlineTag /> Enter a promo code
             </div>
             <input type="text" className="promo-input" />
-            <div className="promo-btn primary-btn flex-all">Apply</div>
+            <div className="promo-btn primary-btn flex-all" style={{cursor:'pointer'}}>Apply</div>
           </div>
           <div className="checkout-price-cont">
             <div className="cpp">
@@ -1002,6 +1003,7 @@ const Checkout2 = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -148,45 +148,47 @@ const ShopAll = () => {
                       </div>
                       {/* </div> */}
                       <div className="shop_card_text_cntr">
-                        <div className="shop_card_brandwrap">
-                          <h3 className="shop_card_item_Name">
-                            {`${items.name}`}
-                          </h3>
-                          <div className="shop_card_tag">
-                            {items?.ribbon ?? "NEW"}
+                        <div className="shop_card_text_cntr_inner">
+                          <div className="shop_card_brandwrap">
+                            <h3 className="shop_card_item_Name">
+                              {`${items.name}`}
+                            </h3>
+                            <div className="shop_card_tag">
+                              {items?.ribbon ?? "NEW"}
+                            </div>
                           </div>
-                        </div>
 
-                        <div className="shop_card_price_wrap">
-                          <div className="shop_card_price_cntr">
-                            <span>{`${items?.priceperunit ?? 0}`}</span>
-                            <span>&nbsp;INR</span>
+                          <div className="shop_card_price_wrap">
+                            <div className="shop_card_price_cntr">
+                              <span>{`${items?.priceperunit ?? 0}`}</span>
+                              <span>&nbsp;INR</span>
+                            </div>
                           </div>
+                          {items.discountTypeRs ? (
+                            <div
+                              className="shop_card_price_wrap"
+                              style={{ color: "red" }}
+                            >
+                              <div className="shop_card_price_cntr">
+                                <span>{`${items?.discountperunit ?? 0}`}</span>
+                                <span>
+                                  &nbsp;{items.discountperunit ? "INR" : "%"}{" "}
+                                  Off At Checkout
+                                </span>
+                              </div>
+                            </div>
+                          ) : (
+                            <div
+                              className="shop_card_price_wrap"
+                              style={{ color: "red" }}
+                            >
+                              <div className="shop_card_price_cntr">
+                                <span>{`${items?.discountperunit ?? 0}`}</span>
+                                <span>&nbsp;% Off At Checkout</span>
+                              </div>
+                            </div>
+                          )}
                         </div>
-                        {items.discountTypeRs ? (
-                          <div
-                            className="shop_card_price_wrap"
-                            style={{ color: "red" }}
-                          >
-                            <div className="shop_card_price_cntr">
-                              <span>{`${items?.discountperunit ?? 0}`}</span>
-                              <span>
-                                &nbsp;{items.discountperunit ? "INR" : "%"} Off
-                                At Checkout
-                              </span>
-                            </div>
-                          </div>
-                        ) : (
-                          <div
-                            className="shop_card_price_wrap"
-                            style={{ color: "red" }}
-                          >
-                            <div className="shop_card_price_cntr">
-                              <span>{`${items?.discountperunit ?? 0}`}</span>
-                              <span>&nbsp;% Off At Checkout</span>
-                            </div>
-                          </div>
-                        )}
                       </div>
                     </div>
                   </Link>
