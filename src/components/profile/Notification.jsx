@@ -13,17 +13,9 @@ const General = () => {
           <h4>Email Preferences</h4>
           <p>
           Manage your email preferences for a personalized experience tailored to your preferences. Your data security is our utmost priority.{" "}
-            {/* <span style={{ color: "#3b82f6", cursor: "pointer" }}>
-              Learn More.
-            </span>{" "} */}
-          </p>
-          <p>
-          
           </p>
         </div>
-        
       </div>
-
       <div
         className="security-div"
       >
@@ -56,10 +48,10 @@ const General = () => {
             
             <div className="rownoti" style={{marginTop:'25px', alignItems:'baseline'}}>
               <input type="checkbox" className="noticheck"></input>
-              <p className="noti-p" style={{fontWeight:'600'}}>To unsubscribe from all email communications, click below. We respect your choice and apologize for any inconvenience. You can resubscribe at any time. Thank you.</p>
+              <p className="noti-p" style={{fontWeight:'500'}}>To unsubscribe from all email communications, click below. We respect your choice and apologize for any inconvenience. You can resubscribe at any time. Thank you.</p>
             </div>
             <div className="fixed-right" style={{marginTop:'15px'}}>
-        <div className="fr-save" style={{ width: "14vw", marginTop: "12px" }}>
+        <div className="_btn_wrapper _btn_height _w-full" style={{ width: "14vw", marginTop: "12px" }}>
           Update My Preferences
         </div>
         </div>

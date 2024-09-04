@@ -106,7 +106,7 @@ const General = ({email}) => {
             </div>
           </div>
           <div className="secure-btn">
-            <div class="fr-save" style={{width:'170px'}} onClick={handleChangePassword}>
+            <div class="_btn_wrapper _btn_height _w-full" style={{width:'170px'}} onClick={handleChangePassword}>
               {load ? <div className="login-load"></div> : "Change Password"}
             </div>
           </div>
@@ -121,10 +121,10 @@ const General = ({email}) => {
           </div>
         
         <div className="delete-info">
-          To deactivate your account, first delete its resources. If you are the
+          <p>To deactivate your account, first delete its resources. If you are the
           only owner of any teams, either assign another owner or deactivate the
-          team.
-          <div className="fr-cancel de-btn">Deactivate Account</div>
+          team.</p>
+          <div className="_btn_wrapper _btn_height _w-full de-btn">Deactivate Account</div>
         </div>
       </div>
     </>

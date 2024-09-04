@@ -28,7 +28,7 @@
 }
 .react-international-phone-input-container .react-international-phone-input:hover{
 	/* border: none !important; */
-	border-bottom: 2px solid rgba(0, 0, 0, .3) !important;
+	border-bottom: 1px solid rgba(0, 0, 0, .3) !important;
 }
 .react-international-phone-country-selector-button{
 	border: none !important;
