@@ -19,7 +19,7 @@ const General = () => {
       <div
         className="security-div"
       >
-        <div className="security-main" style={{ height: "385px" }}>
+        <div className="security-main">
           {/* <p>Subscription Preference Center</p> */}
           {/* <div className="myline-4"></div> */}
 

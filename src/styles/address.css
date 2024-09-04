@@ -48,8 +48,9 @@
     margin-top: 30px;
 }
 .add-name{
-    font-weight: 600;
-    font-size: 17px;
+    font-weight: 400;
+    font-size: 12px;
+    font-family: var(--primary-font-Hel);
 }
 .phone-btn{
     display: flex;

@@ -178,12 +178,12 @@ const General = ({email}) => {
                       {/* <Profilebtn/> */}
                       </div>
                       </div>
-                      <p>{el.flat} {el.addressline1}</p>
-                      <p>{el.addressline2}</p>
-                      <p>{el.city}, {el.country}</p>
-                      <p>{el.pincode}</p>
+                      <p className="add-name">{el.flat} {el.addressline1}</p>
+                      <p className="add-name">{el.addressline2}</p>
+                      <p className="add-name">{el.city}, {el.country}</p>
+                      <p className="add-name">{el.pincode}</p>
                       <div className="phone-btn">
-                      <p style={{fontWeight:'600', marginTop:'5px'}}> {el.phone}</p>
+                      <p className="add-name" style={{fontWeight:'400', marginTop:'5px'}}>  {el.phone}</p>
                       
                       </div>
                   </div>

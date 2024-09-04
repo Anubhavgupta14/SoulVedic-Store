@@ -33,6 +33,7 @@ const AntTab = styled((props) => <Tab disableRipple {...props} />)(
     fontWeight: theme.typography.fontWeightRegular,
     marginRight: theme.spacing(1),
     color: "rgba(0, 0, 0, 0.85)",
+    fontSize:'12px',
     fontFamily: [
       "Helvetica, sans-serif"
     ].join(","),
@@ -303,7 +304,7 @@ export default function BasicTabs() {
                 <div
                   className="_btn_wrapper _btn_height _w-full"
                   onClick={()=>{Updatefun(userData)}}
-                  style={{ position: "relative", left: "85%", width:'90px' }}
+                  style={{ position: "relative", left: "85%", width:'90px', top:'15px' }}
                 >
                   {textbtn}
                 </div>
@@ -318,7 +319,7 @@ export default function BasicTabs() {
                       class="fixed-right"
                       style={{ marginTop: "2vh", justifyContent: "center" }}
                     >
-                      <div className="_btn_wrapper _btn_height _w-full" style={{width:'170px'}}>Upload Avatar</div>
+                      <div className="_btn_wrapper2 _btn_height _w-full" style={{width:'170px'}}>Upload Avatar</div>
                     </div>
                   </div>
 

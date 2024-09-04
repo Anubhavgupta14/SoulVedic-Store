@@ -257,11 +257,34 @@ li {
 }
 
 .back{
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 1rem;
-  padding: 10px;
-  cursor: pointer;
-  width: 80px;
+  position: absolute;
+    top: 25px;
+    left: 25px;
+    display: flex;
+    align-items: center;
+}
+._btn_wrapper2{
+  font-family: Centra No2, Helvetica, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    line-height: 1.35;
+    height: 40px;
+    color: white;
+    border: 1px solid #000;
+    background-color: #000;
+    border-radius: 9999px;
+    padding: 0 16px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s linear;
+    cursor: pointer;
+    height: 34px;
+}
+._btn_wrapper2:hover{
+  background-color: transparent;
+  color: #000;
 }
