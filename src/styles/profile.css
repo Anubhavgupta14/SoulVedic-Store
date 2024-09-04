@@ -511,7 +511,7 @@
   width: 100%;
   border-radius: 5px;
     background-color: white;
-    padding-block: 20px;
+    padding-block: 28px;
     /* border: 0.5px solid rgba(0,0,0,0.2); */
 }
 .text{
@@ -1037,6 +1037,11 @@ height: 40px;
 }
 .noti-p{
   padding: 5px !important;
+}
+.bg-white{
+  background-color: white;
+  position: fixed;
+  width: 80px;
 }
 
 @media screen and (max-width: 900px) {

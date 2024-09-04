@@ -31,7 +31,7 @@ a {
   color: #000;
 }
 .checkout_header span:nth-child(2) {
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 .checkout-main {
   position: relative;
@@ -145,6 +145,7 @@ a {
 }
 .checkbox-container h6 {
   font-family: var(--primary-font-Hel);
+  font-weight: 400;
 }
 
 .Delivery_container {
@@ -842,7 +843,7 @@ input:focus {
 }
 
 .promo-cont {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
   height: 60px;
   /* background-color: aqua; */
   overflow: hidden;

@@ -410,7 +410,7 @@ const Checkout2 = () => {
   return (
     <>
       <div
-        className="_btn_wrapper _btn_height _w-full back"
+        className="_btn_wrapper _btn_height _w-full back bg-white"
         onClick={() => {
           router.back();
         }}
@@ -931,10 +931,10 @@ const Checkout2 = () => {
 
             <div className="checkout-items-cont">
               {cart &&
-                cart.cart.map((item, index) => {
+                cart.cart.map((item, index, ar) => {
                   const price = prices[index];
                   return (
-                    <div key={index} className="summary-cont">
+                    <div key={index} className="summary-cont" style={index < ar.length - 1 ?{}:{borderBottom:'none'}}>
                       {!price ? (
                         //   <FinalpriceLoader2 />
                         <></>

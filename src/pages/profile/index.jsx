@@ -16,7 +16,7 @@ const General = () => {
 
       <div className="parent-div">
       <div
-        className="_btn_wrapper _btn_height _w-full back"
+        className="_btn_wrapper _btn_height _w-full back bg-white"
         onClick={() => {
           router.back();
         }}

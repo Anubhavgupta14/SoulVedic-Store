@@ -94,6 +94,7 @@ function CustomTabPanel(props) {
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
+      style={{minHeight:'64vh'}}
       {...other}
     >
       {value === index && (
