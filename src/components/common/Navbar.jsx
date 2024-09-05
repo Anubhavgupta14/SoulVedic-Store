@@ -406,106 +406,147 @@ const Navbar = () => {
           </Link>
           <nav>
             <ul className="header_nav_links">
-              {menu &&
-                menu.map((category, i) => (
-                  <li data-target={`.shop-${i}`} className="dataHoverLink">
-                    <div className="SideNavbar_inner_left_links _list-links-redirect">
-                      <Link
-                        href={"/collections/shop-all"}
-                        className="common_style_inherit SideNavbar_inner_links_hidden links"
-                      >
-                        {category?.name ?? ""}
-                      </Link>
-                    </div>
-                    <nav className={`header_nav_linksInner_wrap shop-${i}`}>
-                      <ul>
-                        {menu &&
-                          category.submenus.data &&
-                          category.submenus.data.map((submenu, j) => (
-                            <li className="_list-links-redirect" key={j}>
-                              <div
-                                id={`shopData${i}`}
-                                onClick={() => {
-                                  go(category.name, submenu.name);
-                                }}
-                                className={`common_style_inherit SideNavbar_inner_links_hidden links shopData${i}`}
-                              >
-                                {submenu.name}
-                              </div>
-                            </li>
-                          ))}
-                        <li>
-                          <div className="SideNavbar_space_btw_links"></div>
-                        </li>
-
-                        <li className="_list-links-redirect">
-                          <Link
-                            id="shopData1"
-                            href={"/collections"}
-                            className={`common_style_inherit SideNavbar_inner_links_hidden links shopData${i}`}
-                          >
-                            New
-                          </Link>
-                        </li>
-                        <li className="_list-links-redirect">
-                          <Link
-                            id="shopData1"
-                            href={""}
-                            className={`common_style_inherit SideNavbar_inner_links_hidden links shopData${i}`}
-                          >
-                            Permanent Collection
-                          </Link>
-                        </li>
-                        <li className="_list-links-redirect">
-                          <Link
-                            id="shopData1"
-                            href={""}
-                            className={`common_style_inherit SideNavbar_inner_links_hidden links shopData${i}`}
-                          >
-                            Best Sellers
-                          </Link>
-                        </li>
-                        <li
-                          className="_list-links-redirect"
-                          style={{ color: "red" }}
-                        >
-                          <Link
-                            id="shopData1"
-                            href={""}
-                            className={`common_style_inherit SideNavbar_inner_links_hidden links shopData${i}`}
-                          >
-                            Sale
-                          </Link>
-                        </li>
-
-                        <li>
-                          <div className="SideNavbar_space_btw_links"></div>
-                        </li>
-
-                        <li className="_list-links-redirect">
-                          <Link
-                            href={"/collection"}
-                            className="common_style_inherit SideNavbar_inner_links_hidden links"
-                          >
-                            La Mediterranée
-                          </Link>
-                        </li>
-                        <li className="_list-links-redirect">
-                          <Link
-                            href={"/collection"}
-                            className="common_style_inherit SideNavbar_inner_links_hidden links"
-                          >
-                            Decadence of a Parisian Winter
-                          </Link>
-                        </li>
-                      </ul>
-                    </nav>
-                  </li>
-                ))}
-              {/* <li data-target=".collection" className="dataHoverLink">
+              {/* {menu &&
+                menu.map((category, i) => ( */}
+              <li data-target={`.shop`} className="dataHoverLink">
                 <div className="SideNavbar_inner_left_links _list-links-redirect">
                   <Link
-                    href="/collections"
+                    href={"/collections/shop-all"}
+                    className="common_style_inherit SideNavbar_inner_links_hidden links"
+                  >
+                    Shop
+                  </Link>
+                </div>
+                <nav className={`header_nav_linksInner_wrap shop`}>
+                  <ul>
+                    {/* {menu &&
+                          category.submenus.data &&
+                          category.submenus.data.map((submenu, j) => ( */}
+                    <li className="_list-links-redirect">
+                      <div
+                        id={`shopData`}
+                        onClick={() => {
+                          go("Women", "Shirts");
+                        }}
+                        className={`common_style_inherit SideNavbar_inner_links_hidden links shopData`}
+                      >
+                        Shirts
+                      </div>
+                    </li>
+                    <li className="_list-links-redirect">
+                      <div
+                        id={`shopData`}
+                        onClick={() => {
+                          go("Women", "Coats");
+                        }}
+                        className={`common_style_inherit SideNavbar_inner_links_hidden links shopData`}
+                      >
+                        Coats
+                      </div>
+                    </li>
+                    <li className="_list-links-redirect">
+                      <div
+                        id={`shopData`}
+                        onClick={() => {
+                          go("Men", "T-Shirts");
+                        }}
+                        className={`common_style_inherit SideNavbar_inner_links_hidden links shopData`}
+                      >
+                        T-Shirts
+                      </div>
+                    </li>
+                    <li className="_list-links-redirect">
+                      <div
+                        id={`shopData`}
+                        onClick={() => {
+                          go("Kid", "Pants");
+                        }}
+                        className={`common_style_inherit SideNavbar_inner_links_hidden links shopData`}
+                      >
+                        Pants
+                      </div>
+                    </li>
+                    <li className="_list-links-redirect">
+                      <div
+                        id={`shopData`}
+                        onClick={() => {
+                          go("Kid", "Pants");
+                        }}
+                        className={`common_style_inherit SideNavbar_inner_links_hidden links shopData`}
+                      >
+                        Trousers
+                      </div>
+                    </li>
+                    <li className="_list-links-redirect">
+                      <div
+                        id={`shopData`}
+                        onClick={() => {
+                          go("Kid", "Pants");
+                        }}
+                        className={`common_style_inherit SideNavbar_inner_links_hidden links shopData`}
+                      >
+                        Jackets
+                      </div>
+                    </li>
+                    <li className="_list-links-redirect">
+                      <div
+                        id={`shopData`}
+                        onClick={() => {
+                          go("Kid", "Pants");
+                        }}
+                        className={`common_style_inherit SideNavbar_inner_links_hidden links shopData`}
+                      >
+                        Shoes
+                      </div>
+                    </li>
+
+                    <li>
+                      <div className="SideNavbar_space_btw_links"></div>
+                    </li>
+
+                    <li className="_list-links-redirect">
+                      <Link
+                        id="shopData1"
+                        href={"/collections"}
+                        className={`common_style_inherit SideNavbar_inner_links_hidden links shopData`}
+                      >
+                        New
+                      </Link>
+                    </li>
+
+                    <li className="_list-links-redirect">
+                      <Link
+                        id="shopData1"
+                        href={""}
+                        className={`common_style_inherit SideNavbar_inner_links_hidden links shopData`}
+                      >
+                        Best Sellers
+                      </Link>
+                    </li>
+                    <li
+                      className="_list-links-redirect"
+                      style={{ color: "red" }}
+                    >
+                      <Link
+                        id="shopData1"
+                        href={""}
+                        className={`common_style_inherit SideNavbar_inner_links_hidden links shopData`}
+                      >
+                        Sale
+                      </Link>
+                    </li>
+
+                    <li>
+                      <div className="SideNavbar_space_btw_links"></div>
+                    </li>
+                  </ul>
+                </nav>
+              </li>
+
+              <li data-target=".collection" className="dataHoverLink">
+                <div className="SideNavbar_inner_left_links _list-links-redirect">
+                  <Link
+                    href="/collection"
                     passHref
                     className="common_style_inherit SideNavbar_inner_links_hidden links"
                   >
@@ -516,7 +557,7 @@ const Navbar = () => {
                   <ul>
                     <li className="_list-links-redirect">
                       <Link
-                        href={""}
+                        href={"/collection"}
                         className="common_style_inherit SideNavbar_inner_links_hidden links"
                       >
                         La Mediterranée
@@ -524,7 +565,7 @@ const Navbar = () => {
                     </li>
                     <li className="_list-links-redirect">
                       <Link
-                        href={""}
+                        href={"/collection"}
                         className="common_style_inherit SideNavbar_inner_links_hidden links"
                       >
                         Decadence of a Parisian Winter
@@ -532,7 +573,7 @@ const Navbar = () => {
                     </li>
                   </ul>
                 </nav>
-              </li> */}
+              </li>
               <li data-target=".about" className="dataHoverLink">
                 <div className="SideNavbar_inner_left_links _list-links-redirect">
                   <Link
@@ -589,32 +630,32 @@ const Navbar = () => {
               </li>
             </ul>
           </nav>
-          {menu &&
-            menu.map((el, i) => (
-              <Link
-                data-target={`.shop-${i}`}
-                href={""}
-                className="common_style_inherit Sidenavbar_bottom_cntent_wrap hover-image"
-              >
-                <div className="Sidenavbar_bottom_cntent_cntr">
-                  <div className="Sidenavbar_bottom_img_cntr">
-                    <div className="Sidenavbar_bottom_img_wrap">
-                      <div className="Sidenavbar_bottom_img_cover">
-                        <img
-                          src="https://cdn.sanity.io/images/h9gyalsq/production/fbda2c83746b833454469c08448a3af4d1f71091-1000x650.jpg?w=420&q=70&auto=format"
-                          alt=""
-                        />
-                      </div>
-                    </div>
+          {/* {menu &&
+            menu.map((el, i) => ( */}
+          <Link
+            data-target={`.shop`}
+            href={""}
+            className="common_style_inherit Sidenavbar_bottom_cntent_wrap hover-image"
+          >
+            <div className="Sidenavbar_bottom_cntent_cntr">
+              <div className="Sidenavbar_bottom_img_cntr">
+                <div className="Sidenavbar_bottom_img_wrap">
+                  <div className="Sidenavbar_bottom_img_cover">
+                    <img
+                      src="https://cdn.sanity.io/images/h9gyalsq/production/fbda2c83746b833454469c08448a3af4d1f71091-1000x650.jpg?w=420&q=70&auto=format"
+                      alt=""
+                    />
                   </div>
-                  <div className="Sidenavbar_bottom_left_text_cntr">
-                    Shop the Seasonal Sale
-                  </div>
-                  <div className="Sidenavbar_bottom_blank_cntr"></div>
-                  <div className="Sidenavbar_bottom_blank_cntr2"></div>
                 </div>
-              </Link>
-            ))}
+              </div>
+              <div className="Sidenavbar_bottom_left_text_cntr">
+                Shop the Seasonal Sale
+              </div>
+              <div className="Sidenavbar_bottom_blank_cntr"></div>
+              <div className="Sidenavbar_bottom_blank_cntr2"></div>
+            </div>
+          </Link>
+
           <Link
             data-target=".collection"
             href={""}
@@ -780,34 +821,38 @@ const Navbar = () => {
                   setUpdate((prev) => !prev);
                 }}
               >
-                {menu &&
-                  menu.map((category, i) => (
-                    <li className="_list-links-redirect" key={i}>
-                      <div>
-                        <Link
-                          href={""}
-                          className="links2 Nav-hover-link"
-                          style={
-                            pathName == "collections" || pathName == "product"
-                              ? { color: "#000" }
-                              : { color: "white" }
-                          }
-                        >
-                          {category.name}
-                        </Link>
-                      </div>
-                    </li>
-                  ))}
-                {/* <li className="_list-links-redirect">
+                {/* {menu &&
+                  menu.map((category, i) => ( */}
+                <li className="_list-links-redirect">
+                  <div>
+                    <Link
+                      href={""}
+                      className="links2 Nav-hover-link"
+                      style={
+                        pathName == "collections" || pathName == "product"
+                          ? { color: "#000" }
+                          : { color: "white" }
+                      }
+                    >
+                      Shop
+                    </Link>
+                  </div>
+                </li>
+
+                <li className="_list-links-redirect">
                   <Link
-                    href="/collections"
+                    href="/collection"
                     passHref
                     className="links2 Nav-hover-link"
-                    style={(pathName=="collections") || (pathName=="product")? { color:'#000' }:{color:'white'}}
+                    style={
+                      pathName == "collections" || pathName == "product"
+                        ? { color: "#000" }
+                        : { color: "white" }
+                    }
                   >
                     Collections
                   </Link>
-                </li> */}
+                </li>
                 <li className="_list-links-redirect">
                   <Link
                     href={""}

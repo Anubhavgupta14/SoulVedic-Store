@@ -80,7 +80,9 @@
 .table thead,
 .table tr {
     color: #000;
-    font-size: 14px;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: var(--primary-font-Hel);
     padding: 12px;
     text-align: start;
     vertical-align: middle;
@@ -124,8 +126,8 @@
     justify-content: flex-start;
 }
 .table tbody tr td .featureBox .tableContent .tableTitle {
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 12px;
+    font-weight: 400;
 }
 .tableVariant{
     font-size: 13px;

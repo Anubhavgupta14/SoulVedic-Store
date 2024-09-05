@@ -5,7 +5,7 @@
     padding-top: 10vh;
   }
   .parent-div{
-    padding-top: 5px;
+    padding-top: 60px;
     padding-bottom: 100px;
     background-color: #f9fbfc;
     min-height: 100vh;
@@ -511,7 +511,7 @@
   width: 100%;
   border-radius: 5px;
     background-color: white;
-    padding-block: 20px;
+    padding-block: 28px;
     /* border: 0.5px solid rgba(0,0,0,0.2); */
 }
 .text{
@@ -531,19 +531,14 @@
   padding: 8px 14px;
   border: 1px solid rgba(0,0,0,0.2);
   outline: none;
-  font-size: 16px;
   width: 100%;
-
   flex: 1;
   transition: 0.3s ease;
-  width: 100%;
   min-height: 40px;
-  font-size: 15px;
+  font-size: 12px;
+  font-weight: 400;
 }
 
-.general__input:focus {
-  border: 1px solid #3b82f6;
-}
 
 .general__input::placeholder {
   color: #ccc;
@@ -575,9 +570,6 @@
 .searchClass{
   width: 50%;
 }
-.orderid1{
-  font-weight: 600;
-}
 .orderid2{
   color: #3b82f6;
   cursor: pointer;
@@ -597,9 +589,13 @@
 }
 
 .label-text {
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: 400;
   color: #777;
   margin-bottom: -.1rem;
+}
+.react-international-phone-input-container .react-international-phone-input {
+  font-size: 12px !important;
 }
 
 .profile__address {
@@ -807,7 +803,7 @@
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     margin-inline: -2vw;
-    padding: 30px 40px;
+    padding: 10px 40px;
     margin-bottom: 30px;
     justify-content: space-between;
 }
@@ -840,7 +836,8 @@
 }
 
 .pay-head p{
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: 400;
 }
 .pay-outer{
   margin-top: 30px;
@@ -868,14 +865,17 @@
 }
 .security-main{
   width: 100%;
-  height: 350px;
   /* border: 1px solid rgba(0,0,0,0.2); */
   /* border-radius: 6px; */
-  margin-bottom: 20px;
 }
 .security-main p{
   padding: 20px 20px;
   font-weight: 600;
+  font-size: 12px;
+}
+.passguide{
+  font-weight: 400;
+  font-size: 12px;
 }
 .delete_account{
   width: 100%;
@@ -1035,11 +1035,13 @@ height: 40px;
   font-weight: 500;
 
 }
-.noticheck{
-  width: 15px;
-}
 .noti-p{
   padding: 5px !important;
+}
+.bg-white{
+  background-color: white;
+  position: fixed;
+  width: 80px;
 }
 
 @media screen and (max-width: 900px) {

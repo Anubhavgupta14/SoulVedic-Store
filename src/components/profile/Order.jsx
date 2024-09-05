@@ -64,14 +64,6 @@ const General = () => {
     const func = async () => {
       try {
         const token = localStorage.getItem('token')
-      //   const response = await fetch(`https://backend.mamoshfashion.com/api/orders/getorders`, {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify({ token}),
-      // });
-
       const data = await Getorders(token)
 
         if (!data) {
@@ -112,12 +104,7 @@ const General = () => {
             Access your order history effortlessly to track past purchases and
             manage returns
           </p>
-          <p>
-            Your information remains secure with us.{" "}
-            <span style={{ color: "#3b82f6", cursor: "pointer" }}>
-              Learn more.
-            </span>
-          </p>
+          
         </div>
 
         {/* <div className="fixed-right">
@@ -129,14 +116,16 @@ const General = () => {
         style={{ marginInline: "-2vw", marginTop: "30px" }}
       >
         <div className="my-2 line-order"></div>
-        {products && (
+        {products && products.length!=0 ?
           <Table
             columns={columns}
             rows={products}
             editItem={editItem}
             setDeleteProduct={setDeleteProduct}
           />
-        )}
+          :
+          <div>There is no order</div>
+        }
         
       </div>
     </div>

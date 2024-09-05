@@ -22,7 +22,7 @@
   /* display: block;
   height: auto;
   max-width: 100%; */
-  font-size: 4vw;
+  font-size: 3rem;
   text-align: center;
   letter-spacing: 0.1rem;
   font-weight: 400;
@@ -31,7 +31,7 @@ a {
   color: #000;
 }
 .checkout_header span:nth-child(2) {
-  font-size: 30px;
+  font-size: 1.6rem;
 }
 .checkout-main {
   position: relative;
@@ -44,7 +44,7 @@ a {
 .contact_container {
   position: relative;
   display: grid;
-  margin-bottom: 30px;
+  margin-bottom: 45px;
   grid-template-columns: minmax(0, 1fr);
   column-gap: 0;
   row-gap: 0;
@@ -77,9 +77,10 @@ a {
 }
 .contact_input_cntr input {
   padding-block: 1rem;
+  border: 1px solid #dedede;
   padding-inline: 1rem;
   font-size: 0.75rem;
-  margin: 1.2rem 0;
+  margin: 0.6rem 0;
 }
 
 .contact_input_cntr input::placeholder {
@@ -144,13 +145,14 @@ a {
 }
 .checkbox-container h6 {
   font-family: var(--primary-font-Hel);
+  font-weight: 400;
 }
 
 .Delivery_container {
   position: relative;
   grid-template-columns: minmax(0, 1fr);
   display: grid;
-  margin-bottom: 30px;
+  margin-bottom: 45px;
   /* column-gap: 2.2rem; */
   /* row-gap: 2.2rem; */
 }
@@ -164,15 +166,15 @@ a {
   grid-template-columns: minmax(0, 1fr);
   display: grid;
   column-gap: 2.2rem;
-  row-gap: 1.2rem;
+  row-gap: 0.6rem;
 }
 .Delivery_input_cntr label {
   position: relative;
   padding-block: 1.5rem;
   padding-inline: 1rem;
   font-size: 1rem;
-  margin: 1.2rem 0 0 0;
-  border: 1px solid #767676;
+  margin: 0.6rem 0 0 0;
+  border: 1px solid #dedede;
   width: 100%;
   display: block;
   cursor: pointer;
@@ -210,7 +212,7 @@ a {
 .Name_input_cntr input {
   position: relative;
   padding-block: 1rem;
-
+  border: 1px solid #dedede;
   padding-inline: 1rem;
   font-size: 0.75rem;
 }
@@ -222,6 +224,7 @@ a {
   padding-block: 1rem;
   padding-inline: 1rem;
   font-size: 0.75rem;
+  border: 1px solid #dedede;
   width: 100%;
 }
 .pincode_city_input_cntr {
@@ -238,6 +241,7 @@ a {
   position: relative;
   padding-block: 1rem;
   padding-inline: 1rem;
+  border: 1px solid #dedede;
   font-size: 0.75rem;
 }
 .Address_input_cntr {
@@ -248,6 +252,7 @@ a {
   position: relative;
   padding-block: 1rem;
   padding-inline: 1rem;
+  border: 1px solid #dedede;
   font-size: 0.75rem;
 
   width: 100%;
@@ -258,6 +263,7 @@ a {
 .Appartment_input_cntr input {
   position: relative;
   padding-block: 1rem;
+  border: 1px solid #dedede;
   padding-inline: 1rem;
   font-size: 0.75rem;
 
@@ -270,12 +276,13 @@ a {
   position: relative;
   padding-block: 1rem;
   padding-inline: 1rem;
+  border: 1px solid #dedede;
   font-size: 0.75rem;
   width: 100%;
 }
 .Shipping_container {
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 45px;
 }
 .Shipping_title_cntr h2 {
   font-family: var(--secondary-font-Hen);
@@ -286,7 +293,7 @@ a {
   padding-inline: 1rem;
   font-size: 0.857143rem;
 
-  margin: 1.2rem 0 0 0;
+  margin: 0.6rem 0 0 0;
   /* border: 1px solid #767676; */
   width: 100%;
   display: block;
@@ -304,14 +311,14 @@ a {
   grid-column-gap: 1.2rem;
   column-gap: 1.2rem;
   grid-row-gap: 1rem;
-  row-gap: 1rem;
+  row-gap: 0.6rem;
   position: relative;
   grid-template-rows: minmax(auto, max-content);
 }
 .payment_title_cntr {
   display: grid;
   column-gap: 1.2rem;
-  row-gap: 1rem;
+  row-gap: 0.6rem;
   position: relative;
   grid-template-rows: minmax(auto, max-content);
 }
@@ -365,8 +372,9 @@ a {
   align-items: center;
   gap: 1rem;
   grid-template-columns: auto 1fr;
-  border: 1px solid #000;
+  border: 1px solid #dedede;
   padding-inline: 1rem;
+  border-bottom: none;
   cursor: pointer;
 }
 
@@ -420,8 +428,8 @@ a {
 }
 .card_details_cntr {
   padding: 1rem;
-  background-color: #edecec;
-  border: 1px solid #767676;
+  background-color: rgb(245 243 243 / 60%);
+  border: 1px solid #dedede;
 }
 .card_details_inner_cntr {
   position: relative;
@@ -446,7 +454,7 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #000;
+  border: 1px solid #dedede;
   cursor: pointer;
   padding: 0 1rem;
 }
@@ -465,7 +473,7 @@ a {
   cursor: pointer;
   color: #000000;
   font-family: var(--primary-font-Hel);
-  background-color: #edecec;
+  background-color: rgb(245 243 243 / 60%);
   border: none;
   outline: none;
 }
@@ -499,8 +507,8 @@ a {
   padding-block: 1rem;
   padding-inline: 1rem;
   font-size: 0.75rem;
-  background-color: #edecec;
-  border: 1px solid;
+  background-color: rgb(245 243 243 / 60%);
+  border: 1px solid #dedede;
 }
 .input_grid_style_for_all {
   display: grid;
@@ -513,7 +521,7 @@ a {
 }
 .Name_on_card_cntr {
   display: grid;
-  gap: 0.4rem;
+  gap: 1rem;
 }
 .Name_on_card_input_cntr {
   display: grid;
@@ -525,8 +533,8 @@ a {
   padding-block: 1rem;
   padding-inline: 1rem;
   font-size: 0.75rem;
-  background-color: #edecec;
-  border: 1px solid;
+  background-color: rgb(245 243 243 / 60%);
+  border: 1px solid #dedede;
 }
 .Name_on_card_input_cntr input::placeholder {
   color: rgb(0 0 0 / 56%);
@@ -780,14 +788,14 @@ input:focus {
 
 .checkout-items-cont {
   width: 100%;
-  margin: 20px 0px;
+  margin: 20px 0px 0px 0px;
 }
 
 .summary-cont {
   display: flex;
   position: relative;
   padding: 10px 10px;
-  margin: 10px 0px;
+  margin: 10px 0px 0px 0px;
   height: 110px;
   font-family: var(--primary-font-Hel);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -796,7 +804,7 @@ input:focus {
 .summary-img-cont {
   position: relative;
   width: 50px;
-  height: 50px;
+  height: 80px;
   margin-right: 10px;
 }
 
@@ -807,7 +815,6 @@ input:focus {
 }
 .varients-cart {
   display: flex;
-  flex-direction: column;
   gap: 3px;
 }
 
@@ -836,10 +843,13 @@ input:focus {
 }
 
 .promo-cont {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  height: 150px;
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
+  height: 60px;
   /* background-color: aqua; */
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .min-promo {
@@ -868,10 +878,11 @@ input:focus {
   width: 100%;
   padding: 0px 10px;
   height: 40px;
-  font-size: 16px;
+  font-size: 12px;
+  font-family: var(--primary-font-Hel);
   background: none;
   outline: none;
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  border: 1px solid #dedede;
 }
 
 .promo-input:hover {
@@ -925,8 +936,8 @@ input:focus {
 
 .checkout-total {
   position: relative;
-  font-size: 23px;
-  font-weight: 500;
+  font-size: 1.2rem;
+  font-weight: 400;
   margin-top: 20px;
   font-family: var(--primary-font-Hel);
 }
@@ -935,6 +946,8 @@ input:focus {
   position: absolute;
   top: 0;
   right: 0;
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 
 .checkout-in {

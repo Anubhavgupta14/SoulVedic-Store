@@ -58,7 +58,7 @@ const General = ({email}) => {
       <div className="noti-main-div">
         <div className="security-left">
           <h4>Change Password</h4>
-          <div className="">
+          <div className="passguide">
             <p>New password must contain:</p>
             <p>- At least 8 characters</p>
             <p>- At least 1 lower letter (a-z)</p>
@@ -71,7 +71,7 @@ const General = ({email}) => {
 
         <div className="form-secure" style={{ width: "50%" }}>
           <div className="curr-pass">
-            <label>Current Password</label>
+            <label className="passguide">Current Password</label>
             <input
               className="general__input"
               type="text"
@@ -83,7 +83,7 @@ const General = ({email}) => {
           </div>
           <div className="twoinone">
             <div className="curr-pass">
-              <label>New Password</label>
+              <label className="passguide">New Password</label>
               <input
                 className="general__input"
                 type="text"
@@ -94,7 +94,7 @@ const General = ({email}) => {
               />
             </div>
             <div className="curr-pass">
-              <label>Re-enter New Password</label>
+              <label className="passguide">Re-enter New Password</label>
               <input
                 className="general__input"
                 type="text"
@@ -120,7 +120,7 @@ const General = ({email}) => {
         <h4>Delete Account</h4>
           </div>
         
-        <div className="delete-info">
+        <div className="delete-info passguide">
           <p>To deactivate your account, first delete its resources. If you are the
           only owner of any teams, either assign another owner or deactivate the
           team.</p>

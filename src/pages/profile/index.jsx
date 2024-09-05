@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import Tab from "@/components/profile/Tab";
-import { FaRegArrowAltCircleLeft } from "react-icons/fa";
+import { IoIosArrowRoundBack } from "react-icons/io";
 import { useRouter } from "next/router";
 
 const General = () => {
@@ -15,8 +15,13 @@ const General = () => {
     <>
 
       <div className="parent-div">
-      <div className="back" onClick={()=>{router.back()}} style={{}}>
-        <FaRegArrowAltCircleLeft/>
+      <div
+        className="_btn_wrapper _btn_height _w-full back bg-white"
+        onClick={() => {
+          router.back();
+        }}
+      >
+        <IoIosArrowRoundBack style={{ fontSize: "1rem" }} />
         <p>Back</p>
       </div>
         <div className="outerdiv-pro">

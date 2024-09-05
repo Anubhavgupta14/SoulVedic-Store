@@ -141,7 +141,7 @@ const General = ({email}) => {
 
   return (
     <>
-    <div className="pay-top2" style={{marginInline:'-2vw', marginBottom:'2px'}}>
+    <div className="pay-top2" style={{marginInline:'-2vw', marginBottom:'2px', width:'105.6%'}}>
         <div className="pay-head">
           <h4>Saved Addresses</h4>
           <p>Easily manage your saved addresses for seamless checkout experiences.</p>
@@ -161,7 +161,7 @@ const General = ({email}) => {
         style={{ marginInline: "-31px", width: "106%" }}
       >
         {/* <p className="profile-t">Saved Address</p> */}
-        <div className="my-2"></div>
+        <div className="my-2" style={{width:'99.7%'}}></div>
 
         <div className="setadd">
           {address.length!==0 && (
@@ -178,12 +178,12 @@ const General = ({email}) => {
                       {/* <Profilebtn/> */}
                       </div>
                       </div>
-                      <p>{el.flat} {el.addressline1}</p>
-                      <p>{el.addressline2}</p>
-                      <p>{el.city}, {el.country}</p>
-                      <p>{el.pincode}</p>
+                      <p className="add-name">{el.flat} {el.addressline1}</p>
+                      <p className="add-name">{el.addressline2}</p>
+                      <p className="add-name">{el.city}, {el.country}</p>
+                      <p className="add-name">{el.pincode}</p>
                       <div className="phone-btn">
-                      <p style={{fontWeight:'600', marginTop:'5px'}}> {el.phone}</p>
+                      <p className="add-name" style={{fontWeight:'400', marginTop:'5px'}}>  {el.phone}</p>
                       
                       </div>
                   </div>
@@ -192,7 +192,7 @@ const General = ({email}) => {
               ))}
             </>
           )}
-          <div className="card2" onClick={()=>{Setopen(true)}} style={{height:'190px'}}>
+          <div className="card2" onClick={()=>{Setopen(true)}} style={{width:'48.85%'}}>
             <GoPlus className="plus" />
             <p>Add address</p>
           </div>
