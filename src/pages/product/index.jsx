@@ -10,8 +10,9 @@ import Link from "next/link";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/router";
 import { addtocart } from "@/features/cart/CartSlice";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
+import AnimBtn from "@/components/common/AnimBtn";
 gsap.registerPlugin(ScrollTrigger);
 const ProductPage = () => {
   const [product, setProduct] = useState({});
@@ -132,6 +133,7 @@ const ProductPage = () => {
 
   const handleAddToCart = () => {
     if (enableAddToCart) {
+      setBtnClick((prev) => !prev);
       const vararray = [];
       vararray.push(selectedVarients);
       dispatch(
@@ -203,7 +205,7 @@ const ProductPage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 1000) {
+      if (window.innerWidth >= 0) {
         const ReactModalPortalImageCntr = document.querySelector(
           ".ReactModalPortal_img_cntr"
         );
@@ -254,6 +256,75 @@ const ProductPage = () => {
       window.removeEventListener("resize", handleResize);
     };
   });
+
+  const timelineRef = useRef(null);
+  const [btnClick, setBtnClick] = useState(false);
+  useEffect(() => {
+    const AnimBtnCntr = document.querySelector(".ProductDets_ntfy_btn");
+    const AnimLine_1 = document.querySelector(".ProductBtn_line1");
+    const AnimLine_2 = document.querySelector(".ProductBtn_line2");
+
+    const handleClick = () => {
+      if (timelineRef.current) {
+        timelineRef.current.kill(); // Stop the previous timeline
+      }
+
+      const tl = gsap.timeline({
+        // onComplete: () => {
+        //   // Reset to default state after animation completes
+        //   gsap.set(".ProductBtn_line_Anim", { opacity: 0 });
+        //   gsap.set(AnimLine_1, { width: 0 });
+        //   gsap.set(AnimLine_2, { width: 0 });
+        // },
+      });
+
+      timelineRef.current = tl; // Save the current timeline reference
+
+      tl.to(".ProductBtn_line_Anim", {
+        opacity: 1,
+        duration: 0.5,
+        ease: "power1.out",
+      });
+      tl.to(AnimLine_2, {
+        width: "100%",
+        duration: 0.5,
+        ease: "power1.out",
+      });
+      tl.to(AnimLine_2, {
+        delay: 0.3,
+        width: 0,
+        left: "100%",
+        duration: 0.5,
+        ease: "power1.out",
+      });
+      tl.to(AnimLine_1, {
+        width: "100%",
+        duration: 0.5,
+        ease: "power1.out",
+      });
+      tl.to(AnimLine_1, {
+        delay: 0.3,
+        width: 0,
+        left: "100%",
+        duration: 0.5,
+        ease: "power1.out",
+      });
+      tl.to(".ProductBtn_line_Anim", {
+        opacity: 0,
+        duration: 0.1,
+        ease: "power1.out",
+      });
+    };
+
+    AnimBtnCntr.addEventListener("click", handleClick);
+
+    return () => {
+      AnimBtnCntr.removeEventListener("click", handleClick);
+      if (timelineRef.current) {
+        timelineRef.current.kill(); // Clean up the timeline
+      }
+    };
+  }, [btnClick]);
 
   return (
     <>
@@ -471,6 +542,12 @@ const ProductPage = () => {
                       id="easysize-cart-button"
                       onClick={handleAddToCart}
                     >
+                      <div className="ProductBtn_line_Anim">
+                        <div className="ProductBtn_line_cntr">
+                          <div className="ProductBtn_line ProductBtn_line1"></div>
+                          <div className="ProductBtn_line ProductBtn_line2"></div>
+                        </div>
+                      </div>
                       {!enableAddToCart ? (
                         <span className="ProductDets_ntfy_btn_slect_size">
                           Select a Size
@@ -490,9 +567,11 @@ const ProductPage = () => {
                         </div>
                       </div>
                     </button>
-                    <div className="ProductDets_shipping_para">
+                    {/* <AnimBtn /> */}
+
+                    {/* <div className="ProductDets_shipping_para">
                       Complimentary shipping on orders above 500 INR.
-                    </div>
+                    </div> */}
                   </div>
 
                   <div className="ProductDets_bottom_links_wrap">
@@ -510,190 +589,6 @@ const ProductPage = () => {
                   </div>
                 </div>
               </div>
-              {/* <div className="ProductDets_text_cntr">
-              <div className="ProductDets_text_cntr_resp">
-                <div>
-                  <span className="ProductDets_text_resp_brandName ProductDets_common_style">
-                    zakary
-                  </span>
-                  <span className="ProductDets_text_resp_productName ProductDets_common_style">
-                    {product?.name ?? ""}
-                  </span>
-                </div>
-                <div className="ProductDets_text_price_resp ProductDets_common_style">
-                  <div className="ProductDets_text_price_resp_flex">
-                    <span>1,545</span>
-                    <span>&nbsp;INR</span>
-                  </div>
-                </div>
-              </div>
-              <h1 className="ProductDets_text_brandName ProductDets_common_style">
-                zakary
-              </h1>
-              <h2 className="ProductDets_text_productName ProductDets_common_style">
-                {product?.name ?? ""}
-              </h2>
-              <div className="ProductDets_text_prdt_Desc-title">
-                Description
-              </div>
-              <div className="ProductDets_text_prdt_Desc">
-                <div>
-                  <p>
-                    <meta charSet="utf-8" />
-                    <span>
-                      This lambskin leather jacket offers a relaxed yet
-                      sophisticated fit, featuring a matching belt to cinch the
-                      waist and flatter the figure. Hidden zippers provide a
-                      sleek finish, making it versatile and easy to style. Wear
-                      it loose for a casual look or cinched for a refined
-                      silhouette.
-                    </span>
-                  </p>
-                </div>
-                <div>
-                  Fits large to size, we suggest taking one size smaller than
-                  usual.
-                </div>
-              </div>
-              {(product?.color ?? false) && (
-                <div className="ProductDets_colorVariant_wrap">
-                  <span className="ProductDets_colorVariant">Color</span>
-                  <span className="ProductDets_colorVariant">Scotch</span>
-                </div>
-              )}
-              <div className="ProductDets_collection-wrap">
-                <fieldset className="ProfuctDets_fieldset">
-                  {product &&
-                    product.colorVar &&
-                    product.colorVar.options.map((el, i) => (
-                      <Link
-                        href={""}
-                        aria-label="Beige"
-                        onClick={() => {
-                          setColorSelect(i);
-                        }}
-                        className={
-                          colorSelect == i
-                            ? "shop-card_grid collection_grid Product_active_color"
-                            : "shop-card_grid collection_grid"
-                        }
-                        key={i}
-                      >
-                        <div className="ProductDets_collection_imgs_grid_cntr">
-                          <div className="ProductDets_imgs_grid_cntr ProductDets_imgs_grid_cntr2">
-                            <div className="ProductDets_collection_img_cntr">
-                              <div
-                                className="Product_color"
-                                style={{ backgroundColor: el }}
-                              ></div>
-                            </div>
-                          </div>
-                        </div>
-                      </Link>
-                    ))}
-                </fieldset>
-              </div>
-
-              <div className="ProductDets-size_assist_cntr">
-                Size
-                <div id="easysize-placeholder"></div>
-                <div id="easysize_button" className="easysize_button">
-                  Size Assistance
-                </div>
-                <div id="easysize-recommendation"></div>
-              </div>
-
-              <div className="ProductDets-size_numbers_cntr">
-                <div
-                  className="ProductDets-size_numbers_inner"
-                  id="easysize-size-selector"
-                >
-                  <Link
-                    href={""}
-                    aria-current="page"
-                    className="ProductDets-size_numbers acitve"
-                  >
-                    32
-                  </Link>
-                  <Link
-                    href={""}
-                    aria-current="page"
-                    className="ProductDets-size_numbers acitve"
-                  >
-                    32
-                  </Link>
-                  <Link
-                    href={""}
-                    aria-current="page"
-                    className="ProductDets-size_numbers acitve"
-                  >
-                    32
-                  </Link>
-                  <Link
-                    href={""}
-                    aria-current="page"
-                    className="ProductDets-size_numbers acitve"
-                  >
-                    32
-                  </Link>
-                  <Link
-                    href={""}
-                    aria-current="page"
-                    className="ProductDets-size_numbers acitve"
-                  >
-                    32
-                  </Link>
-                  <Link
-                    href={""}
-                    aria-current="page"
-                    className="ProductDets-size_numbers acitve"
-                  >
-                    32
-                  </Link>
-                  <Link
-                    href={""}
-                    aria-current="page"
-                    className="ProductDets-size_numbers acitve"
-                  >
-                    32
-                  </Link>
-                </div>
-              </div>
-              <div className="ProductDets_Notify_wrap">
-                <button
-                  className="ProductDets_ntfy_btn ProductDets_ntfy_btn_grid"
-                  id="easysize-cart-button"
-                >
-                  <span className="ProductDets_ntfy_btn_slect_size">
-                    Select a Size
-                  </span>
-
-                  <span className="ProductDets_ntfy_btn_AddtoBeg">
-                    Add to Bag
-                  </span>
-                  <div className="ProductDets_ntfy_btn_price">
-                    <div className="">
-                      <span>1,545</span>
-                      <span>&nbsp;INR</span>
-                    </div>
-                  </div>
-                </button>
-                <div className="ProductDets_shipping_para">
-                  Complimentary shipping on orders above 500 INR.
-                </div>
-                <div className="_1l9nr81l"></div>
-              </div>
-              <div className="ProductDets_info_links">
-                <button className="ProductDets_info-btn">Details</button>
-                <button className="ProductDets_info-btn">Care</button>
-                <button className="ProductDets_info-btn">Shipping</button>
-              </div>
-              <div className="ProductDets_info_help">
-                <button className="ProductDets_info_text sql38zc _1l9nr81o">
-                  Need help?
-                </button>
-              </div>
-            </div> */}
             </div>
             <div className="ProductDets_text_btn_resp_cntr ProductDets_common_style">
               <div className="ProductDets_text_btn_resp_wrap">

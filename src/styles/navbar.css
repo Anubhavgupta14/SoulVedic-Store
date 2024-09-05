@@ -24,11 +24,12 @@
   z-index: 5;
 }
 .headerconatin {
-  width: 100%;
+  /* width: 100%;
   height: 38px;
   position: fixed;
-  top: 0;
-  z-index: 5;
+  top: 0; */
+  /* z-index: 5; */
+  display: none;
 }
 .header_inner {
   display: grid;
@@ -43,6 +44,50 @@
   align-items: center;
   justify-content: center;
   height: 45px;
+}
+._1m2ouik6 {
+  animation-name: _1m2ouik1;
+  animation-duration: 0.24s;
+}
+
+._1m2ouik4 {
+  transform: translate(0) translateY(-3.5px) rotate(0);
+  transform-origin: center center;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+._1m2ouika {
+  animation-name: _1m2ouik3;
+  animation-duration: 0.24s;
+}
+._1m2ouik8 {
+  transform: translate(0) translateY(3.5px) rotate(0);
+  transform-origin: center center;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+@keyframes _1m2ouik1 {
+  0% {
+    transform: translate(0) translateY(0) rotate(45deg);
+  }
+
+  50% {
+    transform: translate(0) translateY(0) rotate(0);
+  }
+  100% {
+    transform: translate(0) translateY(-3.5px) rotate(0);
+  }
+}
+@keyframes _1m2ouik3 {
+  0% {
+    transform: translate(0) translateY(0) rotate(-45deg);
+  }
+  50% {
+    transform: translate(0) translateY(0) rotate(0);
+  }
+  100% {
+    transform: translate(0) translateY(3.5px) rotate(0);
+  }
 }
 .common_style_inherit {
   background: none;
@@ -421,6 +466,14 @@ button {
     padding: 0 40px;
     height: 180px;
     color: #ffffff;
+  }
+  .headerconatin {
+    width: 100%;
+    height: 38px;
+    position: fixed;
+    top: 0;
+    z-index: 5;
+    display: initial;
   }
   .header_inner {
     grid-template-columns: 146px 1fr 110px;

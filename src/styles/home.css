@@ -203,9 +203,10 @@
 
 #How_to_Nail_it_Cntr .nail_para_text .p-normal.text-top {
   color: #222;
-  font-size: calc(1.2875rem + 0.2vw);
+  /* font-size: calc(1.2875rem + 0.2vw); */
+  font-size: 0.75rem;
   letter-spacing: -0.01em;
-  line-height: 1.1em;
+  line-height: 1.5em;
   margin-top: 2.6470588235vw;
   position: relative;
   text-align: center;
@@ -228,7 +229,8 @@
 
 #How_to_Nail_it_Cntr .p-normal.text {
   color: #222;
-  font-size: calc(1.325rem + 0.4vw);
+  /* font-size: calc(1.325rem + 0.4vw); */
+  font-size: 1rem;
   letter-spacing: -0.02em;
   line-height: 1.3em;
   margin-bottom: 7.0588235294vw;
@@ -396,8 +398,8 @@
   }
 
   #How_to_Nail_it_Cntr .nail_para_text .p-normal.text-top {
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 0.75rem;
+    line-height: 1.2rem;
   }
 
   #How_to_Nail_it_Cntr .nail_para_text {
@@ -411,8 +413,8 @@
   }
 
   #How_to_Nail_it_Cntr .p-normal.text {
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 1rem;
+    line-height: 1.2em;
   }
 
   .title_inner-nail h2 {
@@ -491,16 +493,16 @@
   }
 
   #How_to_Nail_it_Cntr .pictos-label .p-normal {
-    font-size: 1.375rem;
-    line-height: 1.3em;
+    font-size: 0.75rem;
   }
 
   #How_to_Nail_it_Cntr .p-normal.text-top {
-    font-size: 1.4375rem;
+    font-size: 0.75rem;
+    line-height: 1;
   }
 
   #How_to_Nail_it_Cntr .p-normal.text {
-    font-size: 1.625rem;
+    font-size: 1rem;
   }
 }
 
@@ -696,7 +698,11 @@
   align-items: flex-start;
   overflow: hidden;
 } */
-
+.shop_card_text_cntr_inner {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 .ProductDets_title_wrap {
   display: flex;
   align-items: center;
@@ -725,6 +731,7 @@
 
 .shop_card_brandwrap {
   display: flex;
+  /* justify-content: space-between; */
   margin-top: 10px;
 }
 
@@ -737,11 +744,12 @@
   line-height: 1.2;
   color: #767676;
   grid-area: sizes;
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   margin-bottom: 4px;
   height: 18px;
   font-family: var(--secondary-font-Hen);
+  text-transform: capitalize;
 }
 
 .shop_card_item_Name {
@@ -818,7 +826,7 @@
   overflow: auto;
   display: flex;
   opacity: 1;
-  z-index: 10;
+  z-index: 999;
   background: rgb(255, 255, 255);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -851,7 +859,7 @@
   max-width: 100%;
 }
 .ReactModalPortal_img_cross {
-  position: absolute;
+  position: fixed;
   display: grid;
   width: 80px;
   height: 80px;
@@ -862,13 +870,15 @@
   color: #000;
   z-index: 10;
   font-size: 25px;
+  cursor: pointer;
 }
 .ReactModalPortal_img_cross i {
   font-weight: 400;
 }
 @media only screen and (min-width: 375px) {
-  .shop_card_tag {
-    font-size: calc(12.59px + 0.11vw);
+  .shop_card_tag,
+  .Footer_SocialLinks_bottom li {
+    font-size: calc(14.59px + 0.11vw);
   }
   .ProductDets_shipping_para {
     font-size: 12px !important;
@@ -877,9 +887,20 @@
     padding-inline: 16px;
     padding-block: 16px;
   }
+  .shop_card_brandwrap {
+    justify-content: space-between;
+  }
 }
-
+@media only screen and (max-width: 500px) {
+  .shop_card_item_Name {
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
 @media only screen and (min-width: 1120px) {
+  .shop_card_brandwrap {
+    justify-content: space-between;
+  }
   .ShopCards_container {
     padding-bottom: 96px;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -888,6 +909,7 @@
 
   .shop_card_tag {
     justify-content: flex-end;
+    font-size: 16px;
   }
   .shop_card_text_cntr {
     padding-inline: 16px;
@@ -925,7 +947,7 @@
   }
 
   .shop_card_tag {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .shop_card_item_Name {
@@ -1170,6 +1192,7 @@ button {
 }
 .ProductDets_text_container_resp_productName {
   font-family: var(--secondary-font-Hen);
+  font-size: 20px;
 }
 .ProductDets_text_container_price_resp {
   display: flex;
@@ -1177,7 +1200,7 @@ button {
   gap: 12px;
   /* grid-auto-flow: column; */
   font-family: var(--primary-font-Hel);
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .ProductDets_text_container_price_resp_flex {
@@ -1285,7 +1308,7 @@ button {
 .ProductDets_text-container_prdt_Desc {
   max-width: 350px;
   font-family: var(--primary-font-Hel);
-  font-size: 12px;
+  font-size: 14px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -1364,13 +1387,13 @@ button {
   border-radius: 50%;
   align-items: center;
   justify-content: center;
-  padding: 3px;
+  /* padding: 3px; */
 }
 
 .ProductDets_collection_imgs_grid_cntr {
   display: flex;
-  width: 17px;
-  height: 17px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   overflow: hidden;
   margin: 2px;
@@ -1622,6 +1645,8 @@ button {
   align-items: center;
   transition: color 0.2s, background 0.2s;
   font-family: var(--primary-font-Hel);
+  overflow: hidden;
+  position: relative;
 }
 
 .ProductDets_ntfy_btn_grid {
@@ -1629,6 +1654,38 @@ button {
   grid-template-columns: auto auto;
   display: grid;
   max-width: 250px;
+}
+.ProductBtn_line_Anim {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+}
+.ProductBtn_line_cntr {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  /* background-color: red; */
+}
+.ProductBtn_line {
+  position: absolute;
+  height: 1px;
+}
+.ProductBtn_line1 {
+  width: 0%;
+  background-color: #ffffff;
+}
+.ProductBtn_line2 {
+  width: 0%;
+  background-color: #ffffff;
+  /* left: 0; */
 }
 
 .ProductDets_ntfy_btn_slect_size {
@@ -1703,7 +1760,7 @@ button {
   letter-spacing: 0.02em;
   line-height: 1.35;
   color: #000000;
-  text-decoration: underline;
+  /* text-decoration: underline; */
   text-underline-offset: 3px;
   font-family: var(--primary-font-Hel);
   padding: 6px 0;
@@ -2006,7 +2063,7 @@ button {
   .ProductDets_info_links {
     display: flex;
     margin-top: 48px;
-    gap: 10px;
+    gap: 12px;
     flex-direction: row;
   }
 
@@ -2038,6 +2095,9 @@ button {
 
   .ProductDets_text_btn_resp_cntr {
     display: none;
+  }
+  .ProductDets_text-container_prdt_Desc {
+    font-size: 12px;
   }
 }
 
