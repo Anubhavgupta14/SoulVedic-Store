@@ -29,8 +29,8 @@ const Modal = ({ closeModal, temp, setModalIsOpen, modalIsOpen }) => {
               productid: el.productid,
               variants: el.variants[0], // assuming variants is an array and you want to send the first variant
             });
-            if(data.err){
-              return 100
+            if (data.err) {
+              return 100;
             }
             // const data = await response.json();
             // console.log("plplpll", data);
@@ -46,7 +46,7 @@ const Modal = ({ closeModal, temp, setModalIsOpen, modalIsOpen }) => {
       for (let i = 0; i < updatedPrices.length; i++) {
         sum += updatedPrices[i] * cart[i].qty;
       }
-      setTotalAmount(sum)
+      setTotalAmount(sum);
     };
     {
       cart && fetchPrices();
@@ -94,7 +94,7 @@ const Modal = ({ closeModal, temp, setModalIsOpen, modalIsOpen }) => {
                   <div style={{ overflow: "auto" }}>
                     {cart &&
                       cart.map((item, i) => {
-                        const price = prices[i]
+                        const price = prices[i];
                         return (
                           <div
                             className="ReactModal_Drawer_center"
@@ -173,10 +173,7 @@ const Modal = ({ closeModal, temp, setModalIsOpen, modalIsOpen }) => {
                               <div className="Modal_Drawer_center_content_ryt">
                                 <div className="cmn_style Modal_Drawer_center_content_ryt_price">
                                   <div className="Modal_Drawer_center_content_ryt_price_cntr"></div>
-                                  {!price ? <></>
-                                  :
-                                  <span>{price}</span>
-                                }
+                                  {!price ? <></> : <span>{price}</span>}
 
                                   <span>&nbsp;INR</span>
                                 </div>
@@ -200,7 +197,7 @@ const Modal = ({ closeModal, temp, setModalIsOpen, modalIsOpen }) => {
                         <span>₹1,795.00</span>
                       </dd> */}
                       <dd className="Modal_drawer_main_price">
-                        <div>₹{totalAmount}</div>
+                        <div>{totalAmount} INR</div>
                       </dd>
                     </dl>
                     <div className="cmn_style Modal_drawer_checkout_wrap_btm">
@@ -208,7 +205,13 @@ const Modal = ({ closeModal, temp, setModalIsOpen, modalIsOpen }) => {
                         Free worldwide shipping on orders over 500 INR
                       </span>
                       {/* <button className="cmn_style common_style_inherit"></button> */}
-                      <button className="_btn_wrapper" onClick={()=>{router.push("/checkout"); setModalIsOpen(false)}}>
+                      <button
+                        className="_btn_wrapper"
+                        onClick={() => {
+                          router.push("/checkout");
+                          setModalIsOpen(false);
+                        }}
+                      >
                         Checkout
                       </button>
                     </div>

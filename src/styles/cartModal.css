@@ -172,7 +172,7 @@
   line-height: 1.35;
   display: grid;
   grid-auto-flow: row;
-  row-gap: 2px;
+  row-gap: 5px;
 }
 .Modal_center_lft_top span:nth-child(3) {
   color: #767676;
@@ -249,14 +249,21 @@
   border-top: 1px solid lightgray;
   border-bottom: 1px solid lightgray;
 }
+.Modal_drawer_checkout_wrap_top dt {
+  font-size: 1rem;
+  font-weight: 600;
+}
 .Modal_drawer_cross_price {
   color: #767676;
   text-decoration: line-through;
   margin-left: auto;
   margin-right: 20px;
+  font-size: 1rem;
 }
 .Modal_drawer_main_price {
   transition: opacity 0.2s;
+  font-size: 1rem;
+  font-weight: 600;
 }
 .Modal_drawer_checkout_wrap_btm {
   padding: 16px 32px 20px 32px;

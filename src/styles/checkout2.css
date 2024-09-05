@@ -636,6 +636,10 @@ input:focus {
   border-radius: 30px;
   padding: 9px 1rem;
   width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+.checkout-main button:hover {
+  background-color: #4b4b4b;
 }
 @media only screen and (min-width: 570px) {
   .Name_input_cntr,
@@ -800,18 +804,26 @@ input:focus {
   font-family: var(--primary-font-Hel);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
-
+.ApplyBtn {
+  border-radius: 0px !important;
+  background-color: #000 !important;
+  color: #fff;
+}
 .summary-img-cont {
   position: relative;
   width: 50px;
   height: 80px;
   margin-right: 10px;
 }
-
+.summary-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 .summary-name {
   font-size: 12px;
   max-width: 170px;
-  margin-bottom: 3px;
+  /* margin-bottom: 3px; */
 }
 .varients-cart {
   display: flex;
@@ -849,7 +861,7 @@ input:focus {
   overflow: hidden;
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
 }
 
 .min-promo {
@@ -936,8 +948,8 @@ input:focus {
 
 .checkout-total {
   position: relative;
-  font-size: 1.2rem;
-  font-weight: 400;
+  font-size: 1rem;
+  font-weight: 600;
   margin-top: 20px;
   font-family: var(--primary-font-Hel);
 }
@@ -946,8 +958,8 @@ input:focus {
   position: absolute;
   top: 0;
   right: 0;
-  font-size: 1.2rem;
-  font-weight: 400;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .checkout-in {

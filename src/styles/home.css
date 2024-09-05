@@ -746,7 +746,7 @@
   grid-area: sizes;
   /* width: 100%; */
   display: flex;
-  margin-bottom: 4px;
+  /* margin-bottom: 4px; */
   height: 18px;
   font-family: var(--secondary-font-Hen);
   text-transform: capitalize;
@@ -758,14 +758,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 12px;
-  line-height: 1.35;
-  margin-bottom: 4px;
+  line-height: 1;
+  /* margin-bottom: 4px; */
   grid-area: description;
   max-width: calc(50vw - 48px);
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
   font-style: normal;
+  display: flex;
+  align-items: center;
 }
 
 .shop_card_price_wrap {
@@ -1423,12 +1425,17 @@ button {
 .Product_active_color {
   border: 1px solid;
 }
-
+.ProductDets_size_Mainwrap {
+  margin: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 .ProductDets_size_wrap {
   position: relative;
   /* background-color: blue; */
   display: flex;
-  margin: 0.5rem 0;
+  /* margin: 0.5rem 0; */
   /* justify-content: space-between; */
 }
 .Product_detail {
@@ -1472,7 +1479,7 @@ button {
   color: #000 !important;
   cursor: pointer;
   color: #000000;
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 
 .ProductDets-size_numbers_cntr {
@@ -1625,9 +1632,13 @@ button {
 .ProductDets_Notify_wrap {
   gap: 32px;
   display: none;
+  position: relative;
   /* margin-left: 234px; */
 }
-
+.btnAbsoulte {
+  position: absolute;
+  width: 100%;
+}
 .ProductDets_ntfy_btn {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
@@ -1663,7 +1674,8 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
+  /* opacity: 0; */
+  cursor: pointer;
 }
 .ProductBtn_line_cntr {
   position: relative;
@@ -1932,13 +1944,18 @@ button {
 }
 
 @media only screen and (min-width: 1000px) {
+  .ProductDets_size_Mainwrap {
+    margin: 1.5rem 0;
+    gap: 10px;
+  }
   .ProductDets_size_wrap {
     position: relative;
     /* background-color: blue; */
     display: flex;
-    margin: 1rem 0;
-    /* justify-content: space-between; */
+    /* margin: 1rem 0; */
+    justify-content: space-between;
   }
+
   .ProductDets_main {
     display: block;
     height: 100vh;
@@ -2058,6 +2075,7 @@ button {
     left: 0;
     right: 0;
     padding-bottom: 32px;
+    gap: 32px;
   }
 
   .ProductDets_info_links {
@@ -2105,16 +2123,19 @@ button {
   #easysize_button {
     text-align: left;
     height: 16px !important;
-    text-decoration: underline !important;
+    /* text-decoration: underline !important; */
     background: transparent !important;
     padding: 0 !important;
+    color: #7b7b7b !important;
+    transition: all 0.2s ease-in-out;
+  }
+  #easysize_button:hover {
     color: #000 !important;
   }
-
   #easyweight_button {
     text-align: left;
     height: 16px !important;
-    text-decoration: underline !important;
+    /* text-decoration: underline !important; */
     background: transparent !important;
     padding: 0 !important;
     color: #767676 !important;

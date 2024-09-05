@@ -474,6 +474,7 @@ button {
     top: 0;
     z-index: 5;
     display: initial;
+    background-color: rgba(255, 255, 255, 0);
   }
   .header_inner {
     grid-template-columns: 146px 1fr 110px;

@@ -265,7 +265,7 @@ const Navbar = () => {
         {
           opacity: 0,
           duration: 1,
-          transition: "opacity 0.4s, hidden 0.4s, height 0.4s",
+          transition: "opacity 0.1s, hidden 0.1s, height 0.4s",
 
           // transition: "oapcity 0.4s, hidden 0.4s, height 0.4s",
         },
@@ -276,7 +276,7 @@ const Navbar = () => {
         {
           color: "#000",
           duration: 1,
-          transition: "color 0.4s 0s",
+          transition: "color 0.1s 0s",
           // transition: "oapcity 0.4s, hidden 0.4s, height 0.4s",
         },
         "b"
@@ -286,7 +286,7 @@ const Navbar = () => {
         {
           color: "#000",
           duration: 1,
-          transition: "color 0.4s 0s",
+          transition: "color 0.1s 0s",
         },
         "b"
       );
@@ -294,8 +294,9 @@ const Navbar = () => {
         ".headerconatin",
         {
           backgroundColor: "#ffff",
-          duration: 1,
-          transition: "Background-color 0.4s 0s",
+          duration: 0.5,
+          ease: "power1.inOut",
+          transition: "Background-color 0.2s 0s",
         },
         "b"
       );

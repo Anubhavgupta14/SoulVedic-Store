@@ -934,14 +934,19 @@ const Checkout2 = () => {
                 cart.cart.map((item, index, ar) => {
                   const price = prices[index];
                   return (
-                    <div key={index} className="summary-cont" style={index < ar.length - 1 ?{}:{borderBottom:'none'}}>
+                    <div
+                      key={index}
+                      className="summary-cont"
+                      style={
+                        index < ar.length - 1 ? {} : { borderBottom: "none" }
+                      }
+                    >
                       {!price ? (
                         //   <FinalpriceLoader2 />
                         <></>
                       ) : (
                         <>
                           <div className="summary-price"> &#8377; {price}</div>
-                          
                         </>
                       )}
                       <div className="summary-img-cont">
@@ -973,15 +978,21 @@ const Checkout2 = () => {
                               ))}
                             </div>
                           ))}
-                          <div style={{fontSize:'12px'}}> Qty: {item.qty}</div>
+                        <div style={{ fontSize: "12px" }}> Qty: {item.qty}</div>
                       </div>
                     </div>
                   );
                 })}
             </div>
             <div className={`promo-cont t3`}>
-              <input type="text" className="promo-input" placeholder="Discount Code or Gift Card" />
-              <button className="_btn_wrapper _btn_height _w-full">Apply</button>
+              <input
+                type="text"
+                className="promo-input"
+                placeholder="Discount Code or Gift Card"
+              />
+              <button className="_btn_wrapper _btn_height _w-full ApplyBtn">
+                Apply
+              </button>
             </div>
             <div className="checkout-price-cont">
               <div className="cpp">

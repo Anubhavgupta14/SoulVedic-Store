@@ -133,7 +133,7 @@ const ProductPage = () => {
 
   const handleAddToCart = () => {
     if (enableAddToCart) {
-      setBtnClick((prev) => !prev);
+      setBtnLoading(true);
       const vararray = [];
       vararray.push(selectedVarients);
       dispatch(
@@ -257,75 +257,17 @@ const ProductPage = () => {
     };
   });
 
-  const timelineRef = useRef(null);
-  const [btnClick, setBtnClick] = useState(false);
+  const [btnLoading, setBtnLoading] = useState(false);
+  const handleBtnLoading = () => {
+    if (btnLoading) {
+      setTimeout(() => {
+        setBtnLoading(false);
+      }, 3000);
+    }
+  };
   useEffect(() => {
-    const AnimBtnCntr = document.querySelector(".ProductDets_ntfy_btn");
-    const AnimLine_1 = document.querySelector(".ProductBtn_line1");
-    const AnimLine_2 = document.querySelector(".ProductBtn_line2");
-
-    const handleClick = () => {
-      if (timelineRef.current) {
-        timelineRef.current.kill(); // Stop the previous timeline
-      }
-
-      const tl = gsap.timeline({
-        // onComplete: () => {
-        //   // Reset to default state after animation completes
-        //   gsap.set(".ProductBtn_line_Anim", { opacity: 0 });
-        //   gsap.set(AnimLine_1, { width: 0 });
-        //   gsap.set(AnimLine_2, { width: 0 });
-        // },
-      });
-
-      timelineRef.current = tl; // Save the current timeline reference
-
-      tl.to(".ProductBtn_line_Anim", {
-        opacity: 1,
-        duration: 0.5,
-        ease: "power1.out",
-      });
-      tl.to(AnimLine_2, {
-        width: "100%",
-        duration: 0.5,
-        ease: "power1.out",
-      });
-      tl.to(AnimLine_2, {
-        delay: 0.3,
-        width: 0,
-        left: "100%",
-        duration: 0.5,
-        ease: "power1.out",
-      });
-      tl.to(AnimLine_1, {
-        width: "100%",
-        duration: 0.5,
-        ease: "power1.out",
-      });
-      tl.to(AnimLine_1, {
-        delay: 0.3,
-        width: 0,
-        left: "100%",
-        duration: 0.5,
-        ease: "power1.out",
-      });
-      tl.to(".ProductBtn_line_Anim", {
-        opacity: 0,
-        duration: 0.1,
-        ease: "power1.out",
-      });
-    };
-
-    AnimBtnCntr.addEventListener("click", handleClick);
-
-    return () => {
-      AnimBtnCntr.removeEventListener("click", handleClick);
-      if (timelineRef.current) {
-        timelineRef.current.kill(); // Clean up the timeline
-      }
-    };
-  }, [btnClick]);
-
+    handleBtnLoading();
+  }, [btnLoading]);
   return (
     <>
       <Toaster />
@@ -484,70 +426,67 @@ const ProductPage = () => {
                       </div>
                     </div>
 
-                    {product &&
-                      product.variants &&
-                      product.variants.map((variant, i) => (
-                        <div
-                          className="ProductDets_size_wrap"
-                          key={`varient-${i}`}
-                        >
-                          <div className="ProductDets-size_numbers_cntr">
-                            <div
-                              className="ProductDets-size_numbers_inner"
-                              id="easysize-size-selector"
-                            >
-                              {variant.options &&
-                                variant.options.map((option, j) => (
-                                  <div
-                                    key={`varientOptions-${j}`}
-                                    onClick={() => {
-                                      handleVariants(variant.title, option);
-                                      handleVariantSelection(
-                                        variant.title,
-                                        option,
-                                        j
-                                      );
-                                    }}
-                                    aria-current="page"
-                                    className={
-                                      variantSelect[variant.title] ==
-                                      `${variant.title}-${j}`
-                                        ? "ProductDets-size_numbers acitve"
-                                        : "ProductDets-size_numbers"
-                                    }
-                                  >
-                                    {option}
-                                  </div>
-                                ))}
+                    <div className="ProductDets_size_Mainwrap">
+                      {product &&
+                        product.variants &&
+                        product.variants.map((variant, i) => (
+                          <div
+                            className="ProductDets_size_wrap"
+                            key={`varient-${i}`}
+                          >
+                            <div className="ProductDets-size_numbers_cntr">
+                              <div
+                                className="ProductDets-size_numbers_inner"
+                                id="easysize-size-selector"
+                              >
+                                {variant.options &&
+                                  variant.options.map((option, j) => (
+                                    <div
+                                      key={`varientOptions-${j}`}
+                                      onClick={() => {
+                                        handleVariants(variant.title, option);
+                                        handleVariantSelection(
+                                          variant.title,
+                                          option,
+                                          j
+                                        );
+                                      }}
+                                      aria-current="page"
+                                      className={
+                                        variantSelect[variant.title] ==
+                                        `${variant.title}-${j}`
+                                          ? "ProductDets-size_numbers acitve"
+                                          : "ProductDets-size_numbers"
+                                      }
+                                    >
+                                      {option}
+                                    </div>
+                                  ))}
+                              </div>
+                            </div>
+                            <div className="ProductDets-size_assist_cntr">
+                              {/* {variant?.title ?? ""} */}
+                              {/* <div id="easysize-placeholder"></div> */}
+                              <div
+                                id="easysize_button"
+                                className="easysize_button"
+                              >
+                                {variant?.title ?? ""} Assistance
+                              </div>
+                              {/* <div id="easysize-recommendation"></div> */}
                             </div>
                           </div>
-                          <div className="ProductDets-size_assist_cntr">
-                            {/* {variant?.title ?? ""} */}
-                            {/* <div id="easysize-placeholder"></div> */}
-                            <div
-                              id="easysize_button"
-                              className="easysize_button"
-                            >
-                              {variant?.title ?? ""} Assistance
-                            </div>
-                            {/* <div id="easysize-recommendation"></div> */}
-                          </div>
-                        </div>
-                      ))}
+                        ))}
+                    </div>
                   </div>
 
                   <div className="ProductDets_Notify_wrap">
+                    {/* {!btnLoading ? ( */}
                     <button
                       className="ProductDets_ntfy_btn ProductDets_ntfy_btn_grid"
                       id="easysize-cart-button"
                       onClick={handleAddToCart}
                     >
-                      <div className="ProductBtn_line_Anim">
-                        <div className="ProductBtn_line_cntr">
-                          <div className="ProductBtn_line ProductBtn_line1"></div>
-                          <div className="ProductBtn_line ProductBtn_line2"></div>
-                        </div>
-                      </div>
                       {!enableAddToCart ? (
                         <span className="ProductDets_ntfy_btn_slect_size">
                           Select a Size
@@ -567,7 +506,9 @@ const ProductPage = () => {
                         </div>
                       </div>
                     </button>
-                    {/* <AnimBtn /> */}
+                    {/* ) : ( */}
+                    <AnimBtn btnLoading={btnLoading} />
+                    {/* )} */}
 
                     {/* <div className="ProductDets_shipping_para">
                       Complimentary shipping on orders above 500 INR.
