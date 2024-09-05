@@ -63,7 +63,7 @@ const AnimBtn = ({ btnLoading }) => {
       className="btnAbsoulte"
       style={btnLoading ? { opacity: 1 } : { opacity: 0, zIndex: -1 }}
     >
-      <div className="btn_wrapper _btn_height _w-full">
+      <div className="btn_wrapper _btn_height">
         <div className="ProductBtn_line_Anim ProductDets_ntfy_btn ProductDets_ntfy_btn_grid">
           <div className="ProductBtn_line_cntr">
             <div className="ProductBtn_line ProductBtn_line1"></div>

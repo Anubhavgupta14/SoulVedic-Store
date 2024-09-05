@@ -79,7 +79,7 @@ const Layout = ({ email }) => {
     <>
     {/* <Toaster /> */}
     <Tooltip id="my-tooltip" style={{width:'20vw'}} />
-    <div className="order-div" style={{ marginInline: "-2vw" }}>
+    <div className="order-div" style={{ marginInline: "-31px" }}>
       <div className="pay-top2">
         <div className="pay-head">
           <h4>Payment Method</h4>

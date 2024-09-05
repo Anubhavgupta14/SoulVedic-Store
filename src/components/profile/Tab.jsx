@@ -94,7 +94,7 @@ function CustomTabPanel(props) {
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
-      style={{minHeight:'64vh'}}
+      style={{minHeight:'calc(100vh - 180px)'}}
       {...other}
     >
       {value === index && (
@@ -324,13 +324,13 @@ export default function BasicTabs() {
                     </div>
                   </div>
 
-                  <div>
+                  <div style={{width:'100%'}}>
                     <div>
                       <div className="input-fields">
                         <div className="div-name">
-                          <label className="label-text text-sm font-bold">
+                          {/* <label className="label-text text-sm font-bold">
                             First Name
-                          </label>
+                          </label> */}
                           <input
                             className="general__input"
                             type="text"
@@ -342,9 +342,9 @@ export default function BasicTabs() {
                           />
                         </div>
                         <div className="div-name">
-                          <label className="label-text text-sm font-bold">
+                          {/* <label className="label-text text-sm font-bold">
                             Last Name
-                          </label>
+                          </label> */}
                           <input
                             className="general__input"
                             type="text"
@@ -359,17 +359,17 @@ export default function BasicTabs() {
 
                       <div className="input-fields">
                         <div className="div-name">
-                          <label className="label-text text-sm font-bold">
+                          {/* <label className="label-text text-sm font-bold">
                             Email
-                          </label>
-                          <div className="general__input c0" name="email">
+                          </label> */}
+                          <div className="general__input c0" name="email" style={{padding:'10px 14px 0px 14px'}}>
                             {userData.email}
                           </div>
                         </div>
                         <div className="div-name">
-                          <label className="label-text text-sm font-bold">
+                          {/* <label className="label-text text-sm font-bold">
                             Phone No.
-                          </label>
+                          </label> */}
                           <PhoneInput
                             defaultCountry="in"
                             disabled={!dis}

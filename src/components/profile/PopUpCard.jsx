@@ -297,7 +297,7 @@ const popupcard = ({ email ,open, Setopen, userData, setUserData, paymentcard, S
       >
         <div className="add-payment-main">
           <div className="pop-head">
-            <p>Add a Payment Method</p>
+            
             <RxCross2
               style={{ cursor: "pointer" }}
               onClick={() => {
@@ -305,7 +305,6 @@ const popupcard = ({ email ,open, Setopen, userData, setUserData, paymentcard, S
               }}
             />
           </div>
-          <div className="my-2"></div>
           <div className="card-details">
             <div className="detail-top">
               <p>Card details</p>
