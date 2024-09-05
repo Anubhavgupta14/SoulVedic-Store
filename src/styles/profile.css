@@ -120,7 +120,7 @@
   display: flex;
     gap: 15px;
     flex-wrap: wrap;
-    margin-top: 33px;
+    margin-top: 30px;
     justify-content: space-between;
 }
 .card1{
@@ -130,6 +130,17 @@
   border-radius: 4px;
   padding: 20px;
   /* background-color: rgb(252, 252, 252); */
+}
+.no-order-div{
+  display: flex;
+  align-items: center;
+  margin-top: calc(50vh - 190px);
+  justify-content: center;
+}
+.no-order-p{
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-family: var(--secondary-font-Hen);
 }
 .card2{
   border: 2px dotted #3b82f6;
@@ -511,7 +522,7 @@
   width: 100%;
   border-radius: 5px;
     background-color: white;
-    padding-block: 28px;
+    padding-top: 28px;
     /* border: 0.5px solid rgba(0,0,0,0.2); */
 }
 .text{

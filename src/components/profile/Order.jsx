@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import Table from "./Table_order"
-import {Getorders} from "../../../api_fetch/admin/User"
+import Table from "./Table_order";
+import { Getorders } from "../../../api_fetch/admin/User";
 const General = () => {
   const [userData, setUserData] = useState({
     firstname: "",
@@ -63,8 +63,8 @@ const General = () => {
   useEffect(() => {
     const func = async () => {
       try {
-        const token = localStorage.getItem('token')
-      const data = await Getorders(token)
+        const token = localStorage.getItem("token");
+        const data = await Getorders(token);
 
         if (!data) {
           throw new Error("Failed to fetch data");
@@ -93,7 +93,7 @@ const General = () => {
     "Track Order",
   ];
   const [deleteIndex, setDeleteIndex] = useState(null);
-    const [deleteProduct,setDeleteProduct] = useState(null);
+  const [deleteProduct, setDeleteProduct] = useState(null);
 
   return (
     <div>
@@ -104,7 +104,6 @@ const General = () => {
             Access your order history effortlessly to track past purchases and
             manage returns
           </p>
-          
         </div>
 
         {/* <div className="fixed-right">
@@ -116,17 +115,20 @@ const General = () => {
         style={{ marginInline: "-2vw", marginTop: "30px" }}
       >
         <div className="my-2 line-order"></div>
-        {products && products.length!=0 ?
+        {products && products.length != 0 ? (
           <Table
             columns={columns}
             rows={products}
             editItem={editItem}
             setDeleteProduct={setDeleteProduct}
           />
-          :
-          <div>There is no order</div>
-        }
-        
+        ) : (
+          <div className="no-order-div">
+            <div>
+              <p className="no-order-p">There is no order</p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

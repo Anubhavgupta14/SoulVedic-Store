@@ -175,7 +175,7 @@ const Modal = ({ closeModal, temp, setModalIsOpen, modalIsOpen }) => {
                                   <div className="Modal_Drawer_center_content_ryt_price_cntr"></div>
                                   {!price ? <></>
                                   :
-                                  <span>{price}</span>
+                                  <span>{price*item.qty}</span>
                                 }
 
                                   <span>&nbsp;INR</span>

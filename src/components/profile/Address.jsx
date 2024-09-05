@@ -1,6 +1,9 @@
 // import ProfileLayout from "../user_data/User";
 import { useState, useEffect } from "react";
 // import "../../styles/dashboard.css";
+
+import 'react-tooltip/dist/react-tooltip.css'
+import { Tooltip } from 'react-tooltip'
 import { GoPlus } from "react-icons/go";
 // import { BsChevronDown } from "react-icons/bs";
 import { IoLocationOutline } from "react-icons/io5";
@@ -141,28 +144,29 @@ const General = ({email}) => {
 
   return (
     <>
-    <div className="pay-top2" style={{marginInline:'-2vw', marginBottom:'2px', width:'105.6%'}}>
+    <Tooltip id="my-tooltip" style={{width:'20vw'}} />
+    <div className="order-div" style={{ marginInline: "-31px" }}>
+      <div className="pay-top2">
         <div className="pay-head">
-          <h4>Saved Addresses</h4>
+          <h4>Saved Address</h4>
           <p>Easily manage your saved addresses for seamless checkout experiences.</p>
           <p>
-            Your information is kept safe and secure with us.{" "}
+          Your information is kept safe and secure with us. {" "}
             {/* <span style={{ color: "#3b82f6", cursor:'pointer' }}>
-              Learn More.
-            </span>{" "} */}
+               Learn more.
+            </span> */}
           </p>
         </div>
         <div className="fixed-right">
-          <div className="_btn_wrapper _btn_height _w-full" style={{width:'150px'}} onClick={()=>{Setopen(true)}}>Add address</div>
+          <div className="_btn_wrapper _btn_height _w-full" onClick={()=>{Setopen(true)}} style={{width:'200px'}}>Add address</div>
         </div>
       </div>
-      <div
-        className="general-container_add"
-        style={{ marginInline: "-31px", width: "106%" }}
-      >
-        {/* <p className="profile-t">Saved Address</p> */}
-        <div className="my-2" style={{width:'99.7%'}}></div>
 
+      <div className="pay-outer">
+        <div>
+          
+          <div className="my-2"></div>
+        </div>
         <div className="setadd">
           {address.length!==0 && (
             <>
@@ -192,7 +196,7 @@ const General = ({email}) => {
               ))}
             </>
           )}
-          <div className="card2" onClick={()=>{Setopen(true)}} style={{width:'48.85%'}}>
+          <div className="card2" onClick={()=>{Setopen(true)}} style={{width:'49%'}}>
             <GoPlus className="plus" />
             <p>Add address</p>
           </div>
@@ -201,6 +205,7 @@ const General = ({email}) => {
         <Addaddress open={open} Setopen={Setopen} userData={userData} setUserData={setUserData} address={address} Setaddress={Setaddress} email={email}/>
         }
       </div>
+    </div>
     </>
   );
 };
