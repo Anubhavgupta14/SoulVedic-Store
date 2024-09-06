@@ -23,7 +23,7 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
   },
 };
-const Navbar = ({openBag, setOpenBag}) => {
+const Navbar = ({ openBag, setOpenBag }) => {
   const [menu, setMenu] = useState([]);
   const dispatch = useDispatch();
   const router = useRouter();
@@ -143,6 +143,12 @@ const Navbar = ({openBag, setOpenBag}) => {
             }
           });
           lastHoveredLink = event.target;
+        });
+        link.addEventListener("click", () => {
+          SidebarDrawer.style.clipPath = "polygon(0 0, 0% 0, 0% 100%, 0 100%)";
+          overlay.style.opacity = "0";
+          overlay.style.visibility = "hidden";
+          Body.style.overflow = "auto";
         });
       });
     };
