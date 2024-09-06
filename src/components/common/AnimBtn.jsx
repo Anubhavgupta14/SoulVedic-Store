@@ -10,7 +10,7 @@ const AnimBtn = ({ btnLoading }) => {
     const AnimLine_2 = document.querySelector(".ProductBtn_line2");
 
     const handleClick = () => {
-      const tl = gsap.timeline({ repeat: -1, repeatDelayed: 0.5 });
+      const tl = gsap.timeline({ repeat: -1, repeatDelayed: 0.02 });
       //   tl.to(".ProductBtn_line_Anim", {
       //     opacity: 1,
       //     duration: 0.5,
@@ -62,7 +62,7 @@ const AnimBtn = ({ btnLoading }) => {
   return (
     <div
       className="btnAbsoulte"
-      style={btnLoading ? { opacity: 1 } : { opacity: 0, zIndex: -1 }}
+      style={btnLoading ? { opacity: 1, top:'0' } : { opacity: 0, zIndex: -1, top:'0' }}
     >
       <div className="btn_wrapper _btn_height">
         <div className="ProductBtn_line_Anim ProductDets_ntfy_btn ProductDets_ntfy_btn_grid">

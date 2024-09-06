@@ -24,6 +24,7 @@ const Modal = ({
   const cartCount = useSelector((state) => state.cart.itemcount);
   const [prices, setPrices] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [btnLoading, setBtnLoading] = useState(false);
 
   // console.log(prices,"proces")
 
@@ -60,6 +61,16 @@ const Modal = ({
       cart && fetchPrices();
     }
   }, [cart]);
+  const handleBtnLoading = () => {
+    if (btnLoading) {
+      setTimeout(() => {
+        setBtnLoading(false);
+      }, 3000);
+    }
+  };
+  useEffect(() => {
+    handleBtnLoading();
+  }, [btnLoading]);
 
   return (
     <div
@@ -217,16 +228,22 @@ const Modal = ({
                       <span>
                         Free worldwide shipping on orders over 500 INR
                       </span>
-                      {/* <button className="cmn_style common_style_inherit"></button> */}
-                      <Button
-                        className="_btn_wrapper"
-                        onClick={() => {
-                          router.push("/checkout");
-                          setModalIsOpen(false);
-                        }}
-                      >
-                        Checkout
-                      </Button>
+                      <div style={{position:'relative'}}>
+                        <button
+                          className="_btn_wrapper"
+                          style={{ width: "100%" }}
+                          onClick={() => {
+                            setBtnLoading(true);
+                            setTimeout(() => {
+                              router.push("/checkout");
+                              setModalIsOpen(false);
+                            }, 2000);
+                          }}
+                        >
+                          Checkout
+                        </button>
+                        <AnimBtn btnLoading={btnLoading} />
+                      </div>
                       {/* <AnimBtn /> */}
                     </div>
                   </div>
