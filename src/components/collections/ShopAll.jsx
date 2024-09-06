@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaArrowsAltV } from "react-icons/fa";
 import { ShopAllCard } from "@/helpers";
 import { useRouter } from "next/router";
+import CollectionLoader from "@/components/loaders/CollectionLoader"
 import { FetchCat } from "../../../api_fetch/admin/Collections";
 import Link from "next/link";
 const ShopAll = () => {
@@ -87,6 +88,12 @@ const ShopAll = () => {
           </div>
         </div>
         <div>
+          {collections.length==0 ?
+          <>
+          <CollectionLoader/>
+          </>
+          
+          :
           <div className="ShopCards_container">
             {collections &&
               collections.map((items) => {
@@ -194,7 +201,8 @@ const ShopAll = () => {
                   </Link>
                 );
               })}
-          </div>
+          </div> 
+          }
         </div>
       </div>
     </div>

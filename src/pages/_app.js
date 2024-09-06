@@ -15,6 +15,7 @@ import "@/styles/cartModal.css";
 import "@/styles/navbar.css";
 import "@/styles/profile.css";
 import "@/styles/productLoader.css";
+import "@/styles/collectionLoader.css";
 import "@/styles/collections.css";
 import "@/styles/shopAll.css";
 // import Modal from "@/components/Modal";
