@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { editProduct } from "../../../api_fetch/admin/Product";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Link from "next/link";
+import Navbar from "@/components/common/Navbar"
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/router";
 import ProductLoader from "@/components/loaders/ProductLoader";
@@ -27,6 +28,7 @@ const ProductPage = () => {
   const [selectedVarients, setSelectedVariants] = useState({});
   const [finalPrice, setFinalPrice] = useState(0);
   const [desc, setDesc] = useState("");
+  const [openBag, setOpenBag] = useState(false);
 
   const fetchData = async () => {
     try {
@@ -134,6 +136,7 @@ const ProductPage = () => {
 
   const handleAddToCart = () => {
     if (enableAddToCart) {
+      setOpenBag(true)
       setBtnLoading(true);
       const vararray = [];
       vararray.push(selectedVarients);
@@ -149,7 +152,6 @@ const ProductPage = () => {
       // setSelectedVariants({});
       // setColorSelect(null);
       // setVariantSelect({});
-      toast.success("Product Added Successfully");
     }
   };
 
@@ -271,7 +273,7 @@ const ProductPage = () => {
   }, [btnLoading]);
   return (
     <>
-      <Toaster />
+      <Navbar openBag={openBag} setOpenBag={setOpenBag}/>
       {isModalVisible && (
         <div className="ReactModalPortal_img_cntr">
           <div className="ReactModalPortal_img_cntr_overlay">

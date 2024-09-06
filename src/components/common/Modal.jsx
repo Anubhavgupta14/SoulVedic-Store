@@ -9,7 +9,7 @@ import { FinalPrice } from "../../../api_fetch/admin/Cart";
 import { editqty } from "@/features/cart/CartSlice";
 import OutsideClickHandler from "react-outside-click-handler";
 import Button from "./Button";
-const Modal = ({ closeModal, temp, setModalIsOpen, modalIsOpen }) => {
+const Modal = ({ closeModal, temp, setModalIsOpen, modalIsOpen, openBag, setOpenBag }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const cart = useSelector((state) => state.cart.cart);
@@ -56,14 +56,14 @@ const Modal = ({ closeModal, temp, setModalIsOpen, modalIsOpen }) => {
   return (
     <div
       className={
-        modalIsOpen
+        (modalIsOpen || openBag)
           ? "Modal_wrapper pointEventall"
           : "Modal_wrapper pointEventnone"
       }
     >
       <div
         className={
-          modalIsOpen
+          (modalIsOpen || openBag)
             ? "Modal_Overlay Modal_bgClr Modal_content"
             : "Modal_Overlay Modal_content"
         }
@@ -71,11 +71,12 @@ const Modal = ({ closeModal, temp, setModalIsOpen, modalIsOpen }) => {
         <OutsideClickHandler
           onOutsideClick={() => {
             setModalIsOpen(false);
+            setOpenBag(false)
           }}
         >
           <div
             className={
-              modalIsOpen
+              (modalIsOpen || openBag)
                 ? "ReactModal__Content translateCart"
                 : "ReactModal__Content"
             }

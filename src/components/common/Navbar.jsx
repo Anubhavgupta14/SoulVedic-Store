@@ -23,7 +23,7 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
   },
 };
-const Navbar = () => {
+const Navbar = ({openBag, setOpenBag}) => {
   const [menu, setMenu] = useState([]);
   const dispatch = useDispatch();
   const router = useRouter();
@@ -345,6 +345,7 @@ const Navbar = () => {
 
   function closeModal() {
     setModalIsOpen(false);
+    setOpenBag(false);
     // setTemp(false);
 
     // document.querySelector("body").style.overflow = "auto";
@@ -943,6 +944,8 @@ const Navbar = () => {
         <Modal
           closeModal={closeModal}
           modalIsOpen={modalIsOpen}
+          setOpenBag={setOpenBag}
+          openBag={openBag}
           setModalIsOpen={setModalIsOpen}
           // temp={temp}
         />
