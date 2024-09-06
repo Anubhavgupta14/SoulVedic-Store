@@ -10,7 +10,7 @@ const AnimBtn = ({ btnLoading }) => {
     const AnimLine_2 = document.querySelector(".ProductBtn_line2");
 
     const handleClick = () => {
-      const tl = gsap.timeline({ repeat: -1, repeatDelayed: 0 });
+      const tl = gsap.timeline({ repeat: -1, repeatDelayed: 0.5 });
       //   tl.to(".ProductBtn_line_Anim", {
       //     opacity: 1,
       //     duration: 0.5,
@@ -28,7 +28,7 @@ const AnimBtn = ({ btnLoading }) => {
         left: "100%",
         duration: 0.5,
         ease: "power1.out",
-        delay: 0.3,
+        delay: 0.2,
       });
 
       // Animate the second line (AnimLine_1) after the first one
@@ -36,12 +36,13 @@ const AnimBtn = ({ btnLoading }) => {
         width: "100%",
         duration: 0.5,
         ease: "power1.out",
+        delay: 0.4,
       }).to(AnimLine_1, {
         width: 0,
         left: "100%",
         duration: 0.5,
         ease: "power1.out",
-        delay: 0.3,
+        delay: 0.6,
       });
 
       // Animate the line animation container

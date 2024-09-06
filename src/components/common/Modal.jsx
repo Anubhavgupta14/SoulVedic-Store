@@ -9,7 +9,15 @@ import { FinalPrice } from "../../../api_fetch/admin/Cart";
 import { editqty } from "@/features/cart/CartSlice";
 import OutsideClickHandler from "react-outside-click-handler";
 import Button from "./Button";
-const Modal = ({ closeModal, temp, setModalIsOpen, modalIsOpen, openBag, setOpenBag }) => {
+import AnimBtn from "./AnimBtn";
+const Modal = ({
+  closeModal,
+  temp,
+  setModalIsOpen,
+  modalIsOpen,
+  openBag,
+  setOpenBag,
+}) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const cart = useSelector((state) => state.cart.cart);
@@ -56,14 +64,14 @@ const Modal = ({ closeModal, temp, setModalIsOpen, modalIsOpen, openBag, setOpen
   return (
     <div
       className={
-        (modalIsOpen || openBag)
+        modalIsOpen || openBag
           ? "Modal_wrapper pointEventall"
           : "Modal_wrapper pointEventnone"
       }
     >
       <div
         className={
-          (modalIsOpen || openBag)
+          modalIsOpen || openBag
             ? "Modal_Overlay Modal_bgClr Modal_content"
             : "Modal_Overlay Modal_content"
         }
@@ -71,12 +79,12 @@ const Modal = ({ closeModal, temp, setModalIsOpen, modalIsOpen, openBag, setOpen
         <OutsideClickHandler
           onOutsideClick={() => {
             setModalIsOpen(false);
-            setOpenBag(false)
+            setOpenBag(false);
           }}
         >
           <div
             className={
-              (modalIsOpen || openBag)
+              modalIsOpen || openBag
                 ? "ReactModal__Content translateCart"
                 : "ReactModal__Content"
             }
@@ -210,7 +218,7 @@ const Modal = ({ closeModal, temp, setModalIsOpen, modalIsOpen, openBag, setOpen
                         Free worldwide shipping on orders over 500 INR
                       </span>
                       {/* <button className="cmn_style common_style_inherit"></button> */}
-                      <button
+                      <Button
                         className="_btn_wrapper"
                         onClick={() => {
                           router.push("/checkout");
@@ -218,7 +226,8 @@ const Modal = ({ closeModal, temp, setModalIsOpen, modalIsOpen, openBag, setOpen
                         }}
                       >
                         Checkout
-                      </button>
+                      </Button>
+                      {/* <AnimBtn /> */}
                     </div>
                   </div>
                 </div>

@@ -22,6 +22,7 @@
   background-color: rgb(0 0 0 / 60%);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
+  transition: all 0.3s linear;
   overflow: hidden;
 
   /* display: none; */
@@ -162,6 +163,7 @@
   display: grid;
   grid-auto-flow: row;
   grid-template-rows: auto auto 1fr;
+  row-gap: 5px;
 }
 .Modal_center_lft_top {
   font-family: var(--primary-font-Hel);
@@ -174,14 +176,14 @@
   grid-auto-flow: row;
   row-gap: 5px;
 }
-.Modal_center_lft_top span:nth-child(3) {
+/* .Modal_center_lft_top span:nth-child(3) {
   color: #767676;
-}
+} */
 .Modal_center_lft_Qunty {
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: repeat(4, min-content);
-  color: #767676;
+  color: #000000;
   font-family: Centra No2, Helvetica, sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;

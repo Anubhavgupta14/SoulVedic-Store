@@ -431,14 +431,14 @@ const ProductPage = () => {
                                 ))}
                             </fieldset>
                           </div>
-                              <div className="ProductDets-size_assist_cntr">
-                                <div
-                                  id="easysize_button"
-                                  className="easysize_button"
-                                >
-                                  {product.colorVar.options[colorSelect]}
-                                </div>
-                              </div>
+                          <div className="ProductDets-size_assist_cntr">
+                            <div
+                              id="easysize_button"
+                              className="easysize_button"
+                            >
+                              {product.colorVar.options[colorSelect]}
+                            </div>
+                          </div>
                         </div>
                         <div className="ProductDets_size_Mainwrap">
                           {product &&
