@@ -11,6 +11,8 @@ import Payment from "./Payment";
 import Security from "./Security";
 import { styled } from "@mui/material/styles";
 import Notification from "./Notification";
+import { FaUserEdit } from "react-icons/fa";
+import { MdOutlineDone } from "react-icons/md";
 import Address from "./Address";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
@@ -305,9 +307,9 @@ export default function BasicTabs() {
                 <div
                   className="_btn_wrapper _btn_height _w-full"
                   onClick={()=>{Updatefun(userData)}}
-                  style={{ position: "relative", left: "85%", width:'90px', top:'15px' }}
+                  style={{ position: "relative", left: "93%", width:'35px', top:'15px', borderRadius:'50%', padding:'0' }}
                 >
-                  {textbtn}
+                  {textbtn=='Edit' ? <FaUserEdit className="status-btnpro"/>:<MdOutlineDone className="status-btnpro"/>}
                 </div>
 
                 <div className="general-container">
@@ -325,7 +327,7 @@ export default function BasicTabs() {
                   </div>
 
                   <div style={{width:'100%'}}>
-                    <div>
+                    <div style={{marginBottom:'15px'}}>
                       <div className="input-fields">
                         <div className="div-name">
                           {/* <label className="label-text text-sm font-bold">

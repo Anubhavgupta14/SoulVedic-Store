@@ -2,28 +2,28 @@
 import { useState, useEffect } from "react";
 // import "../../styles/dashboard.css";
 
-import 'react-tooltip/dist/react-tooltip.css'
-import { Tooltip } from 'react-tooltip'
+import "react-tooltip/dist/react-tooltip.css";
+import { Tooltip } from "react-tooltip";
 import { GoPlus } from "react-icons/go";
 // import { BsChevronDown } from "react-icons/bs";
 import { IoLocationOutline } from "react-icons/io5";
 // import "../../styles/address.css";
 // import Profilebtn from "../common/Profilebtn2"
-import Addaddress from "./PopUpAddress"
-import {Checkaddress} from "../../../api_fetch/admin/User"
+import Addaddress from "./PopUpAddress";
+import { Checkaddress } from "../../../api_fetch/admin/User";
 
-const General = ({email}) => {
-  const [open, Setopen] = useState(false)
+const General = ({ email }) => {
+  const [open, Setopen] = useState(false);
   const [userData, setUserData] = useState({
     firstname: "",
     lastname: "",
-    addressline1:"",
-    addressline2:"",
-    flat:"",
+    addressline1: "",
+    addressline2: "",
+    flat: "",
     phone: "",
-    city:"",
+    city: "",
     country: "",
-    pincode:"",
+    pincode: "",
   });
   // const [errors, setErrors] = useState({
   //   firstname: "",
@@ -117,7 +117,7 @@ const General = ({email}) => {
       //   }
       // );
 
-      const userDataadd = await Checkaddress(token)
+      const userDataadd = await Checkaddress(token);
 
       if (!userDataadd) {
         console.log("error");
@@ -125,11 +125,10 @@ const General = ({email}) => {
       }
 
       // const userDataadd = await response.json();
-    //   console.log(userDataadd,"ookokkokokokokokokokoko")
-      if(userDataadd.error=="Addresses not found"){
-        Setaddress([])
-      }
-      else{
+      //   console.log(userDataadd,"ookokkokokokokokokokoko")
+      if (userDataadd.error == "Addresses not found") {
+        Setaddress([]);
+      } else {
         Setaddress(userDataadd);
       }
     } catch (error) {
@@ -144,68 +143,97 @@ const General = ({email}) => {
 
   return (
     <>
-    <Tooltip id="my-tooltip" style={{width:'20vw'}} />
-    <div className="order-div" style={{ marginInline: "-31px" }}>
-      <div className="pay-top2">
-        <div className="pay-head">
-          <h4>Saved Address</h4>
-          <p>Easily manage your saved addresses for seamless checkout experiences.</p>
-          <p>
-          Your information is kept safe and secure with us. {" "}
-            {/* <span style={{ color: "#3b82f6", cursor:'pointer' }}>
+      <Tooltip id="my-tooltip" style={{ width: "20vw" }} />
+      <div className="order-div" style={{ marginInline: "-31px" }}>
+        <div className="pay-top2">
+          <div className="pay-head">
+            <h4>Saved Address</h4>
+            <p>
+              Easily manage your saved addresses for seamless checkout
+              experiences.
+            </p>
+            <p>
+              Your information is kept safe and secure with us.{" "}
+              {/* <span style={{ color: "#3b82f6", cursor:'pointer' }}>
                Learn more.
             </span> */}
-          </p>
-        </div>
-        <div className="fixed-right">
-          <div className="_btn_wrapper _btn_height _w-full" onClick={()=>{Setopen(true)}} style={{width:'200px'}}>Add address</div>
-        </div>
-      </div>
-
-      <div className="pay-outer">
-        <div>
-          
-          <div className="my-2"></div>
-        </div>
-        <div className="setadd">
-          {address.length!==0 && (
-            <>
-              {address.map((el, i) => (
-                <div key={i} className="address-div">
-                  <div className="locationlogo">
-                  <IoLocationOutline className="localogo" />
-                  </div>
-                  <div className="add-detail">
-                      <div className="name-btn">
-                      <p className="add-name">{el.firstname} {el.lastname}</p>
-                      <div className="actions">
-                      {/* <Profilebtn/> */}
-                      </div>
-                      </div>
-                      <p className="add-name">{el.flat} {el.addressline1}</p>
-                      <p className="add-name">{el.addressline2}</p>
-                      <p className="add-name">{el.city}, {el.country}</p>
-                      <p className="add-name">{el.pincode}</p>
-                      <div className="phone-btn">
-                      <p className="add-name" style={{fontWeight:'400', marginTop:'5px'}}>  {el.phone}</p>
-                      
-                      </div>
-                  </div>
-
-                </div>
-              ))}
-            </>
-          )}
-          <div className="card2" onClick={()=>{Setopen(true)}} style={{width:'49%'}}>
-            <GoPlus className="plus" />
-            <p>Add address</p>
+            </p>
+          </div>
+          <div className="fixed-right">
+            <div
+              className="_btn_wrapper _btn_height _w-full"
+              onClick={() => {
+                Setopen(true);
+              }}
+              style={{ width: "200px" }}
+            >
+              Add address
+            </div>
           </div>
         </div>
-        {open && 
-        <Addaddress open={open} Setopen={Setopen} userData={userData} setUserData={setUserData} address={address} Setaddress={Setaddress} email={email}/>
-        }
+
+        <div className="pay-outer">
+          <div className="my-2"></div>
+
+          {address.length == 0 ? (
+            <div className="no-order-div">
+              <div>
+                <p className="no-order-p">There is no address to show</p>
+              </div>
+            </div>
+          ) : (
+            <div className="setadd">
+              {address.length !== 0 && (
+                <>
+                  {address.map((el, i) => (
+                    <div key={i} className="address-div">
+                      <div className="locationlogo">
+                        <IoLocationOutline className="localogo" />
+                      </div>
+                      <div className="add-detail">
+                        <div className="name-btn">
+                          <p className="add-name">
+                            {el.firstname} {el.lastname}
+                          </p>
+                          <div className="actions">{/* <Profilebtn/> */}</div>
+                        </div>
+                        <p className="add-name">
+                          {el.flat} {el.addressline1}
+                        </p>
+                        <p className="add-name">{el.addressline2}</p>
+                        <p className="add-name">
+                          {el.city}, {el.country}
+                        </p>
+                        <p className="add-name">{el.pincode}</p>
+                        <div className="phone-btn">
+                          <p
+                            className="add-name"
+                            style={{ fontWeight: "400", marginTop: "5px" }}
+                          >
+                            {" "}
+                            {el.phone}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </>
+              )}
+            </div>
+          )}
+          {open && (
+            <Addaddress
+              open={open}
+              Setopen={Setopen}
+              userData={userData}
+              setUserData={setUserData}
+              address={address}
+              Setaddress={Setaddress}
+              email={email}
+            />
+          )}
+        </div>
       </div>
-    </div>
     </>
   );
 };

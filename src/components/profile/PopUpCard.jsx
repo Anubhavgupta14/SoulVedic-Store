@@ -6,9 +6,17 @@ import { RxCross2 } from "react-icons/rx";
 // import toast, { Toaster } from "react-hot-toast";
 import { LiaCcVisa } from "react-icons/lia";
 import { IoIosArrowBack } from "react-icons/io";
-import {Savecards} from "../../../api_fetch/admin/User"
+import { Savecards } from "../../../api_fetch/admin/User";
 
-const popupcard = ({ email ,open, Setopen, userData, setUserData, paymentcard, Setpaymentcard }) => {
+const popupcard = ({
+  email,
+  open,
+  Setopen,
+  userData,
+  setUserData,
+  paymentcard,
+  Setpaymentcard,
+}) => {
   const countries = [
     { value: "India (+91)", label: "India (+91)" },
     { value: "Afghanistan (+93)", label: "Afghanistan (+93)" },
@@ -239,53 +247,38 @@ const popupcard = ({ email ,open, Setopen, userData, setUserData, paymentcard, S
     setUserData({ ...userData, [name]: value });
   };
 
-  const savecard = (userData)=>{
-    Setpaymentcard(prevState => [...prevState, userData]);
+  const savecard = (userData) => {
+    Setpaymentcard((prevState) => [...prevState, userData]);
     // Optionally, you can clear the userData after saving
     setUserData({
       cardnumber: "",
       expirydate: "",
       cvv: "",
       cardholder: "",
-      firstname:"",
-      lastname:"",
-      address:"",
-      city:"",
-      postalcode:"",
-      country:"",
-      state:"",
-      phone:"",
-      company:"",
-      gst:""
+      firstname: "",
+      lastname: "",
+      address: "",
+      city: "",
+      postalcode: "",
+      country: "",
+      state: "",
+      phone: "",
+      company: "",
+      gst: "",
     });
-    Setopen(false)
-    Updatepay(userData)
-  }
+    Setopen(false);
+    Updatepay(userData);
+  };
 
   const Updatepay = async (userData) => {
     try {
-      // const response = await fetch(`https://backend.mamoshfashion.com/api/user/savecard`, {
-      //   method: 'POST', // Assuming you're sending data via POST method
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify({email, ...userData}),
-      // });
-
-      const data = await Savecards({email, ...userData})
+      const data = await Savecards({ email, ...userData });
 
       if (!data) {
-        throw new Error('Failed to update user');
+        throw new Error("Failed to update user");
       }
-
-      // const data = await response.json();
-    //   toast.success(data.message)
-
-      // Handle success, e.g., show a success message
     } catch (error) {
-      console.error('Error updating user:', error.message);
-    //   toast.error(error.message)
-      // Handle error, e.g., show an error message
+      console.error("Error updating user:", error.message);
     }
   };
   return (
@@ -296,16 +289,7 @@ const popupcard = ({ email ,open, Setopen, userData, setUserData, paymentcard, S
         }}
       >
         <div className="add-payment-main">
-          <div className="pop-head">
-            
-            <RxCross2
-              style={{ cursor: "pointer" }}
-              onClick={() => {
-                Setopen(false);
-              }}
-            />
-          </div>
-          <div className="card-details">
+          <div className="wrap-payment-head">
             <div className="detail-top">
               <p>Card details</p>
               <div className="icons-pay">
@@ -319,6 +303,8 @@ const popupcard = ({ email ,open, Setopen, userData, setUserData, paymentcard, S
               Your Credit card details will be saved securely according the RBI
               guidelines.
             </div>
+          </div>
+          <div className="card-details">
             <div className="div-name card-info">
               <label className="label-text text-sm font-bold">
                 Card Number
@@ -550,26 +536,20 @@ const popupcard = ({ email ,open, Setopen, userData, setUserData, paymentcard, S
           </div>
 
           <div className="down-menu">
-            <div>
-              <p
-                id="back"
-                onClick={() => {
-                  Setopen(false);
-                }}
-              >
-                <IoIosArrowBack
-                  style={{
-                    fontSize: "12px",
-                    position: "relative",
-                    top: "-1px",
-                  }}
-                />{" "}
-                Back
-              </p>
-            </div>
-            <div className="f-2">
-              <div className="fr-save" onClick={()=>{savecard(userData)}}>Save</div>
-            </div>
+            <button
+              className="_btn_wrapper _btn_height _w-full de-btn"
+              style={{ width: "73px", marginTop: "0" }}
+            >
+              Cancel
+            </button>
+            <button
+              className="_btn_wrapper3 _btn_height _w-full"
+              onClick={() => {
+                savecard(userData);
+              }}
+            >
+              Save
+            </button>
           </div>
         </div>
       </OutsideClickHandler>

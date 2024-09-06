@@ -284,7 +284,31 @@ li {
   cursor: pointer;
   height: 34px;
 }
+._btn_wrapper3 {
+  font-family: Centra No2, Helvetica, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  height: 40px;
+  color: white;
+  border: 1px solid #000;
+  background-color: #000;
+  border-radius: 9999px;
+  padding: 0 16px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s linear;
+  cursor: pointer;
+  height: 34px;
+}
 ._btn_wrapper2:hover {
   background-color: transparent;
   color: #000;
+}
+._btn_wrapper3:hover {
+  background-color: #4b4b4b;
 }

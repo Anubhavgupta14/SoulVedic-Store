@@ -21,7 +21,7 @@ const General = () => {
           router.back();
         }}
       >
-        <IoIosArrowRoundBack style={{ fontSize: "1rem" }} />
+        <IoIosArrowRoundBack style={{ fontSize: "3rem" }} />
         <p>Back</p>
       </div>
         <div className="outerdiv-pro">

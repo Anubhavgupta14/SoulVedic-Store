@@ -415,7 +415,7 @@ const Checkout2 = () => {
           router.back();
         }}
       >
-        <IoIosArrowRoundBack style={{ fontSize: "1rem" }} />
+        <IoIosArrowRoundBack style={{ fontSize: "2rem" }} />
         <p>Back</p>
       </div>
       <div className="checkout-cont">

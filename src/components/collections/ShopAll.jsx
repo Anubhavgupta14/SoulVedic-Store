@@ -161,7 +161,7 @@ const ShopAll = () => {
                               {`${items.name}`}
                             </h3>
                             <div className="shop_card_tag">
-                              {items?.ribbon ?? "NEW"}
+                              {items?.ribbon ?? ""}
                             </div>
                           </div>
 

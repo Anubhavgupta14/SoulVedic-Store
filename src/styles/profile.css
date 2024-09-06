@@ -143,7 +143,7 @@
   font-family: var(--secondary-font-Hen);
 }
 .card2{
-  border: 2px dotted #3b82f6;
+  border: 2px dotted #000;
   height: 220px;
   cursor: pointer;
   width: 49%;
@@ -538,7 +538,7 @@
 }
 
 .general__input {
-  margin: 5px 0;
+  margin: 2px 0;
   padding: 8px 14px;
   border: 1px solid rgba(0,0,0,0.2);
   outline: none;
@@ -561,8 +561,11 @@
   justify-content: space-between;
   width: 100%;
   align-items: center;
-  margin: 15px 0;
-  gap: 1vw;
+  margin: 4px 0;
+  gap: 8px;
+}
+.status-btnpro{
+  font-size: 1rem;
 }
 .general-div{
   display: flex;
@@ -907,8 +910,8 @@
 
 .twoinone{
   display: flex;
-  gap: 1.5vw;
-  margin-top: 18px;
+  gap: 8px;
+  margin-top: 4px;
 }
 .twoinone2{
   display: flex;
@@ -923,8 +926,11 @@
 .down-menu{
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 5px;
   align-items: center;
+  margin-bottom: 20px;
+  padding-right: 20px;
 }
 #back{
   color: #3b82f6;
@@ -966,8 +972,8 @@ height: 40px;
 }
 
 .add-payment-main{
-  height: 72vh;
-    width: 500px;
+    width: 550px;
+    height: 80vh;
     border: 1px solid rgba(0, 0, 0, 0.2);
     background-color: white;
     border-radius: 5px;
@@ -987,7 +993,7 @@ height: 40px;
 }
 .card-details{
   border: 1px solid rgba(0, 0, 0, 0.2);
-  margin: 20px 10px;
+  margin: 20px;
   padding: 12px;
   border-radius: 5px;
   height: 50vh;
@@ -1033,7 +1039,7 @@ height: 40px;
   font-size: 13px;
 }
 .card-info{
-  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .notisel{
 
@@ -1050,7 +1056,6 @@ height: 40px;
   padding: 5px !important;
 }
 .bg-white{
-  background-color: white;
   position: fixed;
   width: 80px;
 }

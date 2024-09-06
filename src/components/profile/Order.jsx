@@ -97,12 +97,15 @@ const General = () => {
 
   return (
     <div>
-      <div className="pay-top" style={{ marginInline: "-2vw" }}>
+      <div className="pay-top" style={{ marginInline: "-2vw", width:'100%' }}>
         <div className="pay-head">
           <h4>Order History</h4>
           <p>
             Access your order history effortlessly to track past purchases and
             manage returns
+          </p>
+          <p>
+          Your information is kept safe and secure with us
           </p>
         </div>
 
@@ -125,7 +128,7 @@ const General = () => {
         ) : (
           <div className="no-order-div">
             <div>
-              <p className="no-order-p">There is no order</p>
+              <p className="no-order-p">There is no order history to show</p>
             </div>
           </div>
         )}

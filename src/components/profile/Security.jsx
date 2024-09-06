@@ -71,7 +71,7 @@ const General = ({email}) => {
 
         <div className="form-secure" style={{ width: "50%" }}>
           <div className="curr-pass">
-            <label className="passguide">Current Password</label>
+            {/* <label className="passguide">Current Password</label> */}
             <input
               className="general__input"
               type="text"
@@ -83,7 +83,7 @@ const General = ({email}) => {
           </div>
           <div className="twoinone">
             <div className="curr-pass">
-              <label className="passguide">New Password</label>
+              {/* <label className="passguide">New Password</label> */}
               <input
                 className="general__input"
                 type="text"
@@ -94,7 +94,7 @@ const General = ({email}) => {
               />
             </div>
             <div className="curr-pass">
-              <label className="passguide">Re-enter New Password</label>
+              {/* <label className="passguide">Re-enter New Password</label> */}
               <input
                 className="general__input"
                 type="text"

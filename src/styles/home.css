@@ -1336,7 +1336,7 @@ button {
   /* background-color: rgb(255, 255, 255); */
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 
 .ProductDets_colorVariant_wrap {

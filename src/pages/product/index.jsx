@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { editProduct } from "../../../api_fetch/admin/Product";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Link from "next/link";
-import Navbar from "@/components/common/Navbar"
+import Navbar from "@/components/common/Navbar";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/router";
 import ProductLoader from "@/components/loaders/ProductLoader";
@@ -136,7 +136,9 @@ const ProductPage = () => {
 
   const handleAddToCart = () => {
     if (enableAddToCart) {
-      setOpenBag(true)
+      setTimeout(() => {
+        setOpenBag(true);
+      }, 1000);
       setBtnLoading(true);
       const vararray = [];
       vararray.push(selectedVarients);
@@ -273,7 +275,7 @@ const ProductPage = () => {
   }, [btnLoading]);
   return (
     <>
-      <Navbar openBag={openBag} setOpenBag={setOpenBag}/>
+      <Navbar openBag={openBag} setOpenBag={setOpenBag} />
       {isModalVisible && (
         <div className="ReactModalPortal_img_cntr">
           <div className="ReactModalPortal_img_cntr_overlay">
@@ -429,6 +431,14 @@ const ProductPage = () => {
                                 ))}
                             </fieldset>
                           </div>
+                              <div className="ProductDets-size_assist_cntr">
+                                <div
+                                  id="easysize_button"
+                                  className="easysize_button"
+                                >
+                                  {product.colorVar.options[colorSelect]}
+                                </div>
+                              </div>
                         </div>
                         <div className="ProductDets_size_Mainwrap">
                           {product &&
