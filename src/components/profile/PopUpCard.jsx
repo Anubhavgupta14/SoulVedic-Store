@@ -539,6 +539,7 @@ const popupcard = ({
             <button
               className="_btn_wrapper _btn_height _w-full de-btn"
               style={{ width: "73px", marginTop: "0" }}
+              onClick={()=>{Setopen(false)}}
             >
               Cancel
             </button>
