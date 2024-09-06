@@ -20,6 +20,8 @@ const Layout = ({ email }) => {
   // let productsjson = useLoaderData();
   const [open, Setopen] = useState(false);
 
+  console.log(open,"open")
+
   const [userData, setUserData] = useState({
     cardnumber: "",
     expirydate: "",
@@ -38,29 +40,17 @@ const Layout = ({ email }) => {
   });
 
   const [paymentcard, Setpaymentcard] = useState([]);
-  console.log("payment card", paymentcard);
 
   const fetchUserData = async () => {
     try {
       // Extract JWT token from localStorage
-      const response = await fetch(`${Const.Link}api/user/getcard`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId: email }),
-      });
+      const token = localStorage.getItem('token')
+      
 
-      const data = await Getcards({ userId: email });
+      const data = await Getcards({token:token});
 
-      if (!response.ok) {
-        console.log("error");
-        throw new Error("Failed to fetch user data");
-      }
-
-      const userData = await response.json();
-      console.log("Data :", userData);
-      Setpaymentcard(userData);
+      
+      Setpaymentcard(data);
     } catch (error) {
       console.error("Error fetching user data:", error);
     }
@@ -89,7 +79,7 @@ const Layout = ({ email }) => {
             </span> */}
             </p>
           </div>
-          <div className="fixed-right">
+          <div className="fixed-right" onClick={()=>{Setopen(true)}}>
             <div
               className="_btn_wrapper _btn_height _w-full"
               onClick={() => {

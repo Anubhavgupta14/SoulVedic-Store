@@ -297,7 +297,7 @@ const popupcard = ({
                 Your Address Details will be saved securely
               </div>
             </div>
-            <div className="card-details" style={{height:'51vh'}}>
+            <div className="card-details" style={{height:'356px'}}>
               <div className="twoinone2">
                 <div className="div-name card-info">
                   <label className="label-text text-sm font-bold">
@@ -454,6 +454,7 @@ const popupcard = ({
             <button
               className="_btn_wrapper _btn_height _w-full de-btn"
               style={{ width: "73px", marginTop: "0" }}
+              onClick={()=>{Setopen(false)}}
             >
               Cancel
             </button>

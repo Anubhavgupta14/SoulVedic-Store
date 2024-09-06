@@ -16,7 +16,7 @@ export const Const = {
   Active: true,
   Inactive: false,
   Limit: 20,
-  //Link: "http://localhost:3001/",
+  // Link: "http://localhost:3001/",
   Link: "https://soulvedic-backend.onrender.com/",
 };
 
