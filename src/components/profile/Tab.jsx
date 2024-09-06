@@ -122,18 +122,13 @@ function a11yProps(index) {
 }
 
 export default function BasicTabs() {
-  const [value, setValue] = React.useState(() => {
-    // Get the stored tab index from localStorage, defaulting to 0 if not present
-    return parseInt(localStorage.getItem("selectedTab"), 10) || 0;
-  });
+  const [value, setValue] = React.useState(0);
 
   const [load, setLoad] = useState(false);
   const [dis, Setdis] = useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    // Store the selected tab index in localStorage
-    localStorage.setItem("selectedTab", newValue);
   };
 
   const [userData, setUserData] = useState({
@@ -237,25 +232,12 @@ export default function BasicTabs() {
     } else {
       try {
         setLoad(true);
-        // const response = await fetch(
-        //   `https://backend.mamoshfashion.com/api/user/updateuser`,
-        //   {
-        //     method: "POST", // Assuming you're sending data via POST method
-        //     headers: {
-        //       "Content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify(userData),
-        //   }
-        // );
 
         const data = await Updateuser(userData)
 
         if (!data) {
           throw new Error("Failed to update user");
         }
-
-        // const data = await response.json();
-        // toast.success(data.message);
         Setdis(false)
         Settextbtn("Edit")
 
@@ -296,9 +278,6 @@ export default function BasicTabs() {
                     Easily update your profile details on our platform for a
                     personalized experience. Your information is safeguarded
                     with us.{" "}
-                    {/* <span style={{ color: "#3b82f6", cursor: "pointer" }}>
-                      Learn More.
-                    </span>{" "} */}
                   </p>
                   <p></p>
                 </div>
@@ -322,7 +301,7 @@ export default function BasicTabs() {
                       class="fixed-right"
                       style={{ marginTop: "2vh", justifyContent: "center" }}
                     >
-                      <div className="_btn_wrapper2 _btn_height _w-full" style={{width:'170px'}}>Upload Avatar</div>
+                      <div className="_btn_wrapper3 _btn_height _w-full" style={{width:'170px'}}>Upload Avatar</div>
                     </div>
                   </div>
 

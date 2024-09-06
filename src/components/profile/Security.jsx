@@ -75,7 +75,7 @@ const General = ({email}) => {
 
         <div className="form-secure" style={{ width: "50%" }}>
           <div className="curr-pass" style={{position:'relative'}}>
-            <div className="eye-cont flex-all" style={{top:'-13px'}} onClick={()=>{setVisible(!visible)}}>{visible ? <AiOutlineEye/>:<AiOutlineEyeInvisible/>}</div>
+            <div className="eye-cont flex-all" style={{top:'-13px', color:'rgba(0,0,0,0.2)'}} onClick={()=>{setVisible(!visible)}}>{visible ? <AiOutlineEye/>:<AiOutlineEyeInvisible/>}</div>
             <input
               className="general__input"
               type={visible ? "text":"password"}
@@ -87,7 +87,7 @@ const General = ({email}) => {
             
           </div>
           <div className="curr-pass" style={{position:'relative'}}>
-          <div className="eye-cont flex-all" style={{top:'-13px'}} onClick={()=>{setVisible2(!visible2)}}>{visible2 ? <AiOutlineEye/>:<AiOutlineEyeInvisible/>}</div>
+          <div className="eye-cont flex-all" style={{top:'-13px', color:'rgba(0,0,0,0.2)'}} onClick={()=>{setVisible2(!visible2)}}>{visible2 ? <AiOutlineEye/>:<AiOutlineEyeInvisible/>}</div>
               {/* <label className="passguide">New Password</label> */}
               <input
                 className="general__input"
@@ -99,7 +99,7 @@ const General = ({email}) => {
               />
             </div>
             <div className="curr-pass" style={{position:'relative'}}>
-            <div className="eye-cont flex-all" style={{top:'-13px'}} onClick={()=>{setVisible3(!visible3)}}>{visible3 ? <AiOutlineEye/>:<AiOutlineEyeInvisible/>}</div>
+            <div className="eye-cont flex-all" style={{top:'-13px', color:'rgba(0,0,0,0.2)'}} onClick={()=>{setVisible3(!visible3)}}>{visible3 ? <AiOutlineEye/>:<AiOutlineEyeInvisible/>}</div>
               {/* <label className="passguide">Re-enter New Password</label> */}
               <input
                 className="general__input"
