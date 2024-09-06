@@ -51,7 +51,7 @@ const General = () => {
               <p className="noti-p" style={{fontWeight:'500'}}>To unsubscribe from all email communications, click below. We respect your choice and apologize for any inconvenience. You can resubscribe at any time. Thank you.</p>
             </div>
             <div className="fixed-right" style={{marginTop:'15px'}}>
-        <div className="_btn_wrapper _btn_height _w-full" style={{ width: "14vw", marginTop: "12px" }}>
+        <div className="_btn_wrapper3 _btn_height _w-full" style={{ width: "14vw", marginTop: "12px" }}>
           Update My Preferences
         </div>
         </div>

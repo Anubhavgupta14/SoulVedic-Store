@@ -88,9 +88,9 @@ const ShopAll = () => {
           </div>
         </div>
         <div>
-          {collections.length==0 ?
+          {collections && collections.length==0 ?
           <>
-          <CollectionLoader/>
+          <CollectionLoader/> 
           </>
           
           :

@@ -18,19 +18,30 @@
 }
 
 .avatar-c {
-    width: 24.7vw;
-    height: 481px;
+    height: 570px;
 }
 
 .text-c {
   height: 9px;
-  width: 300px;
+  width: 250px;
   border-radius: 2px;
-  margin: 4px 0 8px;
+  margin: 24px 0 8px;
+}
+.text-c-price {
+  height: 9px;
+  width: 50px;
+  border-radius: 2px;
+  margin: 24px 0 8px;
 }
 .text-c-t {
   height: 9px;
   width: 200px;
+  border-radius: 2px;
+  margin: 4px 0 8px;
+}
+.text-c-t-small {
+  height: 9px;
+  width: 150px;
   border-radius: 2px;
   margin: 4px 0 8px;
 }
@@ -59,4 +70,5 @@
 .cat-loader-div{
   display: flex;
   flex-direction: column;
+  width: 25%;
 }

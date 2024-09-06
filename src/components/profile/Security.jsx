@@ -1,12 +1,16 @@
 // import ProfileLayout from "../../components/user_data/User_security";
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
+import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 // import toast, { Toaster } from "react-hot-toast";
 import {Changepassword} from "../../../api_fetch/admin/User"
 
 const General = ({email}) => {
 
   const [load, setLoad] = useState(false);
+  const [visible, setVisible] = useState(false)
+  const [visible2, setVisible2] = useState(false)
+  const [visible3, setVisible3] = useState(false)
   // let productsjson = useLoaderData();
 
 
@@ -70,43 +74,44 @@ const General = ({email}) => {
         {/* <div className="myline-4"></div> */}
 
         <div className="form-secure" style={{ width: "50%" }}>
-          <div className="curr-pass">
-            {/* <label className="passguide">Current Password</label> */}
+          <div className="curr-pass" style={{position:'relative'}}>
+            <div className="eye-cont flex-all" style={{top:'-13px'}} onClick={()=>{setVisible(!visible)}}>{visible ? <AiOutlineEye/>:<AiOutlineEyeInvisible/>}</div>
             <input
               className="general__input"
-              type="text"
+              type={visible ? "text":"password"}
               placeholder="Enter Current Password"
               name="currentpass"
               value={userData.currentpass || ""}
               onChange={handleData}
             />
+            
           </div>
-          <div className="twoinone">
-            <div className="curr-pass">
+          <div className="curr-pass" style={{position:'relative'}}>
+          <div className="eye-cont flex-all" style={{top:'-13px'}} onClick={()=>{setVisible2(!visible2)}}>{visible2 ? <AiOutlineEye/>:<AiOutlineEyeInvisible/>}</div>
               {/* <label className="passguide">New Password</label> */}
               <input
                 className="general__input"
-                type="text"
+                type={visible2 ? "text":"password"}
                 placeholder="Enter New Password"
                 name="newpass"
                 value={userData.newpass || ""}
                 onChange={handleData}
               />
             </div>
-            <div className="curr-pass">
+            <div className="curr-pass" style={{position:'relative'}}>
+            <div className="eye-cont flex-all" style={{top:'-13px'}} onClick={()=>{setVisible3(!visible3)}}>{visible3 ? <AiOutlineEye/>:<AiOutlineEyeInvisible/>}</div>
               {/* <label className="passguide">Re-enter New Password</label> */}
               <input
                 className="general__input"
-                type="text"
+                type={visible3 ? "text":"password"}
                 placeholder="Enter Confirm Password"
                 name="renewpass"
                 value={userData.renewpass || ""}
                 onChange={handleData}
               />
             </div>
-          </div>
           <div className="secure-btn">
-            <div class="_btn_wrapper _btn_height _w-full" style={{width:'170px'}} onClick={handleChangePassword}>
+            <div class="_btn_wrapper3 _btn_height _w-full" style={{width:'170px'}} onClick={handleChangePassword}>
               {load ? <div className="login-load"></div> : "Change Password"}
             </div>
           </div>
