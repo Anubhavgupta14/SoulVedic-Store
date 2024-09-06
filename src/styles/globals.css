@@ -312,3 +312,31 @@ li {
 ._btn_wrapper3:hover {
   background-color: #4b4b4b;
 }
+.ani-wrap{
+  width: 221px;
+  max-width: 100%;
+    display: grid;
+    height: 1px;
+    overflow: hidden;
+}
+
+@keyframes slide-animation {
+  0% {
+    transform: translateX(-100%);
+  }
+  45% {
+    transform: translateX(0);
+  }
+  55% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.ani-main{
+  width: 100%;
+    background-color: white;
+    animation: slide-animation 1s ease-in-out infinite;
+}

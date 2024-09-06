@@ -228,10 +228,10 @@ const Modal = ({
                       <span>
                         Free worldwide shipping on orders over 500 INR
                       </span>
-                      <div style={{position:'relative'}}>
+                      <div style={{ position: "relative" }}>
                         <button
                           className="_btn_wrapper"
-                          style={{ width: "100%" }}
+                          style={btnLoading ? {backgroundColor:'black', width:'100%'}:{width:'100%'}}
                           onClick={() => {
                             setBtnLoading(true);
                             setTimeout(() => {
@@ -240,9 +240,14 @@ const Modal = ({
                             }, 2000);
                           }}
                         >
-                          Checkout
+                          {btnLoading ? (
+                            <div className="ani-wrap">
+                              <div className="ani-main"></div>
+                            </div>
+                          ) : (
+                            <>Checkout</>
+                          )}
                         </button>
-                        <AnimBtn btnLoading={btnLoading} />
                       </div>
                       {/* <AnimBtn /> */}
                     </div>

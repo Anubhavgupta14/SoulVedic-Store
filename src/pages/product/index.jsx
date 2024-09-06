@@ -501,33 +501,41 @@ const ProductPage = () => {
                         <button
                           className="ProductDets_ntfy_btn ProductDets_ntfy_btn_grid"
                           id="easysize-cart-button"
+                          style={btnLoading ? {backgroundColor:'black'}:{}}
                           onClick={handleAddToCart}
                         >
-                          {!enableAddToCart ? (
-                            <span className="ProductDets_ntfy_btn_slect_size">
-                              Select a Size
-                            </span>
-                          ) : (
-                            <span className="ProductDets_ntfy_btn_slect_size">
-                              Add to Bag
-                            </span>
-                          )}
-                          <span className="ProductDets_ntfy_btn_AddtoBeg">
-                            Add to Bag
-                          </span>
-                          <div className="ProductDets_ntfy_btn_price">
-                            <div className="">
-                              <span>{finalPrice}</span>
-                              <span>&nbsp;INR</span>
+                          {btnLoading ? (
+                            <>
+                            <div className="ani-wrap">
+                                <div className="ani-main"></div>
                             </div>
-                          </div>
-                        </button>
-                        <AnimBtn btnLoading={btnLoading} />
-                        {/* <AnimBtn /> */}
+                            </>
+                          ) : (
+                            <>
+                              {!enableAddToCart ? (
+                                <span className="ProductDets_ntfy_btn_slect_size">
+                                  Select a Size
+                                </span>
+                              ) : (
+                                <span className="ProductDets_ntfy_btn_slect_size">
+                                  Add to Bag
+                                </span>
+                              )}
+                              <span className="ProductDets_ntfy_btn_AddtoBeg">
+                                Add to Bag
+                              </span>
 
-                        {/* <div className="ProductDets_shipping_para">
-                      Complimentary shipping on orders above 500 INR.
-                    </div> */}
+                              <div className="ProductDets_ntfy_btn_price">
+                                <div className="">
+                                  <span>{finalPrice}</span>
+                                  <span>&nbsp;INR</span>
+                                </div>
+                              </div>
+                            </>
+                          )}
+                        </button>
+
+                        {/* <AnimBtn btnLoading={btnLoading} /> */}
                       </div>
 
                       <div className="ProductDets_bottom_links_wrap">
