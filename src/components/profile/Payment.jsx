@@ -20,7 +20,7 @@ const Layout = ({ email }) => {
   // let productsjson = useLoaderData();
   const [open, Setopen] = useState(false);
 
-  console.log(open,"open")
+  console.log(open, "open");
 
   const [userData, setUserData] = useState({
     cardnumber: "",
@@ -44,12 +44,10 @@ const Layout = ({ email }) => {
   const fetchUserData = async () => {
     try {
       // Extract JWT token from localStorage
-      const token = localStorage.getItem('token')
-      
+      const token = localStorage.getItem("token");
 
-      const data = await Getcards({token:token});
+      const data = await Getcards({ token: token });
 
-      
       Setpaymentcard(data);
     } catch (error) {
       console.error("Error fetching user data:", error);
@@ -79,7 +77,12 @@ const Layout = ({ email }) => {
             </span> */}
             </p>
           </div>
-          <div className="fixed-right" onClick={()=>{Setopen(true)}}>
+          <div
+            className="fixed-right"
+            onClick={() => {
+              Setopen(true);
+            }}
+          >
             <div
               className="_btn_wrapper _btn_height _w-full"
               onClick={() => {
@@ -133,18 +136,18 @@ const Layout = ({ email }) => {
                     {/* <p className="subs">6 active Premium subscriptions</p> */}
                   </div>
                 ))}
-              {open && (
-                <Addpay
-                  email={email}
-                  open={open}
-                  Setopen={Setopen}
-                  userData={userData}
-                  setUserData={setUserData}
-                  paymentcard={paymentcard}
-                  Setpaymentcard={Setpaymentcard}
-                />
-              )}
             </div>
+          )}
+          {open && (
+            <Addpay
+              email={email}
+              open={open}
+              Setopen={Setopen}
+              userData={userData}
+              setUserData={setUserData}
+              paymentcard={paymentcard}
+              Setpaymentcard={Setpaymentcard}
+            />
           )}
         </div>
       </div>

@@ -313,10 +313,11 @@ li {
   background-color: #4b4b4b;
 }
 .ani-wrap{
-  width: 221px;
+  width: 180px;
+  margin-left: 20px;
   max-width: 100%;
     display: grid;
-    height: 1px;
+    height: 0.5px;
     overflow: hidden;
 }
 

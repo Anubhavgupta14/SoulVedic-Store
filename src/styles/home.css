@@ -945,7 +945,7 @@
 
   .shop_card_img_cntr {
     display: block;
-    height: 100%;
+    height: calc(100vh - 160px);
   }
 
   .shop_card_tag {
