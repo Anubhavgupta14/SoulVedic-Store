@@ -7,8 +7,8 @@ export default function Headers(method, body){
     this.method = method;
     this.headers = {
       'Access-Control-Allow-Origin': '*',
-      // 'Content-Type': 'application/json',
-      // 'Content-Type': 'multipart/form-data',
+      'Content-Type': 'application/json',
+      //'Content-Type': 'multipart/form-data',
       'user-id': user ? user.user_id : 0,
       'authtoken': auth,
       'session': session
