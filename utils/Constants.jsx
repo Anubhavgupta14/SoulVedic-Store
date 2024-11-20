@@ -17,7 +17,7 @@ export const Const = {
   Inactive: false,
   Limit: 20,
   // Link: "http://localhost:3001/",
-  Link: "https://soulvedic-backend.onrender.com/",
+  Link: "https://soul-vedic-backend.vercel.app/",
 };
 
 export const ProcessAPI = async (res) => {
