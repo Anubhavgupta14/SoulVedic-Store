@@ -434,6 +434,17 @@ const Navbar = ({ openBag, setOpenBag }) => {
                       <div
                         id={`shopData`}
                         onClick={() => {
+                          go("Women", "Pants");
+                        }}
+                        className={`common_style_inherit SideNavbar_inner_links_hidden links shopData`}
+                      >
+                        Pants
+                      </div>
+                    </li>
+                    <li className="_list-links-redirect">
+                      <div
+                        id={`shopData`}
+                        onClick={() => {
                           go("Women", "Shirts");
                         }}
                         className={`common_style_inherit SideNavbar_inner_links_hidden links shopData`}
@@ -463,17 +474,7 @@ const Navbar = ({ openBag, setOpenBag }) => {
                         T-Shirts
                       </div>
                     </li>
-                    <li className="_list-links-redirect">
-                      <div
-                        id={`shopData`}
-                        onClick={() => {
-                          go("Kid", "Pants");
-                        }}
-                        className={`common_style_inherit SideNavbar_inner_links_hidden links shopData`}
-                      >
-                        Pants
-                      </div>
-                    </li>
+
                     <li className="_list-links-redirect">
                       <div
                         id={`shopData`}
